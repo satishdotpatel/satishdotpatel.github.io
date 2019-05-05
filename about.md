@@ -4,43 +4,31 @@ layout: page
 ---
 ![Profile Image]({{ site.url }}/{{ site.picture }})
 
-<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+<h2>Professional</h2>
 
-<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+<p>Over +15 years of experience in Information Technology which include Linux/Unix, Windows NT/2000, NetWare 3.x & Cisco Networking.
+Started my first job at small ISP where dealing with cisco firewalls, routers, switches, lease line & ISDN. Later realized Linux is
+going to be future of everything and since then working as a Linux system admin, work on many opensource projects like Asterisk VoIP
+Opensip, freeradius etc. Recently design large datacenter network using Cisco nexus switches using BGP,OSPF & vPC technology for high 
+availibility environment for 24x7 operation on top of that deployed Openstack private cloud using openstack-ansible running 300 compute 
+nodes with SR-IOV feature.</p>
 
 <h2>Skills</h2>
 
 <ul class="skill-list">
-	<li>HTML - Jade - Haml - Erb</li>
-	<li>Responsive (Mobile First)</li>
-	<li>CSS (Stylus, Sass, Less)</li>
-	<li>Css Frameworks (Bootstrap, Foundation)</li>
-	<li>Javascript (Design Patterns, Testes)</li>
-	<li>NodeJS</li>
-	<li>AngularJS - ReactJS</li>
-	<li>Grunt - Gulp - Yeoman</li>
-	<li>Git</li>
-	<li>PHP</li>
-	<li>Python</li>
-	<li>MySQL - MongoDB</li>
-	<li>Scrum and Kanban</li>
-	<li>TDD e Continuous Integration</li>
-</ul>
-
-<h2>Projects</h2>
-
-<ul>
-	<li><a href="https://github.com/">Lorem Lorem</a></li>
-	<li><a href="https://github.com/">Ipsum Dolor</a></li>
-	<li><a href="https://github.com/">Dolor Lorem</a></li>
+	<li>BGP, OSPF, ASA Firewalls, IPsec VPN & Nexus vPC</li>
+	<li>Openstack, AWS cloud</li>
+	<li>Ansible, Puppet</li>
+	<li>Asterisk, OpenSIPs & Kamilio VoIP softwares</li>
+	<li>FreeRadius, cdrtool for Authentication & Billing</li>
+	<li>sFlow & Netflow for network monitoring</li>
+	<li>kvm, Xen, VMware, OpenVZ & qemu virtulization</li>
+	<li>OpenLDAP, Active Directory & FreeIPA</li>
+	<li>Qmail-LDAP, Sendmail, postfix & Zimbra</li>
+	<li>MySQL, Postgresql & InfluxDB</li>
+	<li>Python, Perl & Bash</li>
+	<li>DHCP (Kea), PowerDNS & Bind, Apache</li>
+	<li>BigIP F5, HAProxy & Nginx Loadbalancer</li>
+	<li>Ceph, Lustre distributed file system</li>
+	<li>LSF job scheduler for high performance computing</li>
 </ul>
