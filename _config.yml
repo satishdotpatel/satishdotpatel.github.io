@@ -1,6 +1,6 @@
 # main text of home
 name: Satish Patel
-bio: A Man who love in open source
+bio: Linux/Unix, openstack, security, networking and i love opensource.
 
 # twitter summary info
 description: A blog about technology and stuff related
@@ -16,7 +16,7 @@ resume: true
 resume-external: true
 resume-url: https://google.com/?q=my+resume
 
-url: https://koppl.in/indigo
+url: https://satishdotpatel.github.io/
 # your url: http://USERNAME.github.io
 
 permalink: /:title/
@@ -30,12 +30,12 @@ permalink: /:title/
 
 # if you don't want comments in your posts, leave categories empty
 disqus:
-  shortname: mydisqus # enter this from your disqus account
+  shortname: tux # enter this from your disqus account
   categories: [blog, project] # only show disqus for posts that have these categories
 
 # if you don't have any of social below, comment the line
 facebook: myfacebook
-twitter: mytwitter
+twitter: satish.lx
 # google: mygoogle
 # instagram: myinstagram
 # pinterest: mypinterest
@@ -51,15 +51,15 @@ github: mygithub
 medium: medium
 # vimeo: myvimeo
 # lanyrd: mylanyrd
-email: myemail@gmail.com
+email: satish.lx@gmail.com
 
 authors:
-    johndoe:
-        name: John Doe
-        bio: A Man who travels the world eating noodles
+    SatishPatel:
+        name: Satish Patel
+        bio: Linux/Unix, openstack, security, networking and i love opensource.
         external-image: false
         picture: assets/images/profile.jpg
-        twitter: johndoe
+        twitter: satish.lx
     jamesfoster:
         name: James Foster
         bio: A Man who develops software with coffee
