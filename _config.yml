@@ -34,21 +34,21 @@ disqus:
   categories: [blog, project] # only show disqus for posts that have these categories
 
 # if you don't have any of social below, comment the line
-facebook: myfacebook
-twitter: satish.lx
+# facebook: myfacebook
+twitter: satish_lx
 # google: mygoogle
 # instagram: myinstagram
 # pinterest: mypinterest
 # linkedin: mylinkedin
 # youtube: myyoutube
 # spotify: myspotify
-github: mygithub
+github: satishdotpatel
 # gitlab: mygitlab
 # lastfm: mylastfm
 # stackoverflow: 7044681/mystackoverflow
 # quora: userquora
 # reddit: username
-medium: medium
+# medium: medium
 # vimeo: myvimeo
 # lanyrd: mylanyrd
 email: satish.lx@gmail.com
@@ -59,7 +59,7 @@ authors:
         bio: Linux/Unix, openstack, security, networking and i love opensource.
         external-image: false
         picture: assets/images/profile.jpg
-        twitter: satish.lx
+        twitter: satish_lx
     jamesfoster:
         name: James Foster
         bio: A Man who develops software with coffee
