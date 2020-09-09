@@ -77,7 +77,7 @@ $
 $ openstack endpoint create senlin --region RegionOne internal http://controller:8778
 ```
 
-Senline configuration file should look like following:
+Senlin configuration file /etc/senlin/senlin.conf should look like following:
 
 ```
 [DEFAULT]
