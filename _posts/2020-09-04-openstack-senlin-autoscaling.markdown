@@ -181,9 +181,7 @@ properties:
 Create your profile object:
 
 ```
-
 $ openstack cluster profile create --spec-file my-senlin.yml myserver
-
 ```
 
 Create your first cluster using profile:
@@ -237,11 +235,11 @@ Lets create webhook to scale up and down cluster size via api url, first need to
 ```
 $ openstack cluster receiver create --cluster my-asg --action CLUSTER_SCALE_IN w_scale_in
 $ openstack cluster receiver create --cluster my-asg --action CLUSTER_SCALE_OUT w_scale_out
-
 ```
 
 Lets do scale in cluster size using w_scale_out receiver trigger:
 
+```
 $ openstack cluster receiver show w_scale_in -c channel
 +---------+-------------------------------------------------------------------------------------------------------------+
 | Field   | Value                                                                                                       |
