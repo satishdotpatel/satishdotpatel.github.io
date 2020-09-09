@@ -132,3 +132,182 @@ $ systemctl start openstack-senlin-api.service \
    openstack-senlin-engine.service \
    openstack-senlin-health-manager.service
 ```
+
+# Verify Your Installation
+
+Source the admin tenant credentials:
+
+```
+$ source /root/openrc
+```
+
+If you see following output then enjoy your successful senlin deployment. 
+
+```
+$ openstack cluster build info
++--------+---------------------+
+| Field  | Value               |
++--------+---------------------+
+| api    | {                   |
+|        |   "revision": "1.0" |
+|        | }                   |
+| engine | {                   |
+|        |   "revision": "1.0" |
+|        | }                   |
++--------+---------------------+
+```
+
+# Autoscaling Demo
+
+Create your first profile:
+
+```
+type: os.nova.server
+version: 1.0
+properties:
+  name: cirros_server
+  flavor: m1.small
+  image: "cirros"
+  key_name: spatel-key
+  networks:
+   - network: net1
+  metadata:
+    test_key: test_value
+  user_data: |
+    #!/bin/sh
+    echo 'hello, world' > /tmp/test_file
+```
+
+Create your profile object:
+
+```
+
+$ openstack cluster profile create --spec-file my-senlin.yml myserver
+
+```
+
+Create your first cluster using profile:
+
+```
+$ openstack cluster create --profile myserver --desired-capacity 2 --min-size 1 --max-size 3 my-asg
+
+```
+
+Verify cluster status:
+
+```
+$ openstack cluster list
++----------+--------+--------+----------------------+----------------------+
+| id       | name   | status | created_at           | updated_at           |
++----------+--------+--------+----------------------+----------------------+
+| 091fbd52 | my-asg | ACTIVE | 2020-09-02T20:19:12Z | 2020-09-03T03:52:23Z |
++----------+--------+--------+----------------------+----------------------+
+```
+
+Verify number of instances spun up by create cluster command:
+
+```
+$ openstack cluster members list my-asg
++----------+---------------+-------+--------+-------------+----------------------+
+| id       | name          | index | status | physical_id | created_at           |
++----------+---------------+-------+--------+-------------+----------------------+
+| d4a8f219 | node-YPsjB6bV |     6 | ACTIVE | 73a658cd    | 2020-09-02T21:01:47Z |
+| bc50c0b9 | node-hoiHkRcS |     7 | ACTIVE | 38ba7f7c    | 2020-09-03T03:40:29Z |
++----------+---------------+-------+--------+-------------+----------------------+
+```
+
+Verify cluster expension cluster, as you can see in following output it will add one more instances to my-asg cluster. max size is 3 so you can't add more than 3 nodes to cluster. 
+
+```
+$ openstack cluster expand my-asg
+Request accepted by action: 1ac8939b-c1c0-47e1-b0a9-bb2e0c47209e
+$
+$ openstack cluster members list my-asg
++----------+---------------+-------+--------+-------------+----------------------+
+| id       | name          | index | status | physical_id | created_at           |
++----------+---------------+-------+--------+-------------+----------------------+
+| d4a8f219 | node-YPsjB6bV |     6 | ACTIVE | 73a658cd    | 2020-09-02T21:01:47Z |
+| bc50c0b9 | node-hoiHkRcS |     7 | ACTIVE | 38ba7f7c    | 2020-09-03T03:40:29Z |
+| babc2c59 | node-c6vcz43J |     8 | ACTIVE | 004adc63    | 2020-09-09T04:47:14Z |
++----------+---------------+-------+--------+-------------+----------------------+
+```
+
+Lets create webhook to scale up and down cluster size via api url, first need to create receiver for scale in & out:
+
+```
+$ openstack cluster receiver create --cluster my-asg --action CLUSTER_SCALE_IN w_scale_in
+$ openstack cluster receiver create --cluster my-asg --action CLUSTER_SCALE_OUT w_scale_out
+
+```
+
+Lets do scale in cluster size using w_scale_out receiver trigger:
+
+$ openstack cluster receiver show w_scale_in -c channel
++---------+-------------------------------------------------------------------------------------------------------------+
+| Field   | Value                                                                                                       |
++---------+-------------------------------------------------------------------------------------------------------------+
+| channel | {                                                                                                           |
+|         |   "alarm_url": "https://os-lab.foo.com:8778/v1/webhooks/90891282-21b0-4426-b56b-7a6846ed361b/trigger?V=2"   |
+|         | }                                                                                                           |
++---------+-------------------------------------------------------------------------------------------------------------+ 
+```
+
+Verify cluster scale in action:
+
+```
+$ openstack cluster members list my-asg
++----------+---------------+-------+--------+-------------+----------------------+
+| id       | name          | index | status | physical_id | created_at           |
++----------+---------------+-------+--------+-------------+----------------------+
+| d4a8f219 | node-YPsjB6bV |     6 | ACTIVE | 73a658cd    | 2020-09-02T21:01:47Z |
+| bc50c0b9 | node-hoiHkRcS |     7 | ACTIVE | 38ba7f7c    | 2020-09-03T03:40:29Z |
+| babc2c59 | node-c6vcz43J |     8 | ACTIVE | 004adc63    | 2020-09-09T04:47:14Z |
++----------+---------------+-------+--------+-------------+----------------------+
+```
+
+```
+$ curl -X POST https://os-lab.foo.com:8778/v1/webhooks/90891282-21b0-4426-b56b-7a6846ed361b/trigger?V=2
+
+```
+
+```
+$ openstack cluster members list my-asg
++----------+---------------+-------+--------+-------------+----------------------+
+| id       | name          | index | status | physical_id | created_at           |
++----------+---------------+-------+--------+-------------+----------------------+
+| bc50c0b9 | node-hoiHkRcS |     7 | ACTIVE | 38ba7f7c    | 2020-09-03T03:40:29Z |
+| babc2c59 | node-c6vcz43J |     8 | ACTIVE | 004adc63    | 2020-09-09T04:47:14Z |
++----------+---------------+-------+--------+-------------+----------------------+
+```
+
+Verify cluster scale out action:
+
+```
+$ openstack cluster receiver show w_scale_out -c channel
++---------+-------------------------------------------------------------------------------------------------------------+
+| Field   | Value                                                                                                       |
++---------+-------------------------------------------------------------------------------------------------------------+
+| channel | {                                                                                                           |
+|         |   "alarm_url": "https://os-lab.foo.com:8778/v1/webhooks/481ef859-d893-423f-82b0-a59354837fbb/trigger?V=2" |
+|         | }                                                                                                           |
++---------+-------------------------------------------------------------------------------------------------------------+
+```
+
+```
+$ curl -X POST http://os-lab.foo.com:8778/v1/webhooks/481ef859-d893-423f-82b0-a59354837fbb/trigger?V=2
+```
+
+As you can see in following output that it started creating instance.
+
+```
+$ openstack cluster members list my-asg
++----------+---------------+-------+----------+-------------+----------------------+
+| id       | name          | index | status   | physical_id | created_at           |
++----------+---------------+-------+----------+-------------+----------------------+
+| bc50c0b9 | node-hoiHkRcS |     7 | ACTIVE   | 38ba7f7c    | 2020-09-03T03:40:29Z |
+| babc2c59 | node-c6vcz43J |     8 | ACTIVE   | 004adc63    | 2020-09-09T04:47:14Z |
+| 6033cdf1 | node-ay2phP9v |     9 | CREATING | None        | None                 |
++----------+---------------+-------+----------+-------------+----------------------+
+```
+
+You can use webhook in your monitoring system, premethus or grafana to trigger scale in/out your production workload. 
