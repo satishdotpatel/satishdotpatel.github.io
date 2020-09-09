@@ -82,10 +82,10 @@ Senlin configuration file /etc/senlin/senlin.conf should look like following:
 ```
 [DEFAULT]
 debug = true
-transport_url = rabbit://senlin:SENLINE_MQ_PASS@controller:5671//senlin?ssl=1
+transport_url = rabbit://senlin:SENLIN_MQ_PASS@controller:5671//senlin?ssl=1
 
 [database]
-connection = mysql+pymysql://senlin:SENLINE_DB_PASS@controller/senlin?charset=utf8
+connection = mysql+pymysql://senlin:SENLIN_DB_PASS@controller/senlin?charset=utf8
 
 [keystone_authtoken]
 service_token_roles_required = True
@@ -96,12 +96,12 @@ project_domain_id = default
 user_domain_id = default
 project_name = service
 username = senlin
-password = SENLINE_KEYSTONE_PASS
+password = SENLIN_KEYSTONE_PASS
 
 [authentication]
 auth_url = http://controller:5000/v3
 service_username = senlin
-service_password = SENLINE_KEYSTONE_PASS
+service_password = SENLIN_KEYSTONE_PASS
 service_project_name = service
 
 [oslo_messaging_notifications]
