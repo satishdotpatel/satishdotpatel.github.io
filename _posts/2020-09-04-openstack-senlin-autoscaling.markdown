@@ -82,16 +82,16 @@ Senline configuration file should look like following:
 ```
 [DEFAULT]
 debug = true
-transport_url = rabbit://senlin:SENLINE_MQ_PASS@172.28.40.141:5671//senlin?ssl=1
+transport_url = rabbit://senlin:SENLINE_MQ_PASS@controller:5671//senlin?ssl=1
 
 [database]
-connection = mysql+pymysql://senlin:SENLINE_DB_PASS@172.28.40.9/senlin?charset=utf8
+connection = mysql+pymysql://senlin:SENLINE_DB_PASS@controller/senlin?charset=utf8
 
 [keystone_authtoken]
 service_token_roles_required = True
 auth_type = password
-auth_url = http://172.28.40.230:5000/v3
-www_authenticate_uri = http://172.28.40.230:5000/v3
+auth_url = http://controller:5000/v3
+www_authenticate_uri = http://controller:5000/v3
 project_domain_id = default
 user_domain_id = default
 project_name = service
@@ -99,7 +99,7 @@ username = senlin
 password = SENLINE_KEYSTONE_PASS
 
 [authentication]
-auth_url = http://172.28.40.230:5000/v3
+auth_url = http://controller:5000/v3
 service_username = senlin
 service_password = SENLINE_KEYSTONE_PASS
 service_project_name = service
@@ -247,7 +247,7 @@ $ openstack cluster receiver show w_scale_in -c channel
 | Field   | Value                                                                                                       |
 +---------+-------------------------------------------------------------------------------------------------------------+
 | channel | {                                                                                                           |
-|         |   "alarm_url": "https://os-lab.foo.com:8778/v1/webhooks/90891282-21b0-4426-b56b-7a6846ed361b/trigger?V=2"   |
+|         |   "alarm_url": "https://controller:8778/v1/webhooks/90891282-21b0-4426-b56b-7a6846ed361b/trigger?V=2"   |
 |         | }                                                                                                           |
 +---------+-------------------------------------------------------------------------------------------------------------+ 
 ```
@@ -266,7 +266,7 @@ $ openstack cluster members list my-asg
 ```
 
 ```
-$ curl -X POST https://os-lab.foo.com:8778/v1/webhooks/90891282-21b0-4426-b56b-7a6846ed361b/trigger?V=2
+$ curl -X POST https://controller:8778/v1/webhooks/90891282-21b0-4426-b56b-7a6846ed361b/trigger?V=2
 
 ```
 
@@ -288,13 +288,13 @@ $ openstack cluster receiver show w_scale_out -c channel
 | Field   | Value                                                                                                       |
 +---------+-------------------------------------------------------------------------------------------------------------+
 | channel | {                                                                                                           |
-|         |   "alarm_url": "https://os-lab.foo.com:8778/v1/webhooks/481ef859-d893-423f-82b0-a59354837fbb/trigger?V=2" |
+|         |   "alarm_url": "https://controller:8778/v1/webhooks/481ef859-d893-423f-82b0-a59354837fbb/trigger?V=2" |
 |         | }                                                                                                           |
 +---------+-------------------------------------------------------------------------------------------------------------+
 ```
 
 ```
-$ curl -X POST http://os-lab.foo.com:8778/v1/webhooks/481ef859-d893-423f-82b0-a59354837fbb/trigger?V=2
+$ curl -X POST http://controller:8778/v1/webhooks/481ef859-d893-423f-82b0-a59354837fbb/trigger?V=2
 ```
 
 As you can see in following output that it started creating instance.
