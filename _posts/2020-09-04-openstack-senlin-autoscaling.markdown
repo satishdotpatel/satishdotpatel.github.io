@@ -70,7 +70,7 @@ Create the senlin service API endpoints:
 Notes: Make sure you don't have any other services using 8778 port (nova placement API default port is 8778 also)
 
 ```
-$ openstack endpoint create senlin --region RegionOne public http://controller:8778
+$ openstack endpoint create senlin --region RegionOne public https://controller:8778
 
 $ openstack endpoint create senlin --region RegionOne admin http://controller:8778
 
