@@ -22,12 +22,13 @@ I am going to show you how senlin works with openstack cloud to scale up/down pr
 
 Notes: Assuming you already have basic openstack cloud up and running.
 
-1. Install RDO repo for ussuri release:
+Install RDO repo for ussuri release:
 
 ```
 $ yum install centos-release-openstack-ussuri
 ```
-2. Install senlin packages:
+
+Install senlin packages:
 
 ```
 $ yum install openstack-senlin-engine.noarch \
@@ -36,7 +37,7 @@ $ yum install openstack-senlin-engine.noarch \
   python3-senlinclient.noarch
 ```
 
-3. DB setup:
+MySQL Database setup:
 
 ```
 $ mysql -u root -p
@@ -49,7 +50,7 @@ GRANT ALL ON senlin.* TO 'senlin'@'%' \
   IDENTIFIED BY 'SENLIN_DBPASS';
 ```
 
-4. Create the senlin users in keystone:
+Create the senlin users in keystone:
 
 ```
 $ source /root/openrc
@@ -63,7 +64,8 @@ $
 $ openstack service create --name senlin --description "Senlin Service" clustering
 $
 ```
-5. Create the senlin service API endpoints:
+
+Create the senlin service API endpoints:
 
 Notes: Make sure you don't have any other services using 8778 port (nova placement API default port is 8778 also)
 
@@ -75,7 +77,7 @@ $
 $ openstack endpoint create senlin --region RegionOne internal http://controller:8778
 ```
 
-6. Senline configuration file should look like following:
+Senline configuration file should look like following:
 
 ```
 [DEFAULT]
@@ -111,13 +113,13 @@ rabbit_notification_exchange = senlin
 rabbit_notification_topic = notifications
 ```
 
-7. Populate the Senlin database:
+Populate the Senlin database:
 
 ```
 $ senlin-manage db_sync
 ```
 
-8. start senlin services:
+Start the Senlin services:
 
 ```
 $ systemctl enable openstack-senlin-api.service \
