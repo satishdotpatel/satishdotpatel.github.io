@@ -5,14 +5,6 @@ date: 2020-09-04
 image: /assets/images/2020-09-04-openstack-senlin-autoscaling/senlin-autoscale.png
 headerImage: true
 tag:
-- blog
-- openstack
-- nova
-- heat
-- autoscale
-- autoheal
-- cloud
-- aws
 - senlin
 category: blog
 blog: true
@@ -21,18 +13,120 @@ description: "Openstack cloud autoscaling with Senlin"
 
 ---
 
-2018 is calling, and I've been involved with OpenStack for the better part of six years. I've seen the 'Stack mature greatly over that time, Neutron included. I'm very familiar with stock Neutron components, to include namespace-based routers, openvswitch and linuxbridge mechanism drivers, DVR, etc. My overall goal with this series is to wade through various vendor offerings and see how they improve upon those stock Neutron components. First up is one of the plugins offered by Cisco for the Cisco Aggregation Services Router (ASR) known as the **Cisco ASR1k Router Service Plugin**. 
+I am going to show you how senlin works with openstack cloud to scale up/down production workload on-demand. Senlin is a clustering service for OpenStack clouds. It creates and operates clusters of homogeneous objects exposed by other OpenStack services. You can feed external metrics to senlin to trigger scaling up/down your workload based on-demand, Just like AWS ASG.
 
 <!--more-->
-Cisco hosts this plugin, along with others, at [https://github.com/openstack/networking-cisco](https://github.com/openstack/networking-cisco).
+[Senlin Documentation](https://docs.openstack.org/senlin/latest/install/).
 
-# Features and Limitations
+# Installation of senlin 
 
-Cisco [documentation](http://networking-cisco.readthedocs.io/en/latest/admin/l3-asr1k.html) states the following features are provided by the L3 router service plugin:
+Notes: Assuming you already have basic openstack cloud up and running.
 
-* L3 forwarding between subnets on the tenants’ neutron L2 networks
-* Support for overlapping IP address ranges between different tenants 
-* NAT overload (i.e. SNAT) for connections originating on private subnets behind a tenant’s neutron router
-* Static NAT (i.e Floating IP) of a private IP address on a internal neutron subnet to a public IP address on an external neutron subnet/network
-* Static routes on neutron routers
-* HSRP-based high availability (HA) whereby a neutron router is supported by two (or more) ASR1k routers, one actively doing L3 forwarding, the others ready to take over in case of disruptions
+1. Install RDO repo for ussuri release:
+
+```
+$ yum install centos-release-openstack-ussuri
+```
+2. Install senlin packages:
+
+```
+$ yum install openstack-senlin-engine.noarch \
+  openstack-senlin-api.noarch \
+  openstack-senlin-common.noarch \
+  python3-senlinclient.noarch
+```
+
+3. DB setup:
+
+```
+$ mysql -u root -p
+
+MariaDB [(none)]> CREATE DATABASE senlin DEFAULT CHARACTER SET utf8;
+
+MariaDB [(none)]> GRANT ALL ON senlin.* TO 'senlin'@'localhost' \
+  IDENTIFIED BY 'SENLIN_DBPASS';
+GRANT ALL ON senlin.* TO 'senlin'@'%' \
+  IDENTIFIED BY 'SENLIN_DBPASS';
+```
+
+4. Create the senlin users in keystone:
+
+```
+$ source /root/openrc
+$
+$ openstack user create --project services --password-prompt senlin
+User Password:
+Repeat User Password:
+$
+$ openstack role add --project services --user senlin admin
+$
+$ openstack service create --name senlin --description "Senlin Service" clustering
+$
+```
+5. Create the senlin service API endpoints:
+
+Notes: Make sure you don't have any other services using 8778 port (nova placement API default port is 8778 also)
+
+```
+$ openstack endpoint create senlin --region RegionOne public http://controller:8778
+$
+$ openstack endpoint create senlin --region RegionOne admin http://controller:8778
+$
+$ openstack endpoint create senlin --region RegionOne internal http://controller:8778
+```
+
+6. Senline configuration file should look like following:
+
+```
+[DEFAULT]
+debug = true
+transport_url = rabbit://senlin:SENLINE_MQ_PASS@172.28.40.141:5671//senlin?ssl=1
+
+[database]
+connection = mysql+pymysql://senlin:SENLINE_DB_PASS@172.28.40.9/senlin?charset=utf8
+
+[keystone_authtoken]
+service_token_roles_required = True
+auth_type = password
+auth_url = http://172.28.40.230:5000/v3
+www_authenticate_uri = http://172.28.40.230:5000/v3
+project_domain_id = default
+user_domain_id = default
+project_name = service
+username = senlin
+password = SENLINE_KEYSTONE_PASS
+
+[authentication]
+auth_url = http://172.28.40.230:5000/v3
+service_username = senlin
+service_password = SENLINE_KEYSTONE_PASS
+service_project_name = service
+
+[oslo_messaging_notifications]
+driver = messaging
+
+[oslo_messaging_rabbit]
+ssl = True
+rabbit_notification_exchange = senlin
+rabbit_notification_topic = notifications
+```
+
+7. Populate the Senlin database:
+
+```
+$ senlin-manage db_sync
+```
+
+8. start senlin services:
+
+```
+$ systemctl enable openstack-senlin-api.service \
+   openstack-senlin-conductor.service \
+   openstack-senlin-engine.service \
+   openstack-senlin-health-manager.service
+
+$ systemctl start openstack-senlin-api.service \
+   openstack-senlin-conductor.service \
+   openstack-senlin-engine.service \
+   openstack-senlin-health-manager.service
+```
