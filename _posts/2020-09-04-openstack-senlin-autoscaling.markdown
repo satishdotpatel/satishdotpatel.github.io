@@ -54,15 +54,15 @@ Create the senlin users in keystone:
 
 ```
 $ source /root/openrc
-$
+
 $ openstack user create --project services --password-prompt senlin
 User Password:
 Repeat User Password:
-$
+
 $ openstack role add --project services --user senlin admin
-$
+
 $ openstack service create --name senlin --description "Senlin Service" clustering
-$
+
 ```
 
 Create the senlin service API endpoints:
@@ -71,9 +71,9 @@ Notes: Make sure you don't have any other services using 8778 port (nova placeme
 
 ```
 $ openstack endpoint create senlin --region RegionOne public http://controller:8778
-$
+
 $ openstack endpoint create senlin --region RegionOne admin http://controller:8778
-$
+
 $ openstack endpoint create senlin --region RegionOne internal http://controller:8778
 ```
 
@@ -219,7 +219,7 @@ Verify cluster expension cluster, as you can see in following output it will add
 ```
 $ openstack cluster expand my-asg
 Request accepted by action: 1ac8939b-c1c0-47e1-b0a9-bb2e0c47209e
-$
+
 $ openstack cluster members list my-asg
 +----------+---------------+-------+--------+-------------+----------------------+
 | id       | name          | index | status | physical_id | created_at           |
