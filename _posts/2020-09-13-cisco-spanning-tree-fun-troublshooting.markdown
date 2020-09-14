@@ -2,7 +2,7 @@
 title: "Cisco Spanning-tree fun troublshooting"
 layout: post
 date: 2020-09-13
-image: /assets/images/2020-09-13-cisco-spanning-tree-fun-troublshooting/spaning-tree-image.png
+image: /assets/images/2020-09-13-cisco-spanning-tree-fun-troublshooting/spanning-tree-image.png
 headerImage: true
 tag:
 - cisco
