@@ -125,6 +125,7 @@ Lets find out recent changes in STP, you can see in output just recently somethi
 
 what is connected to Interface Ethernet 1/36 ?
 
+```
 # sh cdp neighbors interface e1/36
 Capability Codes: R - Router, T - Trans-Bridge, B - Source-Route-Bridge
                   S - Switch, H - Host, I - IGMP, r - Repeater,
