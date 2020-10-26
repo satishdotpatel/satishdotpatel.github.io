@@ -139,7 +139,7 @@ listening on eth0, link-type EN10MB (Ethernet), capture size 262144 bytes
 Lets verify leaf-2 VTEP arp suppression-cache table. ( Now we can see both IP/MAC entires in arp suppression-cache table where L2 flags saying this is local host and R flags saying its located on remote Vtep Addrs 10.255.255.10, MP-BGP pushed IP/MAC entires to all VTEP so now each Vtep knows where these ip/macs located so it doesn't need to send BUM traffic again to discover them )
 
 ```
-# show ip arp suppression-cache vlan 64
+leaf-2# show ip arp suppression-cache vlan 64
 
 Flags: + - Adjacencies synced via CFSoE
        L - Local Adjacency
@@ -158,7 +158,7 @@ Ip Address      Age      Mac Address    Vlan Physical-ifindex    Flags    Remote
 Lets run our previous arp flood test again and see how arp-suppression reduce flood of arp, sending arp packet from leaf-2-host to leaf-1-host, sending 10 arp packet using for loop. Other side on leaf-1-host we will run tcpdump to capture packets to see how many arp packet we will receive. 
 
 ```
-[root@leaf-2-20 ~]# for qw in `seq 1 10`; do arp -d 10.64.0.100 ; ping 10.64.0.100 -c 1; done
+[root@leaf-2-host ~]# for qw in `seq 1 10`; do arp -d 10.64.0.100 ; ping 10.64.0.100 -c 1; done
 
 ```
 
