@@ -1,5 +1,5 @@
 ---
-title: "How does arp suppression work with MP-BGP EVPN"
+title: "How does arp suppression work with MP-BGP EVPN/VxLAN"
 layout: post
 date: 2020-10-25
 image: /assets/images/2020-10-25-how-does-arp-suppression-work-mp-bgp-evpn/spine-leaf-arp.png
