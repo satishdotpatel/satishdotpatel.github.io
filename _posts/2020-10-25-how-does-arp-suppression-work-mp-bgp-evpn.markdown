@@ -237,4 +237,4 @@ Adds 36, Deletes 2
 
 ```
 
-Above test showing arp-suppression as clear advantage on large scale network to reduce overall BUM traffic. 
+Above test showing arp-suppression has clear advantage on large scale network to reduce overall BUM traffic. 
