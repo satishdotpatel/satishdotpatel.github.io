@@ -165,9 +165,9 @@ Lets run our previous arp flood test again and see how arp-suppression reduce fl
 On leaf-1-host tcpdump output. (no activity on leaf-1-host that means it doesn't received any arp flood) 
 
 ```
-[root@leaf-2-10 ~]# tcpdump -i bond0.64 -nn arp
+[root@leaf-1-host ~]# tcpdump -i eth0 -nn arp
 tcpdump: verbose output suppressed, use -v or -vv for full protocol decode
-listening on bond0.64, link-type EN10MB (Ethernet), capture size 262144 bytes
+listening on eth0, link-type EN10MB (Ethernet), capture size 262144 bytes
 
 ```
 
