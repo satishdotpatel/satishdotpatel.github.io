@@ -19,7 +19,7 @@ Many times we have noticed packet drop in tcpdump output, In short tcpdump isn't
 
 Here i am going to show you how you can use PF_Ring technology to boots tcpdump performance to capture high packet rates with very less CPU overhead.
 
-### What is PF_Ring?
+### What is PF_RING?
 
 PF_RING is a Linux kernel module and user-space framework that allows you to process packets at high-rates while providing you a consistent API for packet processing applications.
 
