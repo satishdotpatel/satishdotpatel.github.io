@@ -27,7 +27,7 @@ It can range from 80k pkt/sec on a 1,2GHz ARM to 15M pkt/sec and above per core 
 
 PF_Ring packet flow compare to traditional method.
 
-![<img>](/assets/images/2020-10-26-maximizing-packet-capture-performance-with-tcpdump/pfring-diagram.png)
+![<img>](/assets/images/2020-10-26-maximizing-packet-capture-performance-with-tcpdump/pfring-diagram-small.png)
 
 Enough, Lets get our hand dirty. First install pfring on CentOS 7.5
 
