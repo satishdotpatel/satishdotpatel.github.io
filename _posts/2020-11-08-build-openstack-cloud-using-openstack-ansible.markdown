@@ -114,6 +114,7 @@ Restart NetworkManager service
 ```
 [root@infra-lxb-1 ~]# git clone -b stable/ussuri https://github.com/openstack/openstack-ansible.git /opt/openstack-ansible
 ```
+
 2. Change to the /opt/openstack-ansible directory, and run the Ansible bootstrap script:
 
 ```
