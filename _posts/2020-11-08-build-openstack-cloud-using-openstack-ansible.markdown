@@ -114,7 +114,8 @@ Restart NetworkManager service
 ```
 [root@infra-lxb-1 ~]# git clone -b stable/ussuri https://github.com/openstack/openstack-ansible.git /opt/openstack-ansible
 ```
-Change to the /opt/openstack-ansible directory, and run the Ansible bootstrap script:
+2. Change to the /opt/openstack-ansible directory, and run the Ansible bootstrap script:
+
 ```
 [root@infra-lxb-1 ~]# cd /opt/openstack-ansible/
 [root@infra-lxb-1 openstack-ansible]# scripts/bootstrap-ansible.sh
@@ -122,11 +123,13 @@ Change to the /opt/openstack-ansible directory, and run the Ansible bootstrap sc
 
 ### Configure Openstack-Ansible
 
-Copy the contents of following directory. 
+1. Copy the contents of following directory. 
+
 ```
 [root@infra-lxb-1 ~]# cp -avrp /opt/openstack-ansible/etc/openstack_deploy /etc/.
 ```
-Create file /etc/openstack_deploy/openstack_user_config.yml
+2. Create file /etc/openstack_deploy/openstack_user_config.yml
+
 ```
 ---
 cidr_networks:
@@ -205,11 +208,13 @@ log_hosts:
   infra-lxb-1:
     ip: 10.65.0.111
 ```
-Edit /etc/openstack_deploy/user_variables.yml to disable security hardending (This is lab so not very important)
+3. Edit /etc/openstack_deploy/user_variables.yml to disable security hardending (This is lab so not very important)
+
 ```
 apply_security_hardening: false
 ```
-Generate secrets file
+4. Generate secrets file.
+
 ```
 [root@infra-lxb-1 ~]# cd /opt/openstack-ansible
 [root@infra-lxb-1 openstack-ansible]# ./scripts/pw-token-gen.py --file /etc/openstack_deploy/user_secrets.yml
@@ -217,37 +222,44 @@ Generate secrets file
 
 ### Run Playbooks to Install Controller
 
-Run the host setup playbook, It will prepare containers.
+1. Run the host setup playbook, It will prepare containers.
+
 ```
 [root@infra-lxb-1 openstack-ansible]# cd /opt/openstack-ansible/playbooks/
 [root@infra-lxb-1 playbooks]# openstack-ansible setup-hosts.yml
 ```
-Run the infrastructure setup playbook, It install deploy RabbitMQ, MySQL & Memcache services. 
+2. Run the infrastructure setup playbook, It install deploy RabbitMQ, MySQL & Memcache services. 
+
 ```
 [root@infra-lxb-1 playbooks]# openstack-ansible setup-infrastructure.yml
 ```
-Run the OpenStack setup playbook, It will deploy your openstack components like keystone, neutron, nova etc. (it will take longer time to finish)
+3. Run the OpenStack setup playbook, It will deploy your openstack components like keystone, neutron, nova etc. (it will take longer time to finish)
+
 ```
 [root@infra-lxb-1 playbooks]# openstack-ansible setup-openstack.yml
 ```
 
 ### Validation of Controller node
 
-Determine the name of the utility container:
+1. Determine the name of the utility container:
+
 ```
 [root@infra-lxb-1 ~]# lxc-ls | grep utility
 infra-lxb-1_utility_container-085107e1
 ```
-Access the utility container:
+2. Access the utility container:
+
 ```
 [root@infra-lxb-1 ~]# lxc-attach -n infra-lxb-1_utility_container-085107e1
 [root@infra-lxb-1-utility-container-085107e1 ~ ]#
 ```
-Source the admin tenant credentials:
+3. Source the admin tenant credentials:
+
 ```
 [root@infra-lxb-1-utility-container-085107e1 ~ ]# source /root/openrc
 ```
-List your openstack users: 
+4. List your openstack users: 
+
 ```
 [root@infra-lxb-1-utility-container-085107e1 ~ ]# openstack user list
 +----------------------------------+-----------+
