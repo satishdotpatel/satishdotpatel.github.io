@@ -109,7 +109,8 @@ Restart NetworkManager service
 
 ### Download Openstack-Ansible
 
-Clone the latest stable release of the OpenStack-Ansible Git repository in the /opt/openstack-ansible directory.
+1. Clone the latest stable release of the OpenStack-Ansible Git repository in the /opt/openstack-ansible directory.
+
 ```
 [root@infra-lxb-1 ~]# git clone -b stable/ussuri https://github.com/openstack/openstack-ansible.git /opt/openstack-ansible
 ```
