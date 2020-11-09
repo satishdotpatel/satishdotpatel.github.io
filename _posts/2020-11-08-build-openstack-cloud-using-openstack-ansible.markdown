@@ -2,7 +2,7 @@
 title: "Build Openstack cloud using Openstack-Ansible"
 layout: post
 date: 2020-11-08
-image: /assets/images/2020-11-08-build-openstack-cloud-using-openstack-ansible/foo.png
+image: /assets/images/2020-11-08-build-openstack-cloud-using-openstack-ansible/openstack-ansible.png
 headerImage: true
 tag:
 - Openstack
