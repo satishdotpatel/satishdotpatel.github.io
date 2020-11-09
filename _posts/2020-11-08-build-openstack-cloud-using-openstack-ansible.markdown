@@ -130,7 +130,7 @@ Create file /etc/openstack_deploy/openstack_user_config.yml
 ```
 ---
 cidr_networks:
-  container: 10.65.0.0/21  # br-mgmt subnet for contole plane
+  container: 10.65.0.0/21  # br-mgmt subnet for control plane
 
 used_ips:
   - "10.65.0.1,10.65.0.150" # Reserved some IPs 
