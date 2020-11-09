@@ -261,9 +261,7 @@ List your openstack users:
 +----------------------------------+-----------+
 ```
 Access Horizon GUI using External haproxy VIP IPaddress: https://10.64.0.111
-* Username: admin
-* Password: stored in /etc/openstack_deploy/user_secrets.yml file. 
-
+Username: admin / Password: stored in /etc/openstack_deploy/user_secrets.yml file. 
 ```
 [root@infra-lxb-1 openstack_deploy]# cat /etc/openstack_deploy/user_secrets.yml | grep keystone_auth_admin_password
 keystone_auth_admin_password: 7bea3f701708a0c1f42e0dde52ba67b1d5e4a2407fe9249d4afbab14aed0
