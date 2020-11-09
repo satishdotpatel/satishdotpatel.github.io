@@ -231,7 +231,7 @@ Run the OpenStack setup playbook, It will deploy your openstack components like 
 [root@infra-lxb-1 playbooks]# openstack-ansible setup-openstack.yml
 ```
 
-### Validation of Deployment of Controller
+### Validation of Controller node
 
 Determine the name of the utility container:
 ```
@@ -372,7 +372,7 @@ Run Playbook to setup compute node, following command run 3 playbooks to deploy 
 [root@infra-lxb-1 playbooks]# openstack-ansible setup-hosts.yml os-nova-install.yml os-neutron-install.yml --limit compute-lxb-1
 ```
 
-### Validation
+### Validation of Compute node
 
 Run following command on controller to validate compute node added or not.  
 
