@@ -110,11 +110,11 @@ Restart NetworkManager service
 
 #### Download Openstack-Ansible
 
-1. Clone the latest stable release of the OpenStack-Ansible Git repository in the /opt/openstack-ansible directory.
+Clone the latest stable release of the OpenStack-Ansible Git repository in the /opt/openstack-ansible directory.
 ```
 [root@infra-lxb-1 ~]# git clone -b stable/ussuri https://github.com/openstack/openstack-ansible.git /opt/openstack-ansible
 ```
-2. Change to the /opt/openstack-ansible directory, and run the Ansible bootstrap script:
+Change to the /opt/openstack-ansible directory, and run the Ansible bootstrap script:
 ```
 [root@infra-lxb-1 ~]# cd /opt/openstack-ansible/
 [root@infra-lxb-1 openstack-ansible]# scripts/bootstrap-ansible.sh
