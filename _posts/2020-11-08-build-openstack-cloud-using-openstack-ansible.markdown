@@ -17,12 +17,11 @@ description: "Build Openstack cloud using Openstack-Ansible"
 
 I'm going to show you how to build openstack cloud using openstack-ansible and in later i will show you how to scale it for production workload. I am using Openstack-Ansible deployment tool to deploy production grade openstack.
 
-For simplicity i am going to use following components:
+For simplicity i am going to use 2 node deployment with limited components like keystone/nova/neutron/glance:
 
-- 1 x Controller
+- 1 x Controller (aka Infra node)
 - 1 x Compute
-- LinuxBridge for network (vlan provider)
-
+- Operating system CentOS 8.2.2004
 
 ## Prepare Controller Node
 
