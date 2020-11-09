@@ -108,7 +108,7 @@ Restart NetworkManager service
 [root@infra-lxb-1 ~]# systemctl restart NetworkManager
 ```
 
-#### Download Openstack-Ansible
+### Download Openstack-Ansible
 
 Clone the latest stable release of the OpenStack-Ansible Git repository in the /opt/openstack-ansible directory.
 ```
@@ -120,13 +120,13 @@ Change to the /opt/openstack-ansible directory, and run the Ansible bootstrap sc
 [root@infra-lxb-1 openstack-ansible]# scripts/bootstrap-ansible.sh
 ```
 
-#### Configure Openstack-Ansible
+### Configure Openstack-Ansible
 
-1. Copy the contents of following directory. 
+Copy the contents of following directory. 
 ```
 [root@infra-lxb-1 ~]# cp -avrp /opt/openstack-ansible/etc/openstack_deploy /etc/.
 ```
-2. Create file /etc/openstack_deploy/openstack_user_config.yml
+Create file /etc/openstack_deploy/openstack_user_config.yml
 ```
 ---
 cidr_networks:
@@ -205,49 +205,49 @@ log_hosts:
   infra-lxb-1:
     ip: 10.65.0.111
 ```
-3. Edit /etc/openstack_deploy/user_variables.yml to disable security hardending (This is lab so not very important)
+Edit /etc/openstack_deploy/user_variables.yml to disable security hardending (This is lab so not very important)
 ```
 apply_security_hardening: false
 ```
-4. Generate secrets file
+Generate secrets file
 ```
 [root@infra-lxb-1 ~]# cd /opt/openstack-ansible
 [root@infra-lxb-1 openstack-ansible]# ./scripts/pw-token-gen.py --file /etc/openstack_deploy/user_secrets.yml
 ```
 
-#### Run Playbooks to Install Controller
+### Run Playbooks to Install Controller
 
-1. Run the host setup playbook, It will prepare containers.
+Run the host setup playbook, It will prepare containers.
 ```
 [root@infra-lxb-1 openstack-ansible]# cd /opt/openstack-ansible/playbooks/
 [root@infra-lxb-1 playbooks]# openstack-ansible setup-hosts.yml
 ```
-2. Run the infrastructure setup playbook, It install deploy RabbitMQ, MySQL & Memcache services. 
+Run the infrastructure setup playbook, It install deploy RabbitMQ, MySQL & Memcache services. 
 ```
 [root@infra-lxb-1 playbooks]# openstack-ansible setup-infrastructure.yml
 ```
-3. Run the OpenStack setup playbook, It will deploy your openstack components like keystone, neutron, nova etc. (it will take longer time to finish)
+Run the OpenStack setup playbook, It will deploy your openstack components like keystone, neutron, nova etc. (it will take longer time to finish)
 ```
 [root@infra-lxb-1 playbooks]# openstack-ansible setup-openstack.yml
 ```
 
-#### Validation of Deployment of Controller
+### Validation of Deployment of Controller
 
-1. Determine the name of the utility container:
+Determine the name of the utility container:
 ```
 [root@infra-lxb-1 ~]# lxc-ls | grep utility
 infra-lxb-1_utility_container-085107e1
 ```
-2. Access the utility container:
+Access the utility container:
 ```
 [root@infra-lxb-1 ~]# lxc-attach -n infra-lxb-1_utility_container-085107e1
 [root@infra-lxb-1-utility-container-085107e1 ~ ]#
 ```
-3. Source the admin tenant credentials:
+Source the admin tenant credentials:
 ```
 [root@infra-lxb-1-utility-container-085107e1 ~ ]# source /root/openrc
 ```
-4. List your openstack users: 
+List your openstack users: 
 ```
 [root@infra-lxb-1-utility-container-085107e1 ~ ]# openstack user list
 +----------------------------------+-----------+
@@ -260,7 +260,7 @@ infra-lxb-1_utility_container-085107e1
 | 1e0e57c1fcf54e6d8b248e1979a2d4e5 | neutron   |
 +----------------------------------+-----------+
 ```
-5. Access Horizon GUI using External haproxy VIP IPaddress: https://10.64.0.111
+Access Horizon GUI using External haproxy VIP IPaddress: https://10.64.0.111
 
 Username: admin
 Password: stored in /etc/openstack_deploy/user_secrets.yml file. 
@@ -353,26 +353,26 @@ Restart NetworkManager service (Recommonded to reboot whole system to verify all
 [root@infra-lxb-1 ~]# systemctl restart NetworkManager
 ```
 
-#### Add compute node to controller node configuration
+### Add compute node to controller node configuration
 
-1. Go to Controller node and add compute defination in /etc/openstack_deploy/openstack_user_config.yml 
+Go to Controller node and add compute defination in /etc/openstack_deploy/openstack_user_config.yml 
 ```
 # Compute nodes
 compute_hosts:
   compute-lxb-1:
     ip: 10.65.0.112
 ```
-2. Copy ssh public key to compute node for passwd-less access to run ansible-playbooks
+Copy ssh public key to compute node for passwd-less access to run ansible-playbooks
 ```
 [root@infra-lxb-1 ~]# ssh-copy-id 10.64.0.112
 ```
-3. Run Playbook to setup compute node, following command run 3 playbooks to deploy software. 
+Run Playbook to setup compute node, following command run 3 playbooks to deploy software. 
 ```
 [root@infra-lxb-1 ~]# cd /opt/openstack-ansible/playbooks/
 [root@infra-lxb-1 playbooks]# openstack-ansible setup-hosts.yml os-nova-install.yml os-neutron-install.yml --limit compute-lxb-1
 ```
 
-#### Validation
+### Validation
 
 Run following command on controller to validate compute node added or not.  
 
