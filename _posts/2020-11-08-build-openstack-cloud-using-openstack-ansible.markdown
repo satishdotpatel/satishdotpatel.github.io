@@ -23,6 +23,8 @@ For simplicity i am going to use 2 node deployment with limited components like 
 - 1 x Compute
 - Operating system CentOS 8.2.2004
 
+![<img>](/assets/images/2020-11-08-build-openstack-cloud-using-openstack-ansible/osa-lxb.png)
+
 ## Prepare Controller Node
 
 We are using centOS so lets install centOS 8.2 on controller node and prepare for Networking. 
