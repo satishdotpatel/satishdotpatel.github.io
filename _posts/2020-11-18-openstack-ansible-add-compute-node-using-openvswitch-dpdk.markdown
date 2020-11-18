@@ -19,7 +19,7 @@ description: "Openstack-Ansible add compute node using OpenvSwitch + DPDK"
 
 In previous post i have added OpenvSwitch based compute nodes to Openstack. When you need a high performance network and pps rate for your vms then OVS+DPDK deployment comes in picture. There are planty of articles on internet regarding ovs+dpdk so i am not going to waste a single minutes here. 
 
-scope: I am adding *compute-lxb-3* in existing cloud for ovs+dpdk support.
+scope: I'm adding *compute-lxb-3* in existing openstack cloud for ovs+dpdk based compute.
 
 ![<img>](/assets/images/2020-11-18-openstack-ansible-add-compute-node-using-openvswitch-dpdk/osa-ovs-dpdk.png)
 
