@@ -1,5 +1,5 @@
 ---
-title: "Openstack-Ansible Add compute node using OpenvSwitch + DPDK"
+title: "Openstack-Ansible add compute node using OpenvSwitch + DPDK"
 layout: post
 date: 2020-11-18
 image: /assets/images/2020-11-18-openstack-ansible-add-compute-node-using-openvswitch-dpdk/openstack-ansible.png
@@ -13,7 +13,7 @@ tag:
 category: blog
 blog: true
 author: Satish Patel
-description: "Openstack-Ansible Add compute node using OpenvSwitch + DPDK"
+description: "Openstack-Ansible add compute node using OpenvSwitch + DPDK"
 
 ---
 
