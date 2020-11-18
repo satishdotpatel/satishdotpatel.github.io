@@ -33,6 +33,13 @@ Not all NIC card support DPDK so please make sure your nic is part of this list:
 06:00.0 Ethernet controller: Intel(R) 82599 10 Gigabit Dual Port Backplane Connection (rev 01)
 06:00.1 Ethernet controller: Intel(R) 82599 10 Gigabit Dual Port Backplane Connection (rev 01)
 ```
+My NIC firmware/driver version
+```
+[root@compute-lxb-3 ~]# ethtool -i eno49
+driver: ixgbe
+version: 5.9.4
+firmware-version: 0x800008fb, 1.2028.0
+```
 
 Create basic network bridge interface/bridge using linuxbridge. (If you noticed i didn't create br-vlan here because we will do that in OVS)
 
@@ -191,7 +198,7 @@ Go back to compute nodes and bind dpdk to your nic port (in my case its 0000:06:
 Assign 06:00.1 to dpdk:
 
 ```
-driverctl set-override 0000:06:00.1 vfio-pci
+[root@compute-lxb-3 ~]# driverctl set-override 0000:06:00.1 vfio-pci
 ```
 
 Validate assignment:
