@@ -158,14 +158,14 @@ compute_hosts:
     ip: 10.65.0.114  # New OVS+DPDK compute node
 ```
 
-Run playbooks
+Run playbooks:
 
 ```
 [root@infra-lxb-1 ~]# cd /opt/openstack-ansible/playbooks/
 [root@infra-lxb-1 ~]# openstack-ansible setup-hosts.yml os-nova-install.yml os-neutron-install.yml
 ```
 
-Verify 
+Validate:
 
 ```
 [root@infra-lxb-1 ~]# lxc-attach -n infra-lxb-1_utility_container-085107e1
@@ -188,13 +188,13 @@ Go back to compute nodes and bind dpdk to your nic port (in my case its 0000:06:
 0000:06:00.1 ixgbe (82599 10 Gigabit Dual Port Backplane Connection (Ethernet 10Gb 2-port 560FLB Adapter)) 
 ```
 
-assign 06:00.1 to dpdk
+Assign 06:00.1 to dpdk:
 
 ```
 driverctl set-override 0000:06:00.1 vfio-pci
 ```
 
-verify assignment 
+Validate assignment:
 
 ```
 [root@compute-lxb-3 ~]# dpdk-devbind --status
@@ -208,13 +208,13 @@ Network devices using kernel driver
 0000:06:00.0 '82599 10 Gigabit Dual Port Backplane Connection 10f8' if=eno49 drv=ixgbe unused=vfio-pci
 ```
 
-Attach dpdk port to br-vlan
+Attach dpdk port to br-vlan:
 
 ```
 [root@compute-lxb-3 ~]# ovs-vsctl add-port br-vlan dpdk-1 -- set Interface dpdk-1 type=dpdk options:dpdk-devargs=0000:06:00.1
 ```
 
-Verify 
+Validate OpenvSwitch dpdk port attachment:
 
 ```
 [root@compute-lxb-3 ~]# ovs-vsctl show
