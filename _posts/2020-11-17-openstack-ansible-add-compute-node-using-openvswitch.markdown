@@ -1,5 +1,5 @@
 ---
-title: "Openstack-Ansible Add compute node using OpenvSwitch"
+title: "Openstack-Ansible add compute node using OpenvSwitch"
 layout: post
 date: 2020-11-16
 image: /assets/images/2020-11-17-openstack-ansible-add-compute-node-using-openvswitch/openstack-ansible.png
@@ -12,11 +12,13 @@ tag:
 category: blog
 blog: true
 author: Satish Patel
-description: "Openstack-Ansible Add compute node using OpenvSwitch"
+description: "Openstack-Ansible add compute node using OpenvSwitch"
 
 ---
 
 In previous post i have showed you how to deploy openstack using openstack-ansible (OSA) using LinuxBridge. In this post i will show you how to new add compute node but use OpenvSwitch for br-vlan instance (vms) traffic. In short LinuxBridge for control plane and vm traffic will use OVS. 
+
+scope: I'm adding *compute-lxb-2* in existing openstack cloud with OpenvSwitch based compute.
 
 ![<img>](/assets/images/2020-11-17-openstack-ansible-add-compute-node-using-openvswitch/osa-ovs.png)
 
