@@ -1,7 +1,7 @@
 ---
 title: "Openstack-Ansible Add compute node using OpenvSwitch"
 layout: post
-date: 2020-11-08
+date: 2020-11-16
 image: /assets/images/2020-11-17-openstack-ansible-add-compute-node-using-openvswitch/openstack-ansible.png
 headerImage: true
 tag:
