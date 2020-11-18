@@ -23,7 +23,7 @@ In previous post i have added OpenvSwitch based compute nodes to Openstack. When
 
 ## Prepare compute Node
 
-###Notes: 
+Notes: 
 Not all NIC card support DPDK so please make sure your nic is part of this list: https://core.dpdk.org/supported/nics/ following is my nic model, Also you need latest firmware/drive of nic card otherwise you will see some unknown error when you trying to attach nic to dpdk
 
 ```
