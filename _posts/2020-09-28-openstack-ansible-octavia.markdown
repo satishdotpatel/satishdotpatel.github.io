@@ -31,9 +31,9 @@ cidr_networks:
    container_type: "veth"
    container_interface: "eth14"
    host_bind_override: "eth14"
-   ip_from_q: "octavia"
+   ip_from_q: "lbaas"
    type: "raw"
-   net_name: "octavia"
+   net_name: "lbaas"
    group_binds:
      - neutron_linuxbridge_agent
      - octavia-worker
@@ -81,7 +81,7 @@ $ openstack-ansible os-octavia-install.yml
 
 ```
 
-The following diagram represents how br-lbaas wire-up with br-vlan to talk to amphora VMs
+The following diagram represents how br-lbaas wire-up with br-vlan to talk to amphora VMs (Notes: Just create br-lbaas empty bridge without attaching to any interface, also you don't need to configure ipaddress also)
 
 ![<img>](/assets/images/2020-09-28-openstack-ansible-octavia/octavia-lbaas-network-diagram.png)
 
