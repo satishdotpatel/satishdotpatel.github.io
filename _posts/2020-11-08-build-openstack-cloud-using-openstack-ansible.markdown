@@ -391,9 +391,9 @@ Run following command on controller to validate compute node added or not.
 [root@infra-lxb-1 ~]# lxc-attach -n infra-lxb-1_utility_container-085107e1
 [root@infra-lxb-1-utility-container-085107e1 ~ ]# source /root/openrc
 [root@infra-lxb-1-utility-container-085107e1 ~ ]# openstack hypervisor list
-+----+-------------------------+-----------------+-------------+-------+
-| ID | Hypervisor Hostname     | Hypervisor Type | Host IP     | State |
-+----+-------------------------+-----------------+-------------+-------+
-|  1 | compute-lxb-1.v1v0x.net | QEMU            | 10.65.0.112 | up    |
-+----+-------------------------+-----------------+-------------+-------+
++----+--------------------------+-----------------+-------------+-------+
+| ID | Hypervisor Hostname      | Hypervisor Type | Host IP     | State |
++----+--------------------------+-----------------+-------------+-------+
+|  1 | compute-lxb-1.spatel.net | QEMU            | 10.65.0.112 | up    |
++----+--------------------------+-----------------+-------------+-------+
 ```

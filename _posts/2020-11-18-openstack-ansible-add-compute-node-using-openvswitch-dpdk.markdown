@@ -178,13 +178,13 @@ Validate:
 [root@infra-lxb-1 ~]# lxc-attach -n infra-lxb-1_utility_container-085107e1
 [root@infra-lxb-1-utility-container-085107e1 ~]#source /root/openrc
 [root@infra-lxb-1-utility-container-085107e1 ~]# openstack hypervisor list
-+----+-------------------------+-----------------+-------------+-------+
-| ID | Hypervisor Hostname     | Hypervisor Type | Host IP     | State |
-+----+-------------------------+-----------------+-------------+-------+
-|  1 | compute-lxb-1.v1v0x.net | QEMU            | 10.65.0.112 | up    |
-|  2 | compute-lxb-2.v1v0x.net | QEMU            | 10.65.0.113 | up    |
-|  3 | compute-lxb-3.v1v0x.net | QEMU            | 10.65.0.114 | up    |
-+----+-------------------------+-----------------+-------------+-------+
++----+--------------------------+-----------------+-------------+-------+
+| ID | Hypervisor Hostname      | Hypervisor Type | Host IP     | State |
++----+--------------------------+-----------------+-------------+-------+
+|  1 | compute-lxb-1.spatel.net | QEMU            | 10.65.0.112 | up    |
+|  2 | compute-lxb-2.spatel.net | QEMU            | 10.65.0.113 | up    |
+|  3 | compute-lxb-3.spatel.net | QEMU            | 10.65.0.114 | up    |
++----+--------------------------+-----------------+-------------+-------+
 ```
 
 Go back to compute nodes and bind dpdk to your nic port (in my case its 0000:06:00.1 which i want to assign to dpdk)
