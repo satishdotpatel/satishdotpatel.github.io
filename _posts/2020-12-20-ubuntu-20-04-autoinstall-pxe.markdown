@@ -163,8 +163,6 @@ autoinstall:
   late-commands:   
     - sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /target/etc/ssh/sshd_config
     - sed -i 's|^root:.:|root:$6$wjbhAd/wF1HKn7V.$W8IIgNtvQCu1L90XXvZahP9Lm2ILPF/juY.ExliRbpyXclEyBTK1F3u1FJdWGL0HnNPwThorz/:|' /target/etc/shadow
-    - rm /target/etc/netplan/00-installer-config.yaml
-    - wget http://www.spate.net/pxe_scripts/00-network-config.yaml -P /target/etc/netplan/
     - curtin in-target --target=/target -- apt-get purge -y snapd
 ```
 
