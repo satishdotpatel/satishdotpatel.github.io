@@ -1,7 +1,7 @@
 ---
 title: "Working with Openstack Senlin clustering"
 layout: post
-date: 2020-11-21
+date: 2020-12-21
 image: /assets/images/2020-12-21-working-with-openstack-senlin-cluster/cluster.png
 headerImage: true
 tag:
