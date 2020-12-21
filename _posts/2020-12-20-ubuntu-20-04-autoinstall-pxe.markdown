@@ -52,7 +52,7 @@ Unmount ISO
 ```
 [root@spatel pxe_repo]# umount /mnt
 ```
-Add following snippet in file /var/lib/tftpboot/pxelinux.cfg/default 
+Add following snippet in file /var/lib/tftpboot/pxelinux.cfg/default ( ds=nocloud-net;s=http:// will find user-data file) 
 ```
 LABEL Ubuntu-20.04.1
         kernel /images/ubuntu/vmlinuz
