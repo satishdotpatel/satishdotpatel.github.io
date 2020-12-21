@@ -35,6 +35,23 @@ Download Ubuntu ISO 20.04 from https://releases.ubuntu.com/20.04/ and copy iso f
 
 ### TFTP server prep
 
+Mount ISO to /mnt directory to obtain vmlinuz/initrd
+
+```
+[root@spatel pxe_repo]# mount ubuntu-20.04.1-live-server-amd64.iso /mnt
+mount: /dev/loop0 is write-protected, mounting read-only
+```
+Copy vmlinuz/initrd to tftp path
+
+```
+[root@spatel pxe_repo]# mkdir -p /var/lib/tftpboot/images/ubuntu
+[root@spatel pxe_repo]# cp /mnt/casper/vmlinuz /var/lib/tftpboot/images/ubuntu/.
+[root@spatel pxe_repo]# cp /mnt/casper/initrd /var/lib/tftpboot/images/ubuntu/.
+```
+Unmount ISO 
+```
+[root@spatel pxe_repo]# umount /mnt
+```
 Add following snippet in file /var/lib/tftpboot/pxelinux.cfg/default 
 ```
 LABEL Ubuntu-20.04.1
