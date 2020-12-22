@@ -70,7 +70,7 @@ octavia_provider_segmentation_id: 27
 octavia_provider_network_type: vlan
 octavia_container_network_name: lbaas_address
 ## Octavia UI Panel
-horizon_enable_octavia_ui: False
+horizon_enable_octavia_ui: True
 ```
 
 /etc/openstack_deploy/conf.d/octavia.yml
