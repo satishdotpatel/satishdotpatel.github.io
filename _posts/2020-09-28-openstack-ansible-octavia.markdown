@@ -19,6 +19,19 @@ Octavia is an OpenStack project which provides operator-grade Load Balancing. In
 
 Follow official document here to setup octavia using [openstack-ansible](https://docs.openstack.org/openstack-ansible-os_octavia/latest/configure-octavia.html#openstack-ansible-deployment). 
 
+Create br-lbaas bridge (Don't attach with any interface, OSA will attach octavia container to this bridge)
+
+```
+$ cat /etc/sysconfig/network-scripts/ifcfg-br-lbaas
+### br-lbaas bridge for octavia 
+DEVICE=br-lbaas
+NAME=br-lbaas
+BOOTPROTO=none
+TYPE=Bridge
+ONPARENT=yes
+DELAY=0
+STP=no
+```
 /etc/openstack_deploy/openstack_user_config.yml
 
 ```
