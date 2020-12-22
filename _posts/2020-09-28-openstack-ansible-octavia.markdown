@@ -91,6 +91,7 @@ Next run openstack-ansible playbooks to deploy octavia on infra nodes.
 ```
 $ openstack-ansible setup-hosts.yml
 $ openstack-ansible os-octavia-install.yml 
+$ openstack-ansible os-horizon-install.yml
 
 ```
 
