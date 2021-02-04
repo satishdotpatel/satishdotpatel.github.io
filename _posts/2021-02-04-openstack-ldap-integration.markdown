@@ -17,7 +17,10 @@ description: "Openstack Integration with LDAP"
 
 ---
 
-By Default openstack user mysql to store identitiy and all other required information like Role,Project etc. In this blog i am going to show you how we can use LDAP for just authentication and for rest of information keystone will still use SQL. (If you want 100% LDAP integration then it required to create all related role,project,permissions in LDAP)
+Keystone includes the option to store your actors (Users and Groups) in SQL; supported databases include MySQL, PostgreSQL, and DB2. Keystone will store information such as name, password, and description. The settings for the database must be specified in Keystone’s configuration file. Essentially, Keystone is acting as an Identity Provider, which may not be the best case for everyone, and certainly not the best case for enterprise customers, For Identity centralization many companies use LDAP so in this blog i will show you how we can use LDAP for identitiy and keep all assignment information in SQL.
+
+Example:
+![<img>](/assets/images/2021-02-04-openstack-ldap-integration/openstack-ldap-sql.png) 
 
 ### Required Components 
 
