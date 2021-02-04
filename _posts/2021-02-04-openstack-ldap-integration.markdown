@@ -2,7 +2,7 @@
 title: "Openstack Integration with LDAP"
 layout: post
 date: 2021-02-04
-image: /assets/images/2021-02-04-openstack-ldap-integration/openstack-identity.png
+image: /assets/images/2021-02-04-openstack-ldap-integration/openstack-identity-ldap.png
 headerImage: true
 tag:
 - openstack
