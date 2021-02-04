@@ -81,7 +81,7 @@ user_pass_attribute = password
 user_tree_dn = cn=users,cn=accounts,dc=mydomain,dc=com
 ```
 
-Make sure you have following "sql" settings in /etc/keystone/keystone.conf file. domain_specific_drivers_enabled is very important option which enable domain specific authentication service.
+Make sure you have following "sql" settings in /etc/keystone/keystone.conf file to tell keystone use SQL for Assignments. "domain_specific_drivers_enabled" is very important here. 
 
 ```
 [identity]
