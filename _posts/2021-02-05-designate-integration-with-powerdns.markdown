@@ -326,9 +326,11 @@ _designate_pools_yaml_nameservers: |
   - host: "{{ item.ip }}"
     port: {{ item.port }}
   {% endfor %}
-  ```
 
-  ````
+```
+Sample 
+
+````
   foo 
 {%foo}
 | foo
@@ -337,6 +339,6 @@ _designate_pools_yaml_nameservers: |
   - host: "{{ item.ip }}"
     port: {{ item.port }}
   {% endfor %}
-  ````
+````
 
 
