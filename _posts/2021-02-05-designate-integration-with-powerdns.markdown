@@ -81,6 +81,7 @@ tux.com=10.64.0.10:5300
 Add following settings in user_varaibles.yml file.
 
 ```
+{% raw %}
 dns_hosts:
   - { ip: 10.65.0.10, name: ns1.tux.com, port: 5300 }
   - { ip: 10.65.0.11, name: ns2.tux.com, port: 5300 }
@@ -120,6 +121,7 @@ designate_pools_yaml:
     ns_records: "{{ _designate_pools_yaml_ns_records | from_yaml }}"
     nameservers: "{{ _designate_pools_yaml_nameservers | from_yaml }}"
     targets: "{{ _designate_pools_yaml_targets | from_yaml }}"
+{% endraw %}
 ```
 
 Add following variables for neutron-server in user_variables.yml in my case i am adding in /etc/openstack_deploy/group_vars/neutron_server.yml.
@@ -315,30 +317,4 @@ $ openstopenstack recordset list tux.com.
 +--------------------------------------+---------------+------+-------------------------------------------------------------+--------+--------+
 ```
 
-Enjoy!!! 
-
-```
-foo 
-{%foo}
-| foo
-_designate_pools_yaml_nameservers: |
-  {% for item in dns_hosts %}
-  - host: "{{ item.ip }}"
-    port: {{ item.port }}
-  {% endfor %}
-
-```
-Sample 
-
-````
-  foo 
-{%foo}
-| foo
-_designate_pools_yaml_nameservers: |
-  {% for item in dns_hosts %}
-  - host: "{{ item.ip }}"
-    port: {{ item.port }}
-  {% endfor %}
-````
-
-
+EEEnjoy!!!
