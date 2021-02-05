@@ -317,4 +317,26 @@ $ openstopenstack recordset list tux.com.
 
 Enjoy!!! 
 
+```
+foo 
+{%foo}
+| foo
+_designate_pools_yaml_nameservers: |
+  {% for item in dns_hosts %}
+  - host: "{{ item.ip }}"
+    port: {{ item.port }}
+  {% endfor %}
+  ```
+
+  ````
+  foo 
+{%foo}
+| foo
+_designate_pools_yaml_nameservers: |
+  {% for item in dns_hosts %}
+  - host: "{{ item.ip }}"
+    port: {{ item.port }}
+  {% endfor %}
+  ````
+
 
