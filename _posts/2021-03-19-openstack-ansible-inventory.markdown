@@ -145,28 +145,28 @@ You can verify your update inventory using following command.
 
 ```
 ...output ommitted...
-| gen_hosts                            | ostack-phx-comp-gen-1-1                              |
-|                                      | ostack-phx-comp-gen-1-2                              |
-|                                      | ostack-phx-comp-gen-1-3                              |
-|                                      | ostack-phx-comp-gen-1-4                              |
-|                                      | ostack-phx-comp-gen-1-5                              |
-|                                      | ostack-phx-comp-gen-1-6                              |
-|                                      | ostack-phx-comp-gen-1-7                              |
-|                                      | ostack-phx-comp-gen-1-8                              |
-|                                      | ostack-phx-comp-gen-1-9                              |
-|                                      | ostack-phx-comp-gen-1-10                             |
-|                                      | ostack-phx-comp-gen-1-11                             |
-|                                      | ostack-phx-comp-gen-1-12                             |
-| sriov_hosts                          | ostack-phx-comp-sriov-1-1                            |
-|                                      | ostack-phx-comp-sriov-1-2                            |
-|                                      | ostack-phx-comp-sriov-1-3                            |
-|                                      | ostack-phx-comp-sriov-1-4                            |
-|                                      | ostack-phx-comp-sriov-1-5                            |
-|                                      | ostack-phx-comp-sriov-1-6                            |
-|                                      | ostack-phx-comp-sriov-1-7                            |
-|                                      | ostack-phx-comp-sriov-1-8                            |
-|                                      | ostack-phx-comp-sriov-1-9                            |
-|                                      | ostack-phx-comp-sriov-1-10                           |
+| gen_hosts                            | ostack-comp-gen-1-1                              |
+|                                      | ostack-comp-gen-1-2                              |
+|                                      | ostack-comp-gen-1-3                              |
+|                                      | ostack-comp-gen-1-4                              |
+|                                      | ostack-comp-gen-1-5                              |
+|                                      | ostack-comp-gen-1-6                              |
+|                                      | ostack-comp-gen-1-7                              |
+|                                      | ostack-comp-gen-1-8                              |
+|                                      | ostack-comp-gen-1-9                              |
+|                                      | ostack-comp-gen-1-10                             |
+|                                      | ostack-comp-gen-1-11                             |
+|                                      | ostack-comp-gen-1-12                             |
+| sriov_hosts                          | ostack-comp-sriov-1-1                            |
+|                                      | ostack-comp-sriov-1-2                            |
+|                                      | ostack-comp-sriov-1-3                            |
+|                                      | ostack-comp-sriov-1-4                            |
+|                                      | ostack-comp-sriov-1-5                            |
+|                                      | ostack-comp-sriov-1-6                            |
+|                                      | ostack-comp-sriov-1-7                            |
+|                                      | ostack-comp-sriov-1-8                            |
+|                                      | ostack-comp-sriov-1-9                            |
+|                                      | ostack-comp-sriov-1-10                           |
 ...output ommitted...
 ```
 
