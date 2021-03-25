@@ -21,7 +21,7 @@ We have two type or compute nodes.
 * General computes
 * SR-IOV computes
 
-Lets two files inside /etc/openstack_deplpoy/env.d/ directoy
+Lets create group name files inside /etc/openstack_deplpoy/env.d/ directory.
 
 Group name gen_hosts for general computes
 ```
