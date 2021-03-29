@@ -276,6 +276,8 @@ os-infra-1_repo_container-4dff68f5               RUNNING 1         onboot, opens
 os-infra-1_utility_container-73ccc49d            RUNNING 1         onboot, openstack 10.0.3.239, 172.30.40.139 -    false
 ```
 
+This is how all components of ovn interact, neutron use ML2 plugin to talk to OVN northbound db and southbound db talk to ovn-controllers running on compute nodes. 
+
 ![<img>](/assets/images/2021-03-29-openstack-ansible-ovn-deployment/ovn-flow.png)
 
 As you can see we have ovn_northd_container which containe northd services and north/south ovsdb databases, lets verify. 
@@ -289,16 +291,14 @@ root@os-infra-1-neutron-ovn-northd-container-24eea9c2:~# systemctl | grep ovn
   ovn-ovsdb-server-sb.service                            loaded active running   Open vSwitch database server for OVN Southbound database
 ```
 
-You can view north and south database using ovn-nbctl and ovn-sbctl commands.
-
-northbound, currently we don't have any router/switch/port that is why ovn-nbctl return nothing.
+You can view north and south database using ovn-nbctl and ovn-sbctl commands. currently we don't have any router/switch/port that is why ovn-nbctl return nothing.
 
 ```
 root@os-infra-1-neutron-ovn-northd-container-24eea9c2:~# ovn-nbctl show
 root@os-infra-1-neutron-ovn-northd-container-24eea9c2:~# 
 ```
 
-southbound, you can see two compute nodes as known as Chassis.  
+you can see two compute nodes in southbound db as known as Chassis.  
 
 ```
 root@os-infra-1-neutron-ovn-northd-container-24eea9c2:~# ovn-sbctl show
