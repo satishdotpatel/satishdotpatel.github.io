@@ -309,6 +309,7 @@ Creating router
 $ openstack router create router1
 ```
 Creating network/subnet 
+```
 $ neutron net-create net98 --shared --provider:physical_network vlan --provider:network_type vlan --provider:segmentation_id 98
 $ neutron subnet-create net98 192.168.1.0/24 --name sub98 --allocation-pool start=192.168.1.10,end=192.168.1.20 --gateway=192.168.1.1
 $ openstack router add subnet router1 sub98
