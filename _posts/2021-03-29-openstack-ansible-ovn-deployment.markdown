@@ -2,7 +2,7 @@
 title: "Openstack Ansible OVN deployment"
 layout: post
 date: 2021-03-19
-image: /assets/images/2021-03-19-openstack-ansible-ovn-deployment/openstack-sdn.png
+image: /assets/images/2021-03-29-openstack-ansible-ovn-deployment/openstack-sdn.png
 headerImage: true
 tag:
 - openstack
