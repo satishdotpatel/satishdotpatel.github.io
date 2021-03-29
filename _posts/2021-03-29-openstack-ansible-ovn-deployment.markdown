@@ -166,6 +166,32 @@ shared-infra_hosts:
 repo-infra_hosts:
   os-infra-1:
     ip: 172.30.40.2
+image_hosts:
+  os-infra-1:
+    ip: 172.30.40.2
+haproxy_hosts:
+  os-infra-1:
+    ip: 172.30.40.2
+dashboard_hosts:
+  os-infra-1:
+    ip: 172.30.40.2
+identity_hosts:
+  os-infra-1:
+    ip: 172.30.40.2
+network_hosts:
+  os-infra-1:
+    ip: 172.30.40.2
+compute-infra_hosts:
+  os-infra-1:
+    ip: 172.30.40.2
+placement-infra_hosts:
+  os-infra-1:
+    ip: 172.30.40.2
+compute_hosts:
+  os-compute-1:
+    ip: 172.30.40.3
+  os-compute-2:
+    ip: 172.30.40.4
 ```
 
 /etc/openstack_deploy/user_variables.yml
