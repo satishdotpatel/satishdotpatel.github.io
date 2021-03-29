@@ -21,13 +21,13 @@ Open Virtual Network (OVN) is an Open vSwitch-based software-defined networking 
 
 Assuming you already knows about how to deploy openstack using openstack-ansible and if you are new to openstack-ansible then check out my previous post https://satishdotpatel.github.io/build-openstack-cloud-using-openstack-ansible/
 
-###Environment
+### Environment
 
 * osa - Deployment host
 * os-infra-1 - Single controller node
 * os-compute-N - Two compute nodes 
 
-###Network Setup
+### Network Setup
 
 On VMware ESXi host machine i have created 4 vSwitch for br-host, br-mgmt, br-vxlan and br-vlan for my deployment to mimic production design.
 
@@ -102,7 +102,7 @@ network:
       interfaces: [ ens161 ]
 ```
 
-###Openstack-Ansible configuration 
+### Openstack-Ansible configuration 
 
 /etc/openstack_deploy/openstack_user_config.yml
 
@@ -227,7 +227,7 @@ openstack_host_specific_kernel_modules:
     pattern: "CONFIG_OPENVSWITCH"
 ```
 
-###Installation
+### Installation
 
 Run following playbooks 
 
@@ -237,7 +237,7 @@ $ openstack-ansible setup-infrastructure.yml
 $ openstack-ansible setup-openstack.yml
 ```
 
-###Validation
+### Validation
 
 After successfully run of all playbook you will see following list containers on os-infra-1 node
 
@@ -399,7 +399,7 @@ router 55927ae5-7625-4bc8-8289-0a7f0cd76003 (neutron-c4438f62-7b63-47d7-8da2-425
         networks: ["192.168.1.1/24"]
 ```
 
-###L3 Routing
+### L3 Routing
 
 OVN support L3 routing so you don't need special Linux namespace or iptables for L3 agents. Lets verify, I am going to create new network net99 and will attach to router1 
 
