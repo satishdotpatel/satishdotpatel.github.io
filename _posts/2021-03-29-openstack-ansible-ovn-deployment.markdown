@@ -55,7 +55,7 @@ network:
       gateway4: 10.30.0.1
       nameservers:
         addresses: [ 10.30.0.10, 10.30.0.11 ]
-        search: [ v1v0x.net, vivox.com ]
+        search: [ example.com ]
     br-mgmt:
       interfaces: [ ens224 ]
       addresses: [ 172.30.40.2/24 ]
@@ -91,7 +91,7 @@ network:
       gateway4: 10.30.0.1
       nameservers:
         addresses: [ 10.30.0.10, 10.30.0.11 ]
-        search: [ v1v0x.net, vivox.com ]
+        search: [ example.com ]
     br-mgmt:
       interfaces: [ ens224 ]
       addresses: [ 172.30.40.3/24 ]
@@ -285,7 +285,7 @@ southbound, you can see two compute nodes as known as Chassis.
 ```
 root@os-infra-1-neutron-ovn-northd-container-24eea9c2:~# ovn-sbctl show
 Chassis "fb3ec9a5-4be5-40d8-8b8c-b5c9eff03fc4"
-    hostname: os-compute-2.v1v0x.net
+    hostname: os-compute-2.example.com
     Encap geneve
         ip: "192.168.40.4"
         options: {csum="true"}
@@ -293,7 +293,7 @@ Chassis "fb3ec9a5-4be5-40d8-8b8c-b5c9eff03fc4"
         ip: "192.168.40.4"
         options: {csum="true"}
 Chassis "57c973ee-464a-40df-8436-1d046a69a671"
-    hostname: os-compute-1.v1v0x.net
+    hostname: os-compute-1.example.com
     Encap geneve
         ip: "192.168.40.3"
         options: {csum="true"}
