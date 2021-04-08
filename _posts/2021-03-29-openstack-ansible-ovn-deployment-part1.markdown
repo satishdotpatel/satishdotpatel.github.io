@@ -43,7 +43,7 @@ On VMware ESXi host machine i have created 4 vSwitch for br-host, br-mgmt, br-vx
 
 os-infra-1 interface configuration
 
-```js
+```json
 root@os-infra-1:~# cat /etc/netplan/00-network-config.yaml
 network:
   version: 2
@@ -78,7 +78,7 @@ network:
 
 os-compute-1 interface configuration
 
-```java
+```json
 root@os-compute-1:~# cat /etc/netplan/00-network-config.yaml
 # This is the network config written by kickstart
 network:
@@ -116,7 +116,7 @@ network:
 
 /etc/openstack_deploy/openstack_user_config.yml
 
-```js
+```
 ---
 cidr_networks:
   container: 172.30.40.0/24
