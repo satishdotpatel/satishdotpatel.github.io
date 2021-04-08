@@ -41,7 +41,7 @@ On VMware ESXi host machine i have created 4 vSwitch for br-host, br-mgmt, br-vx
 
 os-infra-1 interface configuration
 
-```
+```yaml
 root@os-infra-1:~# cat /etc/netplan/00-network-config.yaml
 network:
   version: 2
