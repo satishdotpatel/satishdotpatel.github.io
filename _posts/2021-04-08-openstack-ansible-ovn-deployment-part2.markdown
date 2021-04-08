@@ -20,8 +20,8 @@ description: "Openstack Ansible OVN deployment (external connectivity) - Part-2"
 In a previous post I have explained how to deploy OVN using openstack-ansible in multi-node deployment. In this post I will show you the external connectivity of your vm to the provider network. 
 OVN has built-in support of L3 function which doesn't require any Linux namespace to run L3 routers. There are two way you can connect your VMs to external network 
 
-### Centralized design
-### Distributed design
+* Non Distributed FIP (Centralized design)
+* Distributed FIP (DVR design)
 
 By default OSA deploy centralized router where they run in active-backup mode on each compute nodes, lets see through example.
 
@@ -123,7 +123,7 @@ PING 8.8.8.8 (8.8.8.8): 56 data bytes
 64 bytes from 8.8.8.8: seq=2 ttl=112 time=8.167 ms
 ```
 
-Lets check where OVN schedule our L3 router. Go to neutron_ovn_northd_container and run `ovn-nbctl list Gateway_Chassis` command and pay attention to chassis_name and priority flags. as you can see our router1 scheduled on both computer nodes but computer-1 has lower priority so currently that router is in active mode and second one in backup. you can verify chassis_name UUID running "ovn-sbctl show" command.
+Lets check where OVN schedule our L3 router. Go to neutron_ovn_northd_container and run `ovn-nbctl list Gateway_Chassis` command and pay attention to chassis_name and priority flags. as you can see our router1 scheduled on both computer nodes but computer-1 has lower priority so currently that router is in active mode and second one in backup. you can verify chassis_name UUID running ``ovn-sbctl show`` command.
 
 ```
 root@os-infra-1:~# lxc-attach -n os-infra-1_neutron_ovn_northd_container-24eea9c2
