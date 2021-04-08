@@ -123,7 +123,7 @@ PING 8.8.8.8 (8.8.8.8): 56 data bytes
 64 bytes from 8.8.8.8: seq=2 ttl=112 time=8.167 ms
 ```
 
-![<img>](/assets/images/2021-03-29-openstack-ansible-ovn-deployment/ovn-l3.png){: width="300" }
+![<img>](/assets/images/2021-03-29-openstack-ansible-ovn-deployment/ovn-l3.png){: width="400" }
 
 Lets check where OVN schedule our L3 router. Go to neutron_ovn_northd_container and run `ovn-nbctl list Gateway_Chassis` command and pay attention to chassis_name and priority flags. as you can see our router1 scheduled on both computer nodes but computer-1 has lower priority so currently that router is in active mode and second one in backup. you can verify chassis_name UUID running `ovn-sbctl show` command.
 
