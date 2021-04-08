@@ -168,6 +168,8 @@ type                : dnat_and_snat
 ```
 
 As you can see following NAT table where vm02 has EXTERNAL_IP for static NAT 216.163.208.15 but it doesn't have EXTERNAL_MAC that means your all traffic will flow via compute-1 which is active gateway router 
+
+```
 root@os-infra-1-neutron-ovn-northd-container-24eea9c2:~# ovn-nbctl lr-nat-list neutron-f2db247f-1bee-478c-a5aa-aa090d74dbc7
 TYPE             EXTERNAL_IP        LOGICAL_IP            EXTERNAL_MAC         LOGICAL_PORT
 dnat_and_snat    216.163.208.15     172.168.0.226
