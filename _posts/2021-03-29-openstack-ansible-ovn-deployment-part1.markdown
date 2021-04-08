@@ -27,6 +27,11 @@ Assuming you already knows about how to deploy openstack using openstack-ansible
 * os-infra-1 - Single controller node
 * os-compute-N - Two compute nodes 
 
+| Name | br-mgmt | br-vxlan | br-vlan |
+| os-infra-1 | 10.30.40.2 | 192.168.40.2 | None |
+| os-compute-1 | 10.30.40.3 | 192.168.40.3 | None |
+| os-compute-2 | 10.30.40.4 | 192.168.40.4 | None |
+
 ### Network Setup
 
 On VMware ESXi host machine i have created 4 vSwitch for br-host, br-mgmt, br-vxlan and br-vlan for my deployment to mimic production design.
