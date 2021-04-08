@@ -23,11 +23,7 @@ Assuming you already knows about how to deploy openstack using openstack-ansible
 
 ### Environment
 
-* osa - Deployment host
-* os-infra-1 - Single controller node
-* os-compute-N - Two compute nodes 
-
-![<img>](/assets/images/2021-03-29-openstack-ansible-ovn-deployment/env-table.png){: width="400" }
+![<img>](/assets/images/2021-03-29-openstack-ansible-ovn-deployment/env-table.png){: width="600" }
 
 ### Network Setup
 
