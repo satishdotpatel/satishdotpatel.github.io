@@ -27,7 +27,7 @@ Assuming you already knows about how to deploy openstack using openstack-ansible
 * os-infra-1 - Single controller node
 * os-compute-N - Two compute nodes 
 
-```yaml
+```html
 |----------------------------------------------------|
 |     Name     |   br-mgmt  |    br-vxlan  | br-vlan |
 |--------------|------------|--------------|---------|
