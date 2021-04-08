@@ -206,7 +206,7 @@ enable_distributed_floating_ip = True
 After making above change lets remove floating ip from vm02 and re-add floating ip again.
 
 ```
-$ openstack server add floating ip vm02 216.163.208.15
+$ openstack server remove floating ip vm02 216.163.208.15
 $ openstack server add floating ip vm02 216.163.208.15
 ```
 
