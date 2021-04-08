@@ -116,7 +116,7 @@ network:
 
 /etc/openstack_deploy/openstack_user_config.yml
 
-```
+```php
 ---
 cidr_networks:
   container: 172.30.40.0/24
