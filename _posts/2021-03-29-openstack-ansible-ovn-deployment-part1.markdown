@@ -1,5 +1,5 @@
 ---
-title: "Openstack Ansible OVN deployment"
+title: "Openstack Ansible OVN deployment - Part-1"
 layout: post
 date: 2021-03-19
 image: /assets/images/2021-03-29-openstack-ansible-ovn-deployment/openstack-sdn.png
@@ -13,7 +13,7 @@ tag:
 category: blog
 blog: true
 author: Satish Patel
-description: "Openstack Ansible OVN deployment"
+description: "Openstack Ansible OVN deployment - Part-1"
 
 ---
 
