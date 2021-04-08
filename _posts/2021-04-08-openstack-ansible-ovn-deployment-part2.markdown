@@ -109,7 +109,7 @@ $ openstack server list --all-projects --host os-compute-2.foo.net
 Lets verify vm external connectivity, so far so good. 
 
 ```
-root@os-compute-1:~# virsh console 15
+root@os-compute-1:~# virsh console instance-00000021
 Connected to domain instance-00000021
 Escape character is ^]
 
@@ -123,7 +123,7 @@ PING 8.8.8.8 (8.8.8.8): 56 data bytes
 64 bytes from 8.8.8.8: seq=2 ttl=112 time=8.167 ms
 ```
 
-Lets check where OVN schedule our L3 router. Go to neutron_ovn_northd_container and run `ovn-nbctl list Gateway_Chassis` command and pay attention to chassis_name and priority flags. as you can see our router1 scheduled on both computer nodes but computer-1 has lower priority so currently that router is in active mode and second one in backup. you can verify chassis_name UUID running ``ovn-sbctl show`` command.
+Lets check where OVN schedule our L3 router. Go to neutron_ovn_northd_container and run `ovn-nbctl list Gateway_Chassis` command and pay attention to chassis_name and priority flags. as you can see our router1 scheduled on both computer nodes but computer-1 has lower priority so currently that router is in active mode and second one in backup. you can verify chassis_name UUID running `ovn-sbctl show` command.
 
 ```
 root@os-infra-1:~# lxc-attach -n os-infra-1_neutron_ovn_northd_container-24eea9c2
