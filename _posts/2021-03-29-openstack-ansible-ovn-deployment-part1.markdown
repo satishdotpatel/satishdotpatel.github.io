@@ -27,15 +27,7 @@ Assuming you already knows about how to deploy openstack using openstack-ansible
 * os-infra-1 - Single controller node
 * os-compute-N - Two compute nodes 
 
-```html
-|----------------------------------------------------|
-|     Name     |   br-mgmt  |    br-vxlan  | br-vlan |
-|--------------|------------|--------------|---------|
-| os-infra-1   | 10.30.40.2 | 192.168.40.2 |   None  |
-| os-compute-1 | 10.30.40.3 | 192.168.40.3 |   None  |
-| os-compute-2 | 10.30.40.4 | 192.168.40.4 |   None  |
-|----------------------------------------------------|
-```
+![<img>](/assets/images/2021-03-29-openstack-ansible-ovn-deployment/env-table.png){: width="400" }
 
 ### Network Setup
 
