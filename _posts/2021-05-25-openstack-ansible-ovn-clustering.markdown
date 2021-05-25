@@ -56,6 +56,7 @@ root@os-infra-1-neutron-ovn-northd-container-24eea9c2:~#
 root@os-infra-1-neutron-ovn-northd-container-24eea9c2:~# systemctl stop ovn-northd
 root@os-infra-1-neutron-ovn-northd-container-24eea9c2:~# ps aux | grep ovn-northd
 root        2215  0.0  0.0   6432   672 ?        S+   18:21   0:00 grep --color=auto ovn-northd
+root@os-infra-1-neutron-ovn-northd-container-24eea9c2:~#
 ```
 
 Remove all the files in /var/lib/ovn also hiden lock files otherwise it won't let you create cluster database
@@ -77,6 +78,7 @@ root@os-infra-1-neutron-ovn-northd-container-24eea9c2:~# /usr/share/ovn/scripts/
 > --ovn-northd-nb-db=tcp:172.30.40.93:6641,tcp:172.30.40.25:6641,tcp:172.30.40.177:6641 \
 > --ovn-northd-sb-db=tcp:172.30.40.93:6642,tcp:172.30.40.25:6642,tcp:172.30.40.177:6642 \
 > start_northd
+
  * Backing up database to /var/lib/ovn/ovnnb_db.db.backup5.20.0-987891875
  * Creating cluster database /var/lib/ovn/ovnnb_db.db from existing one
 2021-05-25T18:23:39Z|00001|reconnect|INFO|unix:/var/run/ovn/ovnnb_db.sock: connecting...
