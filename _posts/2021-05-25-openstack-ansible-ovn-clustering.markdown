@@ -25,6 +25,8 @@ In a previous post I have explained how to deploy OVN using openstack-ansible in
 * 3 Infra Nodes 
 * 1 Compute Node
 
+**Notes:** At present openstack-ansible doesn't offer working playbook to build ovn cluster. I'm building this cluster manually but soon we will have working playbook to support automatic deployment of ovn cluster.
+
 ### What is Raft
 
 OVN north/south bound use ovsdb-server for a database to cluster ovsdb-server it use Raft Consensus Algorithm to create 3 node or 5 node cluster. more information: https://raft.github.io/. In Raft cluster nodes has 3 following states.
@@ -34,8 +36,6 @@ OVN north/south bound use ovsdb-server for a database to cluster ovsdb-server it
 * Leader     - If get enough vote then it become leader and all other nodes followers
 
 ### Create cluster
-
-Notes: At present openstack-ansible doesn't offer working playbook to build ovn cluster. I'm building this cluster manually but soon we will have working playbook to support automatic deployment of ovn cluster.
 
 I have 3 neutron_ovn_northd containers in 3 infra nodes.
 
