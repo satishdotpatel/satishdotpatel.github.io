@@ -35,6 +35,8 @@ OVN north/south bound use ovsdb-server for a database to cluster ovsdb-server it
 
 ### Create cluster
 
+Notes: At present openstack-ansible doesn't offer working playbook to build ovn cluster. I'm building this cluster manually but soon we will have working playbook to support automatic deployment of ovn cluster.
+
 I have 3 neutron_ovn_northd containers in 3 infra nodes.
 
 ```
