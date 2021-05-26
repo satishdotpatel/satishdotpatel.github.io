@@ -29,11 +29,13 @@ In a previous post I have explained how to deploy OVN using openstack-ansible in
 
 ### What is Raft
 
-OVN north/south bound use ovsdb-server for a database to cluster ovsdb-server it use Raft Consensus Algorithm to create 3 node or 5 node cluster. more information: https://raft.github.io/. In Raft cluster nodes has 3 following states.
+OVN north/south use ovsdb-server for a database. To cluster ovsdb-server it use a Raft Consensus Algorithm to create 3 node or 5 node cluster. more information: https://raft.github.io/. In Raft cluster nodes has 3 following states.
 
 * Follower   - This is first state when node start, start timer 
 * Candidate  - After timeout it declare itself candidate for votes
 * Leader     - If get enough vote then it become leader and all other nodes followers
+
+![<img>](/assets/images/2021-05-25-openstack-ansible-ovn-clustering/raft-cluster.png){: width="500" }
 
 ### Create cluster
 
