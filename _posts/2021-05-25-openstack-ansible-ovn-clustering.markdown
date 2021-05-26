@@ -49,7 +49,7 @@ root@os-osa:/opt/openstack-ansible/playbooks# /usr/bin/python3 /usr/local/bin/in
 
 Currently all 3 nodes not in a cluster and acting up like a standalone nodes. First we will pick os-infra-1 to start cluster and then other nodes to connect to os-infra-1
 
-#### os-infra-1
+#### Prepare os-infra-1
 
 In neutron_ovn_northd_container stop services and clean up db files.  
 
@@ -108,7 +108,7 @@ Servers:
     c41c (c41c at tcp:172.30.40.93:6643) (self) next_index=2 match_index=3
 ```
 
-#### os-infra-2
+#### Prepare os-infra-2
 
 Repeate same steps which you did for first node, stop services and clean up db files.  
 
@@ -163,7 +163,7 @@ Servers:
     c41c (c41c at tcp:172.30.40.93:6643)
 ```
 
-#### os-infra-3
+#### Prepare os-infra-3
 
 Repeate same steps again 
 
