@@ -31,9 +31,9 @@ In a previous post I have explained how to deploy OVN using openstack-ansible in
 
 OVN north/south use ovsdb-server for a database. To cluster ovsdb-server it use a Raft Consensus Algorithm to create 3 node or 5 node cluster. more information: https://raft.github.io/. In Raft cluster nodes has 3 following states.
 
-* Follower   - This is first state when node start, start timer 
-* Candidate  - After timeout it declare itself candidate for votes
-* Leader     - If get enough vote then it become leader and all other nodes followers
+* Follower   - This is first state when node start. 
+* Candidate  - If no leader then start election.
+* Leader     - If get enough vote then it become leader and all other nodes followers.
 
 ![<img>](/assets/images/2021-05-25-openstack-ansible-ovn-clustering/raft-cluster.png){: width="500" }
 
@@ -251,7 +251,7 @@ This is how it looks from 3000ft
 
 ![<img>](/assets/images/2021-05-25-openstack-ansible-ovn-clustering/ovn-clustering.png){: width="500" }
 
-#### Cluster failover testing 
+### Cluster failover testing 
 
 
 Lets shutdown os-infra-1 node which is leader and see what happen. 
@@ -297,7 +297,7 @@ check logs at /var/log/ovn/ovsdb-server-nb.log  (os-infra-2 started election and
 2021-05-26T04:25:50.391Z|00024|raft|INFO|term 2: elected leader by 2+ of 3 servers
 ```
 
-#### Recovery from complete database failure 
+### Recovery from complete database failure 
 
 Lets say something happened and you lost whole cluster and backup also in that case use following tool to rebuild your northd database
 
