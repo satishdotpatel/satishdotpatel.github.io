@@ -247,7 +247,7 @@ Servers:
 
 This is how it looks from 3000ft
 
-![<img>](/assets/images/2021-05-25-openstack-ansible-ovn-clustering/ovn-clustering.png){: width="400" }
+![<img>](/assets/images/2021-05-25-openstack-ansible-ovn-clustering/ovn-clustering.png){: width="500" }
 
 #### Cluster failover testing 
 
