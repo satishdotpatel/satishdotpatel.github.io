@@ -2,7 +2,7 @@
 title: "Openstack Ansible OVN Clustering - Part-3"
 layout: post
 date: 2021-04-08
-image: /assets/images/2021-03-29-openstack-ansible-ovn-deployment/openstack-sdn.png
+image: /assets/images/2021-05-25-openstack-ansible-ovn-clustering/ovn-penguin.png
 headerImage: true
 tag:
 - openstack
@@ -37,6 +37,7 @@ OVN north/south bound use ovsdb-server for a database to cluster ovsdb-server it
 
 ### Create cluster
 
+
 I have 3 neutron_ovn_northd containers in 3 infra nodes.
 
 ```
@@ -50,58 +51,47 @@ Currently all 3 nodes not in a cluster and acting up like a standalone nodes. Fi
 
 #### os-infra-1
 
-Go to os-infra-1 and make sure ovn-northd service is stopped. 
+In neutron_ovn_northd_container stop services and clean up db files.  
 
 ```
 root@os-infra-1:~# lxc-attach -n os-infra-1_neutron_ovn_northd_container-24eea9c2
 root@os-infra-1-neutron-ovn-northd-container-24eea9c2:~#
 root@os-infra-1-neutron-ovn-northd-container-24eea9c2:~# systemctl stop ovn-northd
-root@os-infra-1-neutron-ovn-northd-container-24eea9c2:~# ps aux | grep ovn-northd
-root        2215  0.0  0.0   6432   672 ?        S+   18:21   0:00 grep --color=auto ovn-northd
-root@os-infra-1-neutron-ovn-northd-container-24eea9c2:~#
-```
-
-Remove all the files in /var/lib/ovn also hiden lock files otherwise it won't let you create cluster database
-
-```
+root@os-infra-1-neutron-ovn-northd-container-24eea9c2:~# systemctl stop ovsdb-server
 root@os-infra-1-neutron-ovn-northd-container-24eea9c2:~# rm -rf /var/lib/ovn/*
 root@os-infra-1-neutron-ovn-northd-container-24eea9c2:~# rm -rf /var/lib/ovn/.ovn*
 ```
 
-Start northd with following command. 
+Add following options in /etc/default/ovn-central file. (This first node we are going to bring up) 
 
 ```
-root@os-infra-1-neutron-ovn-northd-container-24eea9c2:~# /usr/share/ovn/scripts/ovn-ctl --db-nb-addr=172.30.40.93 \
-> --db-nb-create-insecure-remote=yes \
-> --db-sb-addr=172.30.40.93 \
-> --db-sb-create-insecure-remote=yes \
-> --db-nb-cluster-local-addr=172.30.40.93 \
-> --db-sb-cluster-local-addr=172.30.40.93 \
-> --ovn-northd-nb-db=tcp:172.30.40.93:6641,tcp:172.30.40.25:6641,tcp:172.30.40.177:6641 \
-> --ovn-northd-sb-db=tcp:172.30.40.93:6642,tcp:172.30.40.25:6642,tcp:172.30.40.177:6642 \
-> start_northd
+OVN_CTL_OPTS=" \
+  --db-nb-create-insecure-remote=yes \
+  --db-sb-create-insecure-remote=yes \
+  --db-nb-addr=172.30.40.93 \
+  --db-sb-addr=172.30.40.93 \
+  --db-nb-cluster-local-addr=172.30.40.93 \
+  --db-sb-cluster-local-addr=172.30.40.93 \
+  --ovn-northd-nb-db=tcp:172.30.40.93:6641,tcp:172.30.40.25:6641,tcp:172.30.40.177:6641 \
+  --ovn-northd-sb-db=tcp:172.30.40.93:6642,tcp:172.30.40.25:6642,tcp:172.30.40.177:6642 \
+"
+```
 
- * Backing up database to /var/lib/ovn/ovnnb_db.db.backup5.20.0-987891875
- * Creating cluster database /var/lib/ovn/ovnnb_db.db from existing one
-2021-05-25T18:23:39Z|00001|reconnect|INFO|unix:/var/run/ovn/ovnnb_db.sock: connecting...
-2021-05-25T18:23:39Z|00002|reconnect|INFO|unix:/var/run/ovn/ovnnb_db.sock: connected
- * Waiting for OVN_Northbound to come up
- * Backing up database to /var/lib/ovn/ovnsb_db.db.backup2.7.0-4286723485
- * Creating cluster database /var/lib/ovn/ovnsb_db.db from existing one
-2021-05-25T18:23:39Z|00001|reconnect|INFO|unix:/var/run/ovn/ovnsb_db.sock: connecting...
-2021-05-25T18:23:39Z|00002|reconnect|INFO|unix:/var/run/ovn/ovnsb_db.sock: connected
- * Waiting for OVN_Southbound to come up
- * Starting ovn-northd
+Reboot container so it will come back clean.
+
+```
+root@os-infra-1-neutron-ovn-northd-container-24eea9c2:~# reboot
+root@os-infra-1:~#
 ```
 
 If all good then you will see following result when you run cluster/status command. As you can see this is a first node and vote itself to make itself leader, now when we bring up other nodes they will be followers and start syncing database with leader.
 
 ```
 root@os-infra-1-neutron-ovn-northd-container-24eea9c2:~# ovs-appctl -t /var/run/ovn/ovnnb_db.ctl cluster/status OVN_Northbound
-3b93
+c41c
 Name: OVN_Northbound
-Cluster ID: eb3b (eb3b01bb-fab5-42b4-8095-2e479ad9cabc)
-Server ID: 3b93 (3b932313-41dd-4e8a-9097-1b0f54ae983e)
+Cluster ID: df9e (df9ee169-30de-4b7a-82e0-3375559e69cd)
+Server ID: c41c (c41c1f11-32ac-4236-8df5-0b858acd66a6)
 Address: tcp:172.30.40.93:6643
 Status: cluster member
 Role: leader
@@ -110,162 +100,133 @@ Leader: self
 Vote: self
 
 Election timer: 1000
-Log: [2, 3]
+Log: [2, 4]
 Entries not yet committed: 0
 Entries not yet applied: 0
 Connections:
 Servers:
-    3b93 (3b93 at tcp:172.30.40.93:6643) (self) next_index=2 match_index=2
+    c41c (c41c at tcp:172.30.40.93:6643) (self) next_index=2 match_index=3
 ```
 
 #### os-infra-2
 
-Lets bring up second node and join it to os-infra-1
-
-clean up db directoy first
+Repeate same steps which you did for first node, stop services and clean up db files.  
 
 ```
+root@os-infra-2:~# lxc-attach -n root@os-infra-2-neutron-ovn-northd-container-bdb3912a:~#
+root@os-infra-2-neutron-ovn-northd-container-bdb3912a:~#
+root@os-infra-2-neutron-ovn-northd-container-bdb3912a:~# systemctl stop ovn-northd
+root@os-infra-2-neutron-ovn-northd-container-bdb3912a:~# systemctl stop ovsdb-server
 root@os-infra-2-neutron-ovn-northd-container-bdb3912a:~# rm -rf /var/lib/ovn/*
 root@os-infra-2-neutron-ovn-northd-container-bdb3912a:~# rm -rf /var/lib/ovn/.ovn*
 ```
 
-Join cluster using following command remote-addr will be your os-infra-1 node
+Edit /etc/default/ovn-central  (you will notice we have add os-infra-1 node ip in remote-addr= )
 
 ```
-root@os-infra-2-neutron-ovn-northd-container-bdb3912a:~# /usr/share/ovn/scripts/ovn-ctl --db-nb-addr=172.30.40.25 \
-> --db-nb-create-insecure-remote=yes \
-> --db-sb-addr=172.30.40.25 \
-> --db-sb-create-insecure-remote=yes \
-> --db-nb-cluster-local-addr=172.30.40.25 \
-> --db-sb-cluster-local-addr=172.30.40.25 \
-> --db-nb-cluster-remote-addr=172.30.40.93 \
-> --db-sb-cluster-remote-addr=172.30.40.93 \
-> start_northd
-
-2021-05-25T18:56:19Z|00001|reconnect|INFO|unix:/var/run/ovn/ovnnb_db.sock: connecting...
-2021-05-25T18:56:19Z|00002|reconnect|INFO|unix:/var/run/ovn/ovnnb_db.sock: connected
- * Waiting for OVN_Northbound to come up
-2021-05-25T18:56:20Z|00001|reconnect|INFO|unix:/var/run/ovn/ovnsb_db.sock: connecting...
-2021-05-25T18:56:20Z|00002|reconnect|INFO|unix:/var/run/ovn/ovnsb_db.sock: connected
- * Waiting for OVN_Southbound to come up
- * Starting ovn-northd
+OVN_CTL_OPTS=" \
+  --db-nb-addr=172.30.40.25 \
+  --db-nb-create-insecure-remote=yes \
+  --db-sb-addr=172.30.40.25 \
+  --db-sb-create-insecure-remote=yes \
+  --db-nb-cluster-local-addr=172.30.40.25 \
+  --db-sb-cluster-local-addr=172.30.40.25 \
+  --db-nb-cluster-remote-addr=172.30.40.93 \
+  --db-sb-cluster-remote-addr=172.30.40.93 \
+  --ovn-northd-nb-db=tcp:172.30.40.93:6641,tcp:172.30.40.25:6641,tcp:172.30.40.177:6641 \
+  --ovn-northd-sb-db=tcp:172.30.40.93:6642,tcp:172.30.40.25:6642,tcp:172.30.40.177:6642 \
+"
  ```
 
- Verify cluster status, you can see os-infra-2 is follower because leader was already presented and vote is unknow because it didn't get chance to vote. 
+Reboot container so all services come back clean and verify cluster status on second node and you can see it's follower role. 
 
- ```
- root@os-infra-2-neutron-ovn-northd-container-bdb3912a:~# ovs-appctl -t /var/run/ovn/ovnnb_db.ctl cluster/status OVN_Northbound
-d68c
+```
+root@os-infra-2-neutron-ovn-northd-container-bdb3912a:~# ovs-appctl -t /var/run/ovn/ovnnb_db.ctl cluster/status OVN_Northbound
+f24f
 Name: OVN_Northbound
-Cluster ID: eb3b (eb3b01bb-fab5-42b4-8095-2e479ad9cabc)
-Server ID: d68c (d68c3219-43c4-454a-8bdd-d28f4be27a2a)
+Cluster ID: df9e (df9ee169-30de-4b7a-82e0-3375559e69cd)
+Server ID: f24f (f24f807c-529e-463a-b338-1fbae2c2165a)
 Address: tcp:172.30.40.25:6643
 Status: cluster member
 Role: follower
 Term: 1
-Leader: 3b93
+Leader: c41c
 Vote: unknown
 
 Election timer: 1000
-Log: [2, 4]
+Log: [2, 5]
 Entries not yet committed: 0
 Entries not yet applied: 0
-Connections: ->0000 <-3b93
+Connections: ->0000 <-c41c
 Servers:
-    d68c (d68c at tcp:172.30.40.25:6643) (self)
-    3b93 (3b93 at tcp:172.30.40.93:6643)
-```
-
-Lets check status on os-infra-1, as you can see in Servers: section we have two nodes and Connections: showing it can talk both direction in and out <-d68c ->d68c
-
-```
-root@os-infra-1-neutron-ovn-northd-container-24eea9c2:~# ovs-appctl -t /var/run/ovn/ovnnb_db.ctl cluster/status OVN_Northbound
-3b93
-Name: OVN_Northbound
-Cluster ID: eb3b (eb3b01bb-fab5-42b4-8095-2e479ad9cabc)
-Server ID: 3b93 (3b932313-41dd-4e8a-9097-1b0f54ae983e)
-Address: tcp:172.30.40.93:6643
-Status: cluster member
-Role: leader
-Term: 1
-Leader: self
-Vote: self
-
-Election timer: 1000
-Log: [2, 4]
-Entries not yet committed: 0
-Entries not yet applied: 0
-Connections: <-d68c ->d68c
-Servers:
-    d68c (d68c at tcp:172.30.40.25:6643) next_index=4 match_index=3
-    3b93 (3b93 at tcp:172.30.40.93:6643) (self) next_index=2 match_index=3
+    f24f (f24f at tcp:172.30.40.25:6643) (self)
+    c41c (c41c at tcp:172.30.40.93:6643)
 ```
 
 #### os-infra-3
 
-Clean up db files
+Repeate same steps again 
 
 ```
+root@os-infra-3:~# lxc-attach -n root@os-infra-3-neutron-ovn-northd-container-24e31668:~#
+root@os-infra-3-neutron-ovn-northd-container-24e31668:~#
+root@os-infra-3-neutron-ovn-northd-container-24e31668:~# systemctl stop ovn-northd
+root@os-infra-3-neutron-ovn-northd-container-24e31668:~# systemctl stop ovsdb-server
 root@os-infra-3-neutron-ovn-northd-container-24e31668:~# rm -rf /var/lib/ovn/*
 root@os-infra-3-neutron-ovn-northd-container-24e31668:~# rm -rf /var/lib/ovn/.ovn*
 ```
 
-Join cluster using following command remote-addr will be your os-infra-1 node
+Edit /etc/default/ovn-central file and and point remote-addr= to os-infra-1
 
 ```
-root@os-infra-3-neutron-ovn-northd-container-24e31668:~# /usr/share/ovn/scripts/ovn-ctl  --db-nb-addr=172.30.40.177 \
-> --db-nb-create-insecure-remote=yes \
-> --db-nb-cluster-local-addr=172.30.40.177 \
-> --db-sb-addr=172.30.40.177 \
-> --db-sb-create-insecure-remote=yes \
-> --db-sb-cluster-local-addr=172.30.40.177 \
-> --db-nb-cluster-remote-addr=172.30.40.93 \
-> --db-sb-cluster-remote-addr=172.30.40.93 \
-> start_northd
-
-2021-05-25T19:16:50Z|00001|reconnect|INFO|unix:/var/run/ovn/ovnnb_db.sock: connecting...
-2021-05-25T19:16:50Z|00002|reconnect|INFO|unix:/var/run/ovn/ovnnb_db.sock: connected
- * Waiting for OVN_Northbound to come up
-2021-05-25T19:16:50Z|00001|reconnect|INFO|unix:/var/run/ovn/ovnsb_db.sock: connecting...
-2021-05-25T19:16:50Z|00002|reconnect|INFO|unix:/var/run/ovn/ovnsb_db.sock: connected
- * Waiting for OVN_Southbound to come up
- * Starting ovn-northd
+OVN_CTL_OPTS=" \
+  --db-nb-create-insecure-remote=yes \
+  --db-sb-create-insecure-remote=yes \
+  --db-nb-addr=172.30.40.177 \
+  --db-sb-addr=172.30.40.177 \
+  --db-nb-cluster-local-addr=172.30.40.177 \
+  --db-sb-cluster-local-addr=172.30.40.177 \
+  --db-nb-cluster-remote-addr=172.30.40.93 \
+  --db-sb-cluster-remote-addr=172.30.40.93 \
+  --ovn-northd-nb-db=tcp:172.30.40.93:6641,tcp:172.30.40.25:6641,tcp:172.30.40.177:6641 \
+  --ovn-northd-sb-db=tcp:172.30.40.93:6642,tcp:172.30.40.25:6642,tcp:172.30.40.177:6642 \
+"
 ```
 
-Verify cluster status, as you can see its follower and vote: is unknown because it didn't participate in voting process. 
+Reboot container and Verify cluster status, as you can see it's a follower and vote: is unknown because it didn't participate in voting process. 
 
 ```
 root@os-infra-3-neutron-ovn-northd-container-24e31668:~# ovs-appctl -t /var/run/ovn/ovnnb_db.ctl cluster/status OVN_Northbound
-7b0e
+541f
 Name: OVN_Northbound
-Cluster ID: eb3b (eb3b01bb-fab5-42b4-8095-2e479ad9cabc)
-Server ID: 7b0e (7b0e82a3-7127-4eae-8851-5bd60fc05937)
+Cluster ID: df9e (df9ee169-30de-4b7a-82e0-3375559e69cd)
+Server ID: 541f (541f7abb-a407-444b-a4da-e8bff68dcede)
 Address: tcp:172.30.40.177:6643
 Status: cluster member
 Role: follower
 Term: 1
-Leader: 3b93
+Leader: c41c
 Vote: unknown
 
 Election timer: 1000
-Log: [2, 5]
+Log: [2, 7]
 Entries not yet committed: 0
 Entries not yet applied: 0
-Connections: ->0000 ->d68c <-3b93 <-d68c
+Connections: ->0000 ->f24f <-c41c <-f24f
 Servers:
-    d68c (d68c at tcp:172.30.40.25:6643)
-    7b0e (7b0e at tcp:172.30.40.177:6643) (self)
-    3b93 (3b93 at tcp:172.30.40.93:6643)
+    f24f (f24f at tcp:172.30.40.25:6643)
+    c41c (c41c at tcp:172.30.40.93:6643)
+    541f (541f at tcp:172.30.40.177:6643) (self)
 ```
 
-Lets verify on os-infra-1, Check Servers: and Connections: section and you will see we have 3 nodes.
+Lets go back to os-infra-1 and verify, Check Servers: and in Connections: section and you will see 3 nodes.
 
 ```
 root@os-infra-1-neutron-ovn-northd-container-24eea9c2:~# ovs-appctl -t /var/run/ovn/ovnnb_db.ctl cluster/status OVN_Northbound
-3b93
+c41c
 Name: OVN_Northbound
-Cluster ID: eb3b (eb3b01bb-fab5-42b4-8095-2e479ad9cabc)
-Server ID: 3b93 (3b932313-41dd-4e8a-9097-1b0f54ae983e)
+Cluster ID: df9e (df9ee169-30de-4b7a-82e0-3375559e69cd)
+Server ID: c41c (c41c1f11-32ac-4236-8df5-0b858acd66a6)
 Address: tcp:172.30.40.93:6643
 Status: cluster member
 Role: leader
@@ -274,15 +235,19 @@ Leader: self
 Vote: self
 
 Election timer: 1000
-Log: [2, 5]
+Log: [2, 7]
 Entries not yet committed: 0
 Entries not yet applied: 0
-Connections: <-d68c ->d68c <-7b0e ->7b0e
+Connections: <-f24f ->f24f <-541f ->541f
 Servers:
-    d68c (d68c at tcp:172.30.40.25:6643) next_index=5 match_index=4
-    7b0e (7b0e at tcp:172.30.40.177:6643) next_index=5 match_index=4
-    3b93 (3b93 at tcp:172.30.40.93:6643) (self) next_index=2 match_index=4
+    f24f (f24f at tcp:172.30.40.25:6643) next_index=7 match_index=6
+    c41c (c41c at tcp:172.30.40.93:6643) (self) next_index=2 match_index=6
+    541f (541f at tcp:172.30.40.177:6643) next_index=7 match_index=6
 ```
+
+This is how it looks from 3000ft
+
+![<img>](/assets/images/2021-05-25-openstack-ansible-ovn-clustering/ovn-clustering.png){: width="400" }
 
 #### Cluster failover testing 
 
@@ -297,10 +262,10 @@ Voila!  As you can see os-infra-2 is new leader now, Pay attention to Term: sect
 
 ```
 root@os-infra-2-neutron-ovn-northd-container-bdb3912a:~# ovs-appctl -t /var/run/ovn/ovnnb_db.ctl cluster/status OVN_Northbound
-d68c
+f24f
 Name: OVN_Northbound
-Cluster ID: eb3b (eb3b01bb-fab5-42b4-8095-2e479ad9cabc)
-Server ID: d68c (d68c3219-43c4-454a-8bdd-d28f4be27a2a)
+Cluster ID: df9e (df9ee169-30de-4b7a-82e0-3375559e69cd)
+Server ID: f24f (f24f807c-529e-463a-b338-1fbae2c2165a)
 Address: tcp:172.30.40.25:6643
 Status: cluster member
 Role: leader
@@ -309,14 +274,25 @@ Leader: self
 Vote: self
 
 Election timer: 1000
-Log: [2, 6]
+Log: [2, 8]
 Entries not yet committed: 0
 Entries not yet applied: 0
-Connections: (->0000) <-7b0e ->7b0e
+Connections: (->0000) <-541f ->541f
 Servers:
-    d68c (d68c at tcp:172.30.40.25:6643) (self) next_index=5 match_index=5
-    7b0e (7b0e at tcp:172.30.40.177:6643) next_index=6 match_index=5
-    3b93 (3b93 at tcp:172.30.40.93:6643) next_index=6 match_index=0
+    f24f (f24f at tcp:172.30.40.25:6643) (self) next_index=7 match_index=7
+    c41c (c41c at tcp:172.30.40.93:6643) next_index=8 match_index=0
+    541f (541f at tcp:172.30.40.177:6643) next_index=8 match_index=7
+```
+
+check logs at /var/log/ovn/ovsdb-server-nb.log  (os-infra-2 started election and won by 2+ votes)
+
+```
+2021-05-26T04:00:10.213Z|00019|reconnect|INFO|tcp:172.30.40.177:6643: connecting...
+2021-05-26T04:00:10.213Z|00020|reconnect|INFO|tcp:172.30.40.177:6643: connected
+2021-05-26T04:25:50.368Z|00021|raft|INFO|received leadership transfer from c41c in term 1
+2021-05-26T04:25:50.368Z|00022|raft|INFO|term 2: starting election
+2021-05-26T04:25:50.368Z|00023|reconnect|INFO|tcp:172.30.40.93:6643: connection closed by peer
+2021-05-26T04:25:50.391Z|00024|raft|INFO|term 2: elected leader by 2+ of 3 servers
 ```
 
 #### Recovery from complete database failure 
