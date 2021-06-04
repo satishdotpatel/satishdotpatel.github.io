@@ -161,7 +161,7 @@ In following way it will do better loadbalancing between both server, because ha
 quick validation
 
 ```
-root@ubuntu:~# for qw in `seq 1 8`; do curl 192.168.255.81; sleep 1; done
+root@client-1:~# for qw in `seq 1 8`; do curl 192.168.255.81; sleep 1; done
 web-1
 web-2
 web-1
