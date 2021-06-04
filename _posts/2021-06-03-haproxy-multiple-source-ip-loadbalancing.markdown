@@ -81,9 +81,9 @@ global
         group haproxy
         daemon
         maxconn 100000  # higher is better
-        nbproc 2        # number of workers ( keep same as cpu cores)
-        cpu-map         1 0 # map workers with cores
-        cpu-map         2 1 # 
+        nbproc  2       # number of workers ( keep same as cpu cores)
+        cpu-map 1 0     # map workers with cores
+        cpu-map 2 1     # 
 
 defaults
         log     global
