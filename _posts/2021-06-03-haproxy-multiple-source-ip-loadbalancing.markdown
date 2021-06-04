@@ -8,6 +8,7 @@ tag:
 - HAProxy
 - Loadbalancer
 - Ubuntu
+- Cisco CML
 category: blog
 blog: true
 author: Satish Patel
