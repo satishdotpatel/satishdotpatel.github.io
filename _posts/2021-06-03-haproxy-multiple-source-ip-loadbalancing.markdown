@@ -43,7 +43,7 @@ IPaddress:
 * Web-1 - 10.0.0.100
 * Web-2 - 10.0.0.200
 
-![<img>](/assets/images/2021-06-03-haproxy-multiple-source-ip-loadbalancing/haproxy-lab.png){: width="1000" }
+![<img>](/assets/images/2021-06-03-haproxy-multiple-source-ip-loadbalancing/haproxy-lab.png){: width="1000" }{: height="1000"}
 
 
 ### Network configuration of HAProxy
