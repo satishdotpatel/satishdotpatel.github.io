@@ -1,5 +1,5 @@
 ---
-title: "HAProxy Multiple Source IP LoadBalancing"
+title: "HAProxy Multiple Source ipaddr LoadBalancing"
 layout: post
 date: 2021-06-03
 image: /assets/images/2021-06-03-haproxy-multiple-source-ip-loadbalancing/haproxy-logo-1.png
@@ -12,7 +12,7 @@ tag:
 category: blog
 blog: true
 author: Satish Patel
-description: "HAProxy Multiple Source IP LoadBalancing"
+description: "HAProxy Multiple Source ipaddr LoadBalancing"
 
 ---
 
