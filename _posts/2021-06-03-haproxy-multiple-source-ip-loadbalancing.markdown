@@ -2,7 +2,7 @@
 title: "HAProxy Multiple Source IP LoadBalancing"
 layout: post
 date: 2021-06-03
-image: /assets/images/2021-06-03-haproxy-multiple-source-ip-loadbalancing/haproxy-logo.png
+image: /assets/images/2021-06-03-haproxy-multiple-source-ip-loadbalancing/haproxy-logo-1.png
 headerImage: true
 tag:
 - HAProxy
