@@ -346,3 +346,10 @@ router c0722814-0472-4cbc-8efb-de2b454896c6 (neutron-f2db247f-1bee-478c-a5aa-aa0
         logical ip: "172.168.0.0/24"
         type: "snat"
 ```
+
+### OVN Ports information
+
+* port 6641 (for OVN Northbound OVSDB Server)
+* port 6642 (for OVN Southbound OVSDB Server)
+* port 6643 (when using RAFT and is required for NB RAFT control plane)
+* port 6644 (when using RAFT and is required for SB RAFT control plane)
