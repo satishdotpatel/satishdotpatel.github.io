@@ -246,5 +246,5 @@ CONTAINER ID   IMAGE                    COMMAND              CREATED        STAT
 
 You can now access the dashboard: https://<ip_address>:8080
 
-![<img>](/assets/images/2021-08-15-openstack-skyline-dashboard/skyline-login.png){: width="500" }
+![<img>](/assets/images/2021-08-15-openstack-skyline-dashboard/skyline-login.png){: width="800" }
 
