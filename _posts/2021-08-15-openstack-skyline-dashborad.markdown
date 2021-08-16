@@ -17,6 +17,8 @@ description: "Openstack Skyline Dashboard"
 
 As you know horizon is long standing web-interface for Openstack but today i am going show you how to install Skyline dahsboard. Skyline is an OpenStack dashboard optimized by UI and UE. It has a modern technology stack and ecology, is easier for developers to maintain and operate by users, and has higher concurrency performance.
 
+Link: https://opendev.org/skyline/skyline-apiserver
+
 ### Prerequisite
 
 * Working openstack environment
