@@ -248,3 +248,22 @@ You can now access the dashboard: https://<ip_address>:8080
 
 ![<img>](/assets/images/2021-08-15-openstack-skyline-dashboard/skyline-login.png){: width="850" }
 
+Overview
+
+![<img>](/assets/images/2021-08-15-openstack-skyline-dashboard/skyline-overview.png){: width="850" }
+
+Instances list
+
+![<img>](/assets/images/2021-08-15-openstack-skyline-dashboard/skyline-instances.png){: width="850" }
+
+Hypervisor list
+
+![<img>](/assets/images/2021-08-15-openstack-skyline-dashboard/skyline-hypervisor.png){: width="850" }
+
+Network Topology
+
+![<img>](/assets/images/2021-08-15-openstack-skyline-dashboard/skyline-network.png){: width="850" }
+
+Create instance
+
+![<img>](/assets/images/2021-08-15-openstack-skyline-dashboard/skyline-create-vm.png){: width="850" }
