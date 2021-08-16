@@ -97,7 +97,7 @@ root@skyline:~# mkdir /etc/skyline
 root@skyline:~# cp skyline-apiserver/etc/skyline.yaml.sample /etc/skyline/skyline.yaml
 ```
 
-Modify the following parameters of skyline.yaml file according to the actual environment.
+Modify the following parameters of skyline.yaml file according to the actual environment. In below config you are going to provide your openstack environment keystone_url to fetch all endpint so skyline will be able to access your openstack. (Notes: if you have https:// then make sure your certificate is valid otherwise you will see errors). 
 
 ```
 default:
@@ -244,7 +244,13 @@ CONTAINER ID   IMAGE                    COMMAND              CREATED        STAT
 33929d68df7c   99cloud/skyline:latest   "start_service.sh"   15 hours ago   Up 15 hours             skyline
 ```
 
-You can now access the dashboard: https://<ip_address>:8080
+Check logs
+
+```
+root@skyline:~# docker logs skyline
+```
+
+If all good, You can now access the dashboard: https://<ip_address>:8080
 
 ![<img>](/assets/images/2021-08-15-openstack-skyline-dashboard/skyline-login.png){: width="850" }
 
@@ -267,3 +273,7 @@ Network Topology
 Create instance
 
 ![<img>](/assets/images/2021-08-15-openstack-skyline-dashboard/skyline-create-vm.png){: width="850" }
+
+### bug reporting
+
+https://bugs.launchpad.net/skyline-apiserver
