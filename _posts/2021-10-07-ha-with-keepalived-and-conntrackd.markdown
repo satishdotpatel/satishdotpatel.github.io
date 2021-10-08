@@ -279,6 +279,18 @@ vrrp_instance EXT {
 }
 ```
 
+Ofcourse you need to enable ip_forwarding 
+
+```
+$ sysctl -w net.ipv4.ip_forward=1
+```
+
+The host’s kernel needs to be configured to allow a process to bind to a non-local IP address
+
+```
+$ sysctl -w net.ipv4.ip_nonlocal_bind=1
+```
+
 Start and Enable service
 
 ```
