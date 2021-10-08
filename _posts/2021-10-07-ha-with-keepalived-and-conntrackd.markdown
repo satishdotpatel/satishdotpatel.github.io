@@ -157,8 +157,8 @@ $ chmod 755 /etc/conntrackd/primary-backup.sh
 Start and Enable service
 
 ```
-$ systemd enable conntrackd
-$ systemd start conntrackd
+$ systemctl enable conntrackd
+$ systemctl start conntrackd
 ```
 
 ### Install Keepalived
@@ -294,8 +294,8 @@ $ sysctl -w net.ipv4.ip_nonlocal_bind=1
 Start and Enable service
 
 ```
-$ systemd enable keepalivd
-$ systemd start keepalived
+$ systemctl enable keepalived
+$ systemctl start keepalived
 ```
 
 ### Verify Keepalived
@@ -391,7 +391,7 @@ tcp      6 ESTABLISHED src=10.0.0.10 dst=192.168.255.33 sport=48070 dport=22 [AS
 Lets perform failover 
 
 ```
-root@fw-1:~# systemd stop keepalived
+root@fw-1:~# systemctl stop keepalived
 ```
 
 Now check fw-2 internal cache again 
