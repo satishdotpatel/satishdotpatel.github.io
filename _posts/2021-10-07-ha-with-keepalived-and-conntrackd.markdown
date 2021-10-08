@@ -15,7 +15,7 @@ description: "High Availability with Keepalived and conntrackd"
 
 ---
 
-This post if about building High Availibility firewall using keepalived and conntrackd service which will provide connection mirroring because some application are connection sensitive which may break connection during failover if connection state not replicated to standby server. 
+This post is about building High Availibility firewall using keepalived and conntrackd service which will provide connection mirroring because some application are connection sensitive which may break connection during failover if connection state not replicated to standby server. 
 
 For this POC I'm using Cisco Modeling Labs simulator to design and simulate my network.  
 
