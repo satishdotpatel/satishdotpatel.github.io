@@ -392,4 +392,6 @@ udp      17 src=172.30.16.2 dst=172.30.16.1 sport=50651 dport=3780 [UNREPLIED] s
 tcp      6 ESTABLISHED src=10.0.0.10 dst=192.168.255.33 sport=48070 dport=22 src=192.168.255.33 dst=192.168.255.250 sport=22 dport=48070 [ASSURED] mark=0 [active since 5s]
 ```
 
-voila!!! if you noticed you ssh connection still alive. 
+voila!!! if you noticed you ssh connection still alive.
+
+Reference Doc: https://conntrack-tools.netfilter.org/manual.html
