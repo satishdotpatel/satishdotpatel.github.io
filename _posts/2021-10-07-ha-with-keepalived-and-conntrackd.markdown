@@ -383,7 +383,7 @@ root@fw-1:~# systemd stop keepalived
 Now check fw-2 internal cache again 
 
 ```
-root@ubuntu-2:~# conntrackd -i
+root@fw-2:~# conntrackd -i
 udp      17 src=0.0.0.0 dst=255.255.255.255 sport=68 dport=67 [UNREPLIED] src=255.255.255.255 dst=0.0.0.0 sport=67 dport=68 mark=0 [active since 5s]
 udp      17 src=172.30.16.1 dst=172.30.16.2 sport=55473 dport=3780 [UNREPLIED] src=172.30.16.2 dst=172.30.16.1 sport=3780 dport=55473 mark=0 [active since 5s]
 udp      17 src=172.30.16.2 dst=172.30.16.1 sport=50651 dport=3780 [UNREPLIED] src=172.30.16.1 dst=172.30.16.2 sport=3780 dport=50651 mark=0 [active since 5s]
