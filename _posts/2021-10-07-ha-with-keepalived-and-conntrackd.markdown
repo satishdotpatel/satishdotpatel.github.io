@@ -19,7 +19,7 @@ This post if about building High Availibility firewall using keepalived and conn
 
 ### Network Setup
 
-![<img>](/assets/images/2021-10-07-ha-with-keepalived-and-conntrackd/ha-network-setup.png)
+![<img>](/assets/images/2021-10-07-ha-with-keepalived-and-conntrackd/ha-network-setup.png){: width="500" }
 
 ### Install conntrackd 
 
