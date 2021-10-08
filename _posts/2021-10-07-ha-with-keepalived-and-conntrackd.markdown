@@ -38,6 +38,7 @@ Sync {
     }
 
     UDP {
+        # Dedicated link for connection replication
         IPv4_address 172.30.16.1
         IPv4_Destination_Address 172.30.16.2
         Port 3780
@@ -96,6 +97,7 @@ Sync {
     }
 
     UDP {
+        # Dedicated link for connection replication
         IPv4_address 172.30.16.2
         IPv4_Destination_Address 172.30.16.1
         Port 3780
