@@ -150,7 +150,7 @@ General {
 Copy primary-backup.sh script in /etc/conntrackd directory for keepalived on both servers.
 
 ```
-$ cp /usr/share/doc/conntrackd/examples/sync/primary-backup.sh /etc/conntrackd/.
+$ cp /usr/share/doc/conntrackd/examples/sync/primary-backup.sh /etc/conntrackd/
 $ chmod 755 /etc/conntrackd/primary-backup.sh
 ```
 
