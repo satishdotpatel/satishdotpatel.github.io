@@ -47,7 +47,11 @@ This blog post is about demonstrating how to setup Linux based strongswan IPsec 
 
 ### Network Setup
 
+----------------------------------
+
 ![<img>](/assets/images/2021-10-08-ha-strongswan-ipsec-vpn/vpn-network-setup.png){: width="800" }
+
+----------------------------------
 
 ### HQ Site setup
 
