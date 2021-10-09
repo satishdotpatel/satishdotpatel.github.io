@@ -55,6 +55,7 @@ This blog post is about demonstrating how to setup Linux based strongswan IPsec 
 
 ## HQ Site setup
 ----------------------------------
+
 Install keepalived & strongswan
 
 ```
