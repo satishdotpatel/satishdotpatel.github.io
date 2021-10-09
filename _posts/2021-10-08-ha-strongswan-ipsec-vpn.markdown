@@ -264,7 +264,7 @@ $ ipsec start
 Starting strongSwan 5.6.2 IPsec [starter]...
 ```
 
-## Boston site
+## Boston Site Setup 
 --------------------------------
 Install strongswan 
 
@@ -329,7 +329,7 @@ paris-to-amsterdam{1}:   10.22.0.0/24 === 10.11.0.0/24
 ```
 
 
-## Phoenix Site 
+## Phoenix Site Setup 
 ---------------------------------
 
 Here we have Cisco ASA firewall and here is the config snippet.
