@@ -64,7 +64,7 @@ $ apt-get install strongswan
 
 Configure keepalived on both firewall
 
-fw-1
+#### fw-1
 
 ```
 vrrp_sync_group G1 {
@@ -118,7 +118,7 @@ vrrp_instance EXT {
 }
 ```
 
-fw-2
+#### fw-2
 
 ```
 vrrp_sync_group G1 {
