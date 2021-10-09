@@ -24,7 +24,7 @@ This blog post is about demonstrating how to setup Linux based strongswan IPsec 
 
  
 ----------------------------------
-##### HQ:
+#### HQ:
 - Product: Linux Server
 - PublicIP - fw-1: 192.168.255.12
 - PublicIP - fw-2: 192.168.255.13
@@ -33,14 +33,14 @@ This blog post is about demonstrating how to setup Linux based strongswan IPsec 
 
 ----------------------------------
 
-##### Boston:
+#### Boston:
 - Product: Linux Server
 - PublicIP: 192.168.255.22
 - LAN: 10.22.0.0/24
 
 ----------------------------------
 
-##### Phoenix:
+#### Phoenix:
 - Product: Cisco ASA
 - PublicIP: 192.168.255.33
 - LAN: 10.33.0.0/24
