@@ -20,19 +20,24 @@ description: "High Availability Strongswan IPsec VPN"
 
 This blog post is about demonstrating how to setup Linux based strongswan IPsec vpn. In this lab work I have multiple sites which are connected to HQ sites. 
 
-### Sites
+### Remote Sites Info
 
 * HQ: 
+----------------------------------
 - Product: Linux Server
 - PublicIP - fw-1: 192.168.255.12
 - PublicIP - fw-2: 192.168.255.13
 - PublicIP - VIP: 192.168.255.11 
 - LAN: 10.11.0.0/24
 
+----------------------------------
+
 * Boston:
 - Product: Linux Server
 - PublicIP: 192.168.255.22
 - LAN: 10.22.0.0/24
+
+----------------------------------
 
 * Phoenix:
 - Product: Cisco ASA
