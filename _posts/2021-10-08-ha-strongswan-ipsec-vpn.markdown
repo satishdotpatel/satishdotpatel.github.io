@@ -53,8 +53,8 @@ This blog post is about demonstrating how to setup Linux based strongswan IPsec 
 
 ----------------------------------
 
-### HQ Site setup
-
+## HQ Site setup
+----------------------------------
 Install keepalived & strongswan
 
 ```
@@ -263,8 +263,8 @@ $ ipsec start
 Starting strongSwan 5.6.2 IPsec [starter]...
 ```
 
-### Boston site
-
+## Boston site
+--------------------------------
 Install strongswan 
 
 ```
@@ -328,7 +328,8 @@ paris-to-amsterdam{1}:   10.22.0.0/24 === 10.11.0.0/24
 ```
 
 
-### Phoenix Site 
+## Phoenix Site 
+---------------------------------
 
 Here we have Cisco ASA firewall and here is the config snippet.
 
