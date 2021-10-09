@@ -23,25 +23,25 @@ This blog post is about demonstrating how to setup Linux based strongswan IPsec 
 ### Sites
 
 * HQ: 
-Product: Linux Server
-PublicIP - fw-1: 192.168.255.12
-PublicIP - fw-2: 192.168.255.13
-PublicIP - VIP: 192.168.255.11 
-LAN: 10.11.0.0/24
+- Product: Linux Server
+- PublicIP - fw-1: 192.168.255.12
+- PublicIP - fw-2: 192.168.255.13
+- PublicIP - VIP: 192.168.255.11 
+- LAN: 10.11.0.0/24
 
 * Boston:
-Product: Linux Server
-PublicIP: 192.168.255.22
-LAN: 10.22.0.0/24
+- Product: Linux Server
+- PublicIP: 192.168.255.22
+- LAN: 10.22.0.0/24
 
 * Phoenix:
-Product: Cisco ASA
-PublicIP: 192.168.255.33
-LAN: 10.33.0.0/24
+- Product: Cisco ASA
+- PublicIP: 192.168.255.33
+- LAN: 10.33.0.0/24
 
 ### Network Setup
 
-![<img>](/assets/images/2021-10-08-ha-strongswan-ipsec-vpn/vpn-network-setup.png){: width="500" }
+![<img>](/assets/images/2021-10-08-ha-strongswan-ipsec-vpn/vpn-network-setup.png){: width="800" }
 
 ### HQ Site setup
 
