@@ -2,7 +2,7 @@
 title: "Openstack OVS-DPDK with Intel X550T NIC - Part1"
 layout: post
 date: 2021-10-22
-image: /assets/images/assets/images/2021-10-22-openstack-dpdk-with-intel-x550t2-nic/fastlane.png
+image: /assets/images/2021-10-22-openstack-dpdk-with-intel-x550t2-nic/fastlane.png
 headerImage: true
 tag:
 - Openstack
