@@ -73,7 +73,7 @@ node   0   1
 
 If you noticed both DPDK nic port attached to NUMA0 and NUMA1. 
 
-![<img>](/assets/images/2021-10-22-openstack-dpdk-with-intel-x550t2-nic/vpn-network-setup.png){: width="800" }
+![<img>](/assets/images/2021-10-22-openstack-dpdk-with-intel-x550t2-nic/nic-numa.png){: width="800" }
 
 
 #### CPU isolation
