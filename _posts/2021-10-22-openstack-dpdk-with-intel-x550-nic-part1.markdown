@@ -267,7 +267,7 @@ slave: dpdk1: defaulted detached
   partner state:
 ```
 
-check bonding 
+validate bonding 
 
 ```
 $ ovs-appctl bond/show dpdkbond
@@ -288,6 +288,35 @@ slave dpdk0: enabled
 
 slave dpdk1: disabled
   may_enable: false
+```
+
+Shutdown bond0 interface to check failover 
+
+```
+$ ovs-ofctl mod-port br-vlan dpdk0 down
+```
+
+You can see dpdk0 is disabled and dpdk1 is active slave.  
+
+```
+$ ovs-appctl bond/show dpdkbond
+---- dpdkbond ----
+bond_mode: balance-tcp
+bond may use recirculation: yes, Recirc-ID : 1
+bond-hash-basis: 0
+updelay: 0 ms
+downdelay: 0 ms
+next rebalance: 4772 ms
+lacp_status: negotiated
+lacp_fallback_ab: false
+active slave mac: b4:96:91:bd:68:e6(dpdk1)
+
+slave dpdk0: disabled
+  may_enable: false
+
+slave dpdk1: enabled
+  active slave
+  may_enable: true
 ```
 
 Verify DPDK mapping with OVS br-vlan bridge
