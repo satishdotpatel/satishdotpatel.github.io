@@ -215,6 +215,41 @@ Verify, If all good then you will see all your ports and bridge in following com
 $ ovs-vsctl show
 ```
 
+#### Configure Openstack neutron-server for SSL
+
+neutron-server talk to ovn-central so we need to provide SSL certs for secure communication. 
+
+Copy ovnnb/ovnsb certs file to neutron-server container
+
+```
+$ scp /etc/openvswitch/ovnnb-* ovn-lab-infra-1-neutron-ovn-northd-container-cb55f5ef:/etc/openvswitch/
+$ scp /etc/openvswitch/ovnsb-* ovn-lab-infra-1-neutron-ovn-northd-container-cb55f5ef:/etc/openvswitch/
+$ scp /var/lib/openvswitch/pki/switchca/cacert.pem ovn-lab-infra-1-neutron-server-container-bbc2e2bc:/etc/openvswitch/
+```
+
+Add following options in /etc/neutron/plugins/ml2/ml2_conf.ini
+
+```
+[ovn]
+ovn_native_dhcp = True
+ovn_nb_connection = ssl:10.62.7.252:6641
+ovn_sb_connection = ssl:10.62.7.252:6642
+ovn_l3_scheduler = leastloaded
+ovn_metadata_enabled = True
+ovn_sb_ca_cert="/etc/openvswitch/cacert.pem"
+ovn_sb_certificate="/etc/openvswitch/ovnsb-cert.pem"
+ovn_sb_private_key="/etc/openvswitch/ovnsb-privkey.pem"
+ovn_nb_ca_cert="/etc/openvswitch/cacert.pem"
+ovn_nb_certificate="/etc/openvswitch/ovnnb-cert.pem"
+ovn_nb_private_key="/etc/openvswitch/ovnnb-privkey.pem"
+```
+
+Restart neutron-server 
+
+```
+$ systemctl restart neutron-server
+```
+
 Enjoy!! 
 
 
