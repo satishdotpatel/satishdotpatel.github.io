@@ -21,6 +21,8 @@ This document explains the way one could use SSL for connectivity between OVN co
 * compute-1 - (where ovn-controller service is running)
 * compute-2 - (where ovn-controller service is running)
 
+![<img>](/assets/images/2021-11-19-ovn-ssl-setup-with-openstack/ovn-ssl.png){: width="800" }
+
 ### Create a certificate authority.
 
 My CA authority is my Infra node. Following command will create certificate authority. 
