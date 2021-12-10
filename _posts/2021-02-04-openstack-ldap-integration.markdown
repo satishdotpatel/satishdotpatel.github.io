@@ -38,6 +38,8 @@ Create "domains" directory inside /etc/keystone
 $ mkdir /etc/keystone/domains
 ```
 
+Copy FreeIPA LDAP certs in /etc/keyston/ssl/ipa-ldap.crt. This certs you can obtain from your LDAP server.
+
 Create ldap domain configuration file inside /etc/keystone/domains (Example: If my LDAP domain is mydomain then i will create file keystone.mydomain.conf)
 
 ```
