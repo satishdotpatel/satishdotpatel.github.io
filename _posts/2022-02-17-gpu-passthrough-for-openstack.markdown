@@ -86,7 +86,7 @@ In openstack controller node add following in nova.conf file.
 alias: { "vendor_id":"10de", "product_id":"1df6", "device_type":"type-PCI", "name":"tesla-v100" }
 ```
 
-#### Nova Scheduler add PciPassthroughFilter
+#### Nova Scheduler add PCI Passthrough filter
 
 In openstack controller node add following in nova scheduler conf file.
 
