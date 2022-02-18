@@ -92,7 +92,6 @@ In openstack controller node add following in nova scheduler conf file.
 
 ```
 enabled_filters = PciPassthroughFilter
-
 ``` 
 
 #### Create flavor 
@@ -103,6 +102,7 @@ Create flavor with GPU properties. Use the alias which you specified in nova-api
 $ openstack flavor create --vcpus 16 --ram 32768 --disk 160 --property "pci_passthrough:alias"="tesla-v100:1"  gpu1.medium
 
 ```
+
 #### Create VM 
 
 ```
