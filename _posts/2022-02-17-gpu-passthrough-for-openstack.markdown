@@ -90,6 +90,8 @@ alias: { "vendor_id":"10de", "product_id":"1df6", "device_type":"type-PCI", "nam
 
 In openstack controller node add following in nova scheduler conf file.
 
+
+```
 ```
 enabled_filters = PciPassthroughFilter
 ``` 
