@@ -44,14 +44,19 @@ Compile grub file and reboot host
 ```
 [root@compute1 ~]# grub2-mkconfig -o /boot/grub2/grub.cfg
 ```
+
 #### Configure VFIO 
 
 VFIO will allow userspace programs to access PCI devices. 
 
-```[root@compute1 ~]# cat /etc/modules-load.d/vfio-pci.conf
+```
+[root@compute1 ~]# cat /etc/modules-load.d/vfio-pci.conf
 vfio-pci
 ```
-Find vendor and product ID ```[root@GPUN05 ~]# lspci -nn | grep -i nvidia
+Find vendor and product ID 
+
+```
+[root@GPUN05 ~]# lspci -nn | grep -i nvidia
 5e:00.0 3D controller [0302]: NVIDIA Corporation GV100GL [Tesla V100S PCIe 32GB] [10de:1df6] (rev a1)
 d8:00.0 3D controller [0302]: NVIDIA Corporation GV100GL [Tesla V100S PCIe 32GB] [10de:1df6] (rev a1)
 ```
@@ -62,6 +67,7 @@ Pass above vendor/product ID (10de:1df6) to driver in following option 
 [root@compute1 ~]# cat /etc/modprobe.d/gpu-vfio.conf
 options vfio-pci ids=10de:1df6
 ```
+
 #### Nova compute add passthrough_whitelist 
 
 In compute node nova.conf add the following under the PCI section. You can find vendor_id and product_id in lspci -nn output. 
@@ -79,6 +85,7 @@ In openstack controller node add following in nova.conf file.
 [PCI]
 alias: { "vendor_id":"10de", "product_id":"1df6", "device_type":"type-PCI", "name":"tesla-v100" }
 ```
+
 #### Nova Scheduler add PciPassthroughFilter
 
 In openstack controller node add following in nova scheduler conf file.
