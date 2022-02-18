@@ -116,3 +116,52 @@ In openstack controller node add following in nova scheduler conf file
 enabled_filters = PciPassthroughFilter
 
 ```
+
+
+#### Create flavor 
+
+Create flavor with GPU properties. Use the alias which you specified in nova-api.conf file. "pci_passthrough:alias"="tesla-v100:1" will pass a single GPU card to your VirtualMachine. If you want two GPU in your VM use "pci_passthrough:alias"="tesla-v100:2"
+
+```
+
+$ openstack flavor create --vcpus 16 --ram 32768 --disk 160 --property "pci_passthrough:alias"="tesla-v100:1"  gpu1.medium
+
+
+```
+
+#### Create VM 
+
+```
+
+$ openstack server create --flavor gpu1.medium --image ubuntu20_04 --nic net-id=private1 gpu1-vm
+
+```
+
+#### Verify GPU inside VM
+
+
+```
+
+root@gpu1-vm:~# lspci | grep -i nvidia
+00:05.0 3D controller: NVIDIA Corporation GV100GL [Tesla V100S PCIe 32GB] (rev a1)
+
+```
+
+Let's pass two GPU to VirtualMachine, For that we need to create new flavor with property tesla-v100:2 
+
+```
+
+$ openstack flavor create --vcpus 16 --ram 32768 --disk 160 --property "pci_passthrough:alias"="tesla-v100:1"  gpu2.medium
+
+```
+
+Now you can see following output after creating vm using above flavor 
+
+```
+root@gpu2-vm:~# lspci | grep -i nvidia
+00:05.0 3D controller: NVIDIA Corporation GV100GL [Tesla V100S PCIe 32GB] (rev a1)
+00:06.0 3D controller: NVIDIA Corporation GV100GL [Tesla V100S PCIe 32GB] (rev a1)
+```
+
+Enjoy!!! 
+
