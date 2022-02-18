@@ -108,10 +108,11 @@ alias: { "vendor_id":"10de", "product_id":"1df6", "device_type":"type-PCI", "nam
 
 #### Nova Scheduler add PCI Passthrough filter
 
-In openstack controller node add following in nova scheduler conf file.
+In openstack controller node add following in nova scheduler conf file
 
 ```
 
+[filter_scheduler]
 enabled_filters = PciPassthroughFilter
 
-``` 
+```
