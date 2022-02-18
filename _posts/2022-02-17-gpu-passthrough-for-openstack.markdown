@@ -50,7 +50,6 @@ GRUB_CMDLINE_LINUX="rd.driver.blacklist=nouveau,nvidia,nvidia_drm nouveau.modese
 Compile grub file and reboot host
 
 ```
-
 [root@compute1 ~]# grub2-mkconfig -o /boot/grub2/grub.cfg
 
 ```
@@ -60,7 +59,6 @@ Compile grub file and reboot host
 VFIO will allow userspace programs to access PCI devices. 
 
 ```
-
 [root@compute1 ~]# cat /etc/modules-load.d/vfio-pci.conf
 vfio-pci
 
@@ -78,7 +76,6 @@ d8:00.0 3D controller [0302]: NVIDIA Corporation GV100GL [Tesla V100S PCIe 32GB]
 Pass above vendor/product ID (10de:1df6) to driver in following option 
 
 ```
-
 [root@compute1 ~]# cat /etc/modprobe.d/gpu-vfio.conf
 options vfio-pci ids=10de:1df6
 
@@ -89,7 +86,6 @@ options vfio-pci ids=10de:1df6
 In compute node nova.conf add the following under the PCI section. You can find vendor_id and product_id in lspci -nn output. 
 
 ```
-
 [PCI]
 passthrough_whitelist = { "vendor_id": "10de", "product_id": "1df6" }
 
@@ -123,7 +119,6 @@ enabled_filters = PciPassthroughFilter
 Create flavor with GPU properties. Use the alias which you specified in nova-api.conf file. "pci_passthrough:alias"="tesla-v100:1" will pass a single GPU card to your VirtualMachine. If you want two GPU in your VM use "pci_passthrough:alias"="tesla-v100:2"
 
 ```
-
 $ openstack flavor create --vcpus 16 --ram 32768 --disk 160 --property "pci_passthrough:alias"="tesla-v100:1"  gpu1.medium
 
 
@@ -132,7 +127,6 @@ $ openstack flavor create --vcpus 16 --ram 32768 --disk 160 --property "pci_pass
 #### Create VM 
 
 ```
-
 $ openstack server create --flavor gpu1.medium --image ubuntu20_04 --nic net-id=private1 gpu1-vm
 
 ```
@@ -141,7 +135,6 @@ $ openstack server create --flavor gpu1.medium --image ubuntu20_04 --nic net-id=
 
 
 ```
-
 root@gpu1-vm:~# lspci | grep -i nvidia
 00:05.0 3D controller: NVIDIA Corporation GV100GL [Tesla V100S PCIe 32GB] (rev a1)
 
@@ -150,7 +143,6 @@ root@gpu1-vm:~# lspci | grep -i nvidia
 Let's pass two GPU to VirtualMachine, For that we need to create new flavor with property tesla-v100:2 
 
 ```
-
 $ openstack flavor create --vcpus 16 --ram 32768 --disk 160 --property "pci_passthrough:alias"="tesla-v100:1"  gpu2.medium
 
 ```
