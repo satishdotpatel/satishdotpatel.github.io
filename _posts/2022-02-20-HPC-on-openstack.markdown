@@ -1,5 +1,5 @@
 ---
-title: "HPC on Openstack"
+title: "High Performance computing (HPC) on Openstack"
 layout: post
 date: 2022-02-20
 image: /assets/images/2022-02-20-hpc-on-openstack/HPC-network.png
@@ -12,7 +12,7 @@ tag:
 category: blog
 blog: true
 author: Satish Patel
-description: "HPC on Openstack"
+description: "High Performance computing (HPC) on Openstack"
 
 ---
 
