@@ -293,7 +293,7 @@ CA 'mlx5_0'
 
 ### Test Infiniband Network 
 
-I have spun up two virtual instance with infiniband sriov passthrough nic and not i am going to run infiniband bandwidth test
+I have spun up two virtual instance with infiniband sriov passthrough nic and going to run infiniband (RDMA) bandwidth test.
 
 ```
 [root@controller ~]# openstack server list --name ib
