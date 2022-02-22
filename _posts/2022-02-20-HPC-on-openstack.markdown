@@ -291,4 +291,57 @@ CA 'mlx5_0'
 		Link layer: InfiniBand
 ```
 
-Now you are ready to run MPI workload :) In next blog i will show you how to run MPI jobs on Infiniband using RDMA between two virtual machine. Enjoy!! 
+### Test Infiniband Network 
+
+I have spun up two virtual instance with infiniband sriov passthrough nic and not i am going to run infiniband bandwidth test
+
+```
+[root@controller ~]# openstack server list --name ib
++--------------------------------------+----------+---------+------------------------------------+------------------------+-----------+
+| ID                                   | Name     | Status  | Networks                           | Image                  | Flavor    |
++--------------------------------------+----------+---------+------------------------------------+------------------------+-----------+
+| f9d354ea-56c5-457b-8969-1dac682cd08e | ib-vm1   | ACTIVE  | private1=10.1.1.143                | ubuntu_20_04           | ib.small  |
+| 89912ff1-b66c-422a-adcb-24c4b3871620 | ib-vm2   | ACTIVE  | private1=10.1.1.51                 | ubuntu_20_04           | ib.small  |
++--------------------------------------+----------+---------+------------------------------------+------------------------+------------
+```
+
+SSH to both vm and run following command on each
+
+ib-vm1
+
+```
+root@ib-vm1:~# ib_write_bw -F --report_gbits
+
+************************************
+* Waiting for client to connect... *
+************************************
+```
+
+ib-vm2
+
+```
+root@ib-2:~# ib_write_bw -F --report_gbits ib-vm1
+---------------------------------------------------------------------------------------
+                    RDMA_Write BW Test
+ Dual-port       : OFF		Device         : mlx5_0
+ Number of qps   : 1		Transport type : IB
+ Connection type : RC		Using SRQ      : OFF
+ PCIe relax order: ON
+ ibv_wr* API     : ON
+ TX depth        : 128
+ CQ Moderation   : 1
+ Mtu             : 4096[B]
+ Link type       : IB
+ Max inline data : 0[B]
+ rdma_cm QPs	 : OFF
+ Data ex. method : Ethernet
+---------------------------------------------------------------------------------------
+ local address: LID 0x2a QPN 0x0383 PSN 0x4fb186 RKey 0x020455 VAddr 0x007f7950f2c000
+ remote address: LID 0x26 QPN 0x0c85 PSN 0x3991e2 RKey 0x020489 VAddr 0x007fb4874d4000
+---------------------------------------------------------------------------------------
+ #bytes     #iterations    BW peak[Gb/sec]    BW average[Gb/sec]   MsgRate[Mpps]
+ 65536      5000             98.47              98.45  		   0.187783
+---------------------------------------------------------------------------------------
+```
+
+As you can see in above RDMA BW Test output it hit 98.45 Gb/sec. Now you are ready to run MPI workload :) In next blog i will show you how to run MPI jobs on Infiniband using RDMA between two virtual machine. Enjoy!! 
