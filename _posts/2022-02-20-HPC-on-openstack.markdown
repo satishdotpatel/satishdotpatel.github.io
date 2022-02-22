@@ -2,7 +2,7 @@
 title: "HPC on Openstack"
 layout: post
 date: 2022-02-20
-image: /assets/images/2022-02-20-hpc-on-openstack/HPC-network.png.png
+image: /assets/images/2022-02-20-hpc-on-openstack/HPC-network.png
 headerImage: true
 tag:
 - HPC
