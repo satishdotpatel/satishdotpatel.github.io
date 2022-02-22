@@ -31,7 +31,7 @@ We need working openstack deployment. In my case i am running kolla-ansible.
 * 10Gb/s Ethernet switch
 * 200Gb/s HDR Infiniband Switch (QM8700)
 
-![<img>](/assets/images/2022-02-20-hpc-on-openstack/openstack-hpc-network.png){: width="800" }
+![<img>](/assets/images/2022-02-20-hpc-on-openstack/openstack-hpc-network.png){: width="400" }
 
 ### Configure Mellanox Infiniband Switch
 
