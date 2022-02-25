@@ -154,5 +154,101 @@ root@gpu2-vm:~# lspci | grep -i nvidia
 00:06.0 3D controller: NVIDIA Corporation GV100GL [Tesla V100S PCIe 32GB] (rev a1)
 ```
 
+#### GPU Burn Test
+
+Install NVDIA driver for Ubuntu 20.04
+
+```
+root@gpu1-vm:~# apt-get update
+root@gpu1-vm:~# apt-get install ubuntu-drivers-common
+root@gpu1-vm:~# apt-get install nvidia-driver-470
+root@gpu1-vm:~# apt-get install nvidia-cuda-dev
+root@gpu1-vm:~# apt install nvidia-cuda-toolkit
+```
+
+Download GPU Burn program
+
+```
+root@gpu1-vm:~# git clone https://github.com/wilicc/gpu-burn
+```
+
+Edit Makefile and change first like to following
+
+```
+CUDAPATH ?= /usr
+```
+
+Run Make
+
+```
+root@gpu1-vm:~/gpu-burn# make 
+```
+
+Run program for 60 second 
+
+```
+root@gpu1-vm:~/gpu-burn# ./gpu_burn 60
+GPU 0: Tesla V100S-PCIE-32GB (UUID: GPU-dd342e0f-155c-18d7-f398-b415faf0a350)
+Initialized device 0 with 32510 MB of memory (32139 MB available, using 28925 MB of it), using FLOATS
+Results are 16777216 bytes each, thus performing 1805 iterations
+11.7%  proc'd: 3610 (12462 Gflop/s)   errors: 0   temps: 50 C
+	Summary at:   Fri Feb 25 15:43:19 UTC 2022
+
+23.3%  proc'd: 9025 (12391 Gflop/s)   errors: 0   temps: 53 C
+	Summary at:   Fri Feb 25 15:43:26 UTC 2022
+
+35.0%  proc'd: 12635 (12386 Gflop/s)   errors: 0   temps: 56 C
+	Summary at:   Fri Feb 25 15:43:33 UTC 2022
+
+48.3%  proc'd: 19855 (12277 Gflop/s)   errors: 0   temps: 60 C
+	Summary at:   Fri Feb 25 15:43:41 UTC 2022
+
+60.0%  proc'd: 23465 (12263 Gflop/s)   errors: 0   temps: 61 C
+	Summary at:   Fri Feb 25 15:43:48 UTC 2022
+
+75.0%  proc'd: 30685 (12264 Gflop/s)   errors: 0   temps: 63 C
+	Summary at:   Fri Feb 25 15:43:57 UTC 2022
+
+86.7%  proc'd: 36100 (12253 Gflop/s)   errors: 0   temps: 64 C
+	Summary at:   Fri Feb 25 15:44:04 UTC 2022
+
+100.0%  proc'd: 41515 (12259 Gflop/s)   errors: 0   temps: 65 C
+	Summary at:   Fri Feb 25 15:44:12 UTC 2022
+
+100.0%  proc'd: 41515 (12259 Gflop/s)   errors: 0   temps: 65 C
+Killing processes.. Freed memory for dev 0
+Uninitted cublas
+done
+
+Tested 1 GPUs:
+	GPU 0: OK
+```
+
+On other terminal you can see GPU stats in realtime with following command
+
+```
+root@gpu-vm1:~/gpu-burn# nvidia-smi
+Fri Feb 25 16:56:49 2022
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 470.103.01   Driver Version: 470.103.01   CUDA Version: 11.4     |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|                               |                      |               MIG M. |
+|===============================+======================+======================|
+|   0  Tesla V100S-PCI...  Off  | 00000000:00:05.0 Off |                    0 |
+| N/A   48C    P0   250W / 250W |  29283MiB / 32510MiB |    100%      Default |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+
++-----------------------------------------------------------------------------+
+| Processes:                                                                  |
+|  GPU   GI   CI        PID   Type   Process name                  GPU Memory |
+|        ID   ID                                                   Usage      |
+|=============================================================================|
+|    0   N/A  N/A     38716      C   ./gpu_burn                      29279MiB |
++-----------------------------------------------------------------------------+
+```
+
 Enjoy!!! 
 
