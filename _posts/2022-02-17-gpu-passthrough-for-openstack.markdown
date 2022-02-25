@@ -172,7 +172,7 @@ Download GPU Burn program
 root@gpu1-vm:~# git clone https://github.com/wilicc/gpu-burn
 ```
 
-Edit Makefile and change first like to following
+Edit Makefile and change first line to following
 
 ```
 CUDAPATH ?= /usr
