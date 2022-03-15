@@ -2,7 +2,7 @@
 title: "Openstack Manila Integration to GlusterFS with Ganesha-NFS"
 layout: post
 date: 2022-03-15
-image: /assets/images/2022-03-15-openstack-manila-integration-with-glusterfs/manila-share.png
+image: /assets/images/2022-03-15-openstack-manila-integration-with-glusterfs/manila-share-1.png
 headerImage: true
 tag:
 - Ganesha-NFS
