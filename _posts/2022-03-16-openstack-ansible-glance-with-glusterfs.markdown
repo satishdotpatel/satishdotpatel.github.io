@@ -23,7 +23,7 @@ In some small deployment of openstack when you don't have ceph storage in that c
 
 This is how it will looks from 3000ft. 
 
-![<img>](/assets/images/2022-03-16-openstack-ansible-glance-with-glusterfs/osa-glance-glusterfs.png){: width="400" }
+![<img>](/assets/images/2022-03-16-openstack-ansible-glance-with-glusterfs/osa-glance-glusterfs.png){: width="600" }
 
 #### Install/Setup GlusterFS server
 
