@@ -1,5 +1,5 @@
 ---
-title: "Openstack-Ansible Glance With Glusterfs"
+title: "Openstack-Ansible Glance With GlusterFS"
 layout: post
 date: 2022-03-16
 image: /assets/images/2022-03-16-openstack-ansible-glance-with-glusterfs/data-replication.png
@@ -11,7 +11,7 @@ tag:
 category: blog
 blog: true
 author: Satish Patel
-description: "Openstack-Ansible Glance With Glusterfs"
+description: "Openstack-Ansible Glance With GlusterFS"
 
 ---
 
