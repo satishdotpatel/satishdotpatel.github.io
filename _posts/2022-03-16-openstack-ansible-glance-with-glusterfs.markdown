@@ -19,7 +19,9 @@ In some small deployment of openstack when you don't have ceph storage in that c
 
 ### Prerequisit 
 
-3 x Infra nodes (openstack-ansible based deployment)
+* 3 x Infra nodes (openstack-ansible based deployment)
+
+This is how it will looks from 3000ft. 
 
 ![<img>](/assets/images/2022-03-16-openstack-ansible-glance-with-glusterfs/osa-glance-glusterfs.png){: width="400" }
 
