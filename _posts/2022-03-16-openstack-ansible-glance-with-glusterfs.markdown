@@ -40,13 +40,13 @@ $ service glusterd start
 Create directory for gluster replication volume on 3 nodes
 
 ```
-## os-infra-1
+==> os-infra-1
 $ mkdir -p /gluster/bricks/1/brick
 
-## os-infra-2
+==> os-infra-2
 $ mkdir -p /gluster/bricks/2/brick
 
-## os-infra-3
+==> os-infra-3
 $ mkdir -p /gluster/bricks/3/brick
 
 ```
