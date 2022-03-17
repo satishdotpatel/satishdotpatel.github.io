@@ -1,7 +1,7 @@
 ---
 title: "Openstack-Ansible Glance With Glusterfs"
 layout: post
-date: 2022-03-15
+date: 2022-03-16
 image: /assets/images/2022-03-16-openstack-ansible-glance-with-glusterfs/data-replication.png
 headerImage: true
 tag:
