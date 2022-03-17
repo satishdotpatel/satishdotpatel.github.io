@@ -17,7 +17,7 @@ description: "Openstack-Ansible Glance With Glusterfs"
 
 In some small deployment of openstack when you don't have ceph storage in that case you need a some kind of shared storage for your glance to sync images across all infra nodes. You have couple of choice like use some kind of centralized NFS or deploye swift s3 style object storage. In my case i am using glusterfs which i am going to show you how i did.
 
-### Prerequisit 
+#### Prerequisit 
 
 * 3 x Infra nodes (openstack-ansible based deployment)
 
