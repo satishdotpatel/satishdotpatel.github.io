@@ -172,13 +172,13 @@ $ rsync -avrp /openstack/os-infra-1_glance_container-0a4a3789/.* /mnt/.
 Now, Just mount your filesystem to glance folder on all infra nodes.
 
 ```
-## os-infra-1
+==> os-infra-1
 $ mount.glusterfs localhost:/gfs /openstack/$(lxc-ls -f | grep glance | awk '{print $1}')
 
-## os-infra-2
+==> os-infra-2
 $ mount.glusterfs localhost:/gfs /openstack/$(lxc-ls -f | grep glance | awk '{print $1}')
 
-## os-infra-3
+==> os-infra-3
 $ mount.glusterfs localhost:/gfs /openstack/$(lxc-ls -f | grep glance | awk '{print $1}')
 ```
 
