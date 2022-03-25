@@ -142,7 +142,7 @@ root@gpu1-vm:~# lspci | grep -i nvidia
 Let's pass two GPU to VirtualMachine, For that we need to create new flavor with property tesla-v100:2 
 
 ```
-$ openstack flavor create --vcpus 16 --ram 32768 --disk 160 --property "pci_passthrough:alias"="tesla-v100:1"  gpu2.medium
+$ openstack flavor create --vcpus 16 --ram 32768 --disk 160 --property "pci_passthrough:alias"="tesla-v100:2"  gpu2.medium
 
 ```
 
