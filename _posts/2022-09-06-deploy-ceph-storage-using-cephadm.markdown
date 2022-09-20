@@ -219,10 +219,10 @@ ceph2  10.73.0.192  _admin
 
 #### Add new ceph3 node in cluster 
 
-Pre-requisite to install docker-ce on newhost (ceph3). After that copy ceph key to new node.
+Pre-requisite to install docker-ce on newhost (ceph3). After that copy ceph key to newhost.
 
 ```
-root@ceph1:~# ssh-copy-id -f -i /etc/ceph/ceph.pub root@ceph2
+root@ceph1:~# ssh-copy-id -f -i /etc/ceph/ceph.pub root@ceph3
 ```
 
 Tell Ceph that the new node is part of the cluster:
