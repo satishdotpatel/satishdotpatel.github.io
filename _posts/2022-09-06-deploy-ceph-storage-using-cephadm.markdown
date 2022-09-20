@@ -203,7 +203,7 @@ ID  CLASS  WEIGHT   TYPE NAME       STATUS  REWEIGHT  PRI-AFF
  3    ssd  0.19429          osd.3       up   1.00000  1.00000
 ```
 
-### Add additional MON nodes 
+### Scale mon daemons 
 
 Currently we have only 2 node in ceph cluster that is why we have single mon node in cluster. I am going to add 3rd node in ceph cluster and add mon service on all 3 node for better redendency. 
 
