@@ -86,44 +86,44 @@ $ openstack image create amphora-x64-haproxy --container-format bare --disk-form
 
 ### Creating a TCP load balancer
 
-1. Create a load balancer (lb1) on the public subnet (demo-subnet).
+Create a load balancer (lb1) on the public subnet (demo-subnet).
 
 ```
 $ openstack loadbalancer create --name lb1 --vip-subnet-id demo-subnet
 ```
 
-2. Verify the state of the load balancer, make sure status are ONLINE & ACTIVE
+Verify the state of the load balancer, make sure status are ONLINE & ACTIVE
 
 ```
-$ openstack loadbalancer show lb1
+$ 	openstack loadbalancer show lb1
 ```
 
-3. Create a TCP listener (listener1) on the specified port (80) 
+Create a TCP listener (listener1) on the specified port (80) 
 
 ```
 $ openstack loadbalancer listener create --name listener1 --protocol TCP --protocol-port 80 lb1
 ```
 
-4. Create a pool (pool1) and make it the default pool for the listener.
+Create a pool (pool1) and make it the default pool for the listener.
 
 ```
 $ openstack loadbalancer pool create --name pool1 --lb-algorithm ROUND_ROBIN --listener listener1 --protocol TCP
 ```
 
-5. Create a health monitor on the pool (pool1) that connects to the back-end servers and probes the TCP service port.
+Create a health monitor on the pool (pool1) that connects to the back-end servers and probes the TCP service port.
 
 ```
 $ openstack loadbalancer healthmonitor create --delay 15 --max-retries 4 --timeout 10 --type TCP pool1
 ```
 
-6. Add the back-end servers (10.0.0.10 and 10.0.0.35) on the private subnet (demo-subnet) to the pool.
+Add the back-end servers (10.0.0.10 and 10.0.0.35) on the private subnet (demo-subnet) to the pool.
 
 ```
 $ openstack loadbalancer member create --subnet-id demo-subnet --address 10.0.0.10 --protocol-port 80 pool1
 $ openstack loadbalancer member create --subnet-id demo-subnet --address 10.0.0.35 --protocol-port 80 pool1
 ```
 
-7. Check status of members
+Check status of members
 
 ```
 $ openstack loadbalancer member list pool1
