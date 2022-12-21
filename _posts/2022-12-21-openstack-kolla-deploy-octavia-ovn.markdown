@@ -62,7 +62,7 @@ octavia_provider_agents: "ovn"
 Create loadbalancer (ovn-lb1)
 
 ```
-$ openstack loadbalancer create --vip-network-id demo-net --provider ovn --name ovn-lb1
+$ openstack loadbalancer create --vip-network-id demo-net --provider ovn --name ovn-lb1 --provider ovn
 $
 $ openstack loadbalancer list
 +--------------------------------------+---------+----------------------------------+-------------+---------------------+------------------+----------+
