@@ -162,7 +162,7 @@ $ openstack loadbalancer show lb1 | grep vip_port_id
 | vip_port_id         | b8a1ce2d-09d1-4109-8f9b-53ffc8318bcb |
 ```
 
-Attach floating ip ID to vip_port_id (Example: openstack floating ip set --port <load_balancer_vip_port_id> <floating_ip_id> )
+Attach floating ip ID to vip_port_id (Example: openstack floating ip set \-\-port <load_balancer_vip_port_id> <floating_ip_id> )
 
 ```
 $ openstack floating ip set --port b8a1ce2d-09d1-4109-8f9b-53ffc8318bcb c79726a7-68ad-44e4-b5f1-a4a443768ac4
