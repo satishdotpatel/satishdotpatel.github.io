@@ -13,7 +13,7 @@ tag:
 category: blog
 blog: true
 author: Satish Patel
-description: "Openstack Kolla deploy Octavia Loadbalancer"
+description: "Openstack Kolla Deploy OVN Provider Driver For Octavia"
 
 ---
 
