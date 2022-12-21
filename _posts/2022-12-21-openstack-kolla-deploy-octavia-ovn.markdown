@@ -50,7 +50,7 @@ The OVN Provider driver has a few advantages when used as a provider driver for 
 
 ### Enable OVN Privider Driver For Octavia
 
-In global.yml 
+In global.yml (Default its enabled if you deployed OVN for neutron) 
 
 ```
 octavia_provider_drivers: "ovn:OVN provider"
