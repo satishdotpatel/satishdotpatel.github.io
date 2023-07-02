@@ -1,17 +1,17 @@
 ---
-title: "Virtulization With LXD"
+title: "Virtualization With LXD"
 layout: post
 date: 2023-06-29
-image: /assets/images/2022-12-21-openstack-kolla-deploy-octavia-ovn/rope-walk.png
+image: /assets/images/2023-06-29-lxd/lxd-logo.png
 headerImage: true
 tag:
 - LXD
-- Virtulization
+- Virtualization
 - LXC
 category: blog
 blog: true
 author: Satish Patel
-description: "Virtulization With LXD"
+description: "Virtualization with LXD"
 
 ---
 
