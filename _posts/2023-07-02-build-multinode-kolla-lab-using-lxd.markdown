@@ -340,7 +340,7 @@ Launch demo1 vm
 To expose horizon GUI use following iptables rules on LXD host.
 
 ```
-[root@lxd-lab-1 ~]# iptables -t nat -A PREROUTING -i agge -p tcp --dport 8080 -j DNAT --to-destination 192.168.1.100:80
+[root@lxd-lab-1 ~]# iptables -t nat -A PREROUTING -i agge -p tcp --dport 80 -j DNAT --to-destination 192.168.1.100:80
 ```
 
 
