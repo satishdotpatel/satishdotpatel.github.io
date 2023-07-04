@@ -1,7 +1,7 @@
 ---
 title: "Build Multinode Kolla-Ansible Openstack LAB using LXD"
 layout: post
-date: 2023-06-29
+date: 2023-07-02
 image: /assets/images/2023-07-02-build-multinode-kolla-lab-using-lxd/lxd-kolla-lab.png
 headerImage: true
 tag:
