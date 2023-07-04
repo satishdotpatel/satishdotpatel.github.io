@@ -2,7 +2,7 @@
 title: "Build Multinode Kolla-Ansible Openstack LAB using LXD"
 layout: post
 date: 2023-07-02
-image: /assets/images/2023-07-02-build-multinode-kolla-lab-using-lxd/lxd-kolla-lab.png
+image: /assets/images/2023-07-02-build-multinode-kolla-lab-using-lxd/kolla-logo.png
 headerImage: true
 tag:
 - LXD
@@ -21,7 +21,7 @@ In this blog, I'm going to build openstack multinode lab using kolla-ansible wit
 
 ### LXD lab diagram
 
-![<img>](/assets/images/2023-07-02-build-multinode-kolla-lab-using-lxd/lxd-kolla-lab.png){: width="400" }
+![<img>](/assets/images/2023-07-02-build-multinode-kolla-lab-using-lxd/lxd-kolla-lab.png){: width="800" }
 
 ### Installation 
 
