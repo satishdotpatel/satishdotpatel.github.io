@@ -23,6 +23,12 @@ In this blog, I'm going to build openstack multinode lab using kolla-ansible wit
 
 ![<img>](/assets/images/2023-07-02-build-multinode-kolla-lab-using-lxd/lxd-kolla-lab.png){: width="800" }
 
+* Ansible node: kolla-mgmt
+* Docker registry: docker-registry
+* Loadbalancer: ha1, ha2
+* Controller node: ctrl1, ctrl2, ctrl3
+* Compute node: comp1, comp2
+
 ### Installation 
 
 In previous section we saw how to use LXD to quickly spin up VMs and containers, We are going to use LXD to build our openstack kolla lab. Please following last past related setting up LXC vms. 
