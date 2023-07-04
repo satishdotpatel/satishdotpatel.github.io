@@ -336,4 +336,13 @@ Launch demo1 vm
 | 67a0e9a8-b32a-427d-a28f-98b36f44b1b4 | demo3 | ACTIVE | demo-net=10.0.0.103 | cirros | m1.tiny |
 +--------------------------------------+-------+--------+---------------------+--------+---------+
 ```
+
+To expose horizon GUI use following iptables rules on LXD host.
+
+```
+[root@lxd-lab-1 ~]# iptables -t nat -A PREROUTING -i agge -p tcp --dport 8080 -j DNAT --to-destination 192.168.1.100:80
+```
+
+
+
 Enjoy your lab!!!
