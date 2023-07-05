@@ -31,7 +31,7 @@ In this blog, I'm going to build openstack multinode lab using kolla-ansible wit
 
 ### Installation 
 
-In previous section we saw how to use LXD to quickly spin up VMs and containers, We are going to use LXD to build our openstack kolla lab. Please following last past related setting up LXC vms. 
+In my last blog post we saw how to use LXD to quickly spin up VMs and containers, We are going to use LXD to build our openstack kolla lab. 
 
 ```
 $ lxc launch ubuntu:22.04 ctrl1 --vm -p default -p kolla
@@ -41,8 +41,8 @@ $ lxc launch ubuntu:22.04 comp1 --vm -p default -p kolla
 $ lxc launch ubuntu:22.04 comp2 --vm -p default -p kolla
 $ lxc launch ubuntu:22.04 kolla-mgmt -p default -p kolla
 $ lxc launch ubuntu:22.04 docker-registry --vm -p default -p kolla
-$ lxc launch images:ubuntu/22.10/cloud ha1 --vm -p default -p kolla
-$ lxc launch images:ubuntu/22.10/cloud ha2 --vm -p default -p kolla
+$ lxc launch images:ubuntu/22.04/cloud ha1 --vm -p default -p kolla
+$ lxc launch images:ubuntu/22.04/cloud ha2 --vm -p default -p kolla
 ```
 **NOTES:** If you see carefully, I have spun up kolla-mgmt as a container image instead of vm because its our ansible management node. ha1 and ha2 is using cloud image because we want ip_vs kernel module support to run keepalived & HAProxy. docker-registry is nothing but just docker images registry. 
 
@@ -342,7 +342,5 @@ To expose horizon GUI use following iptables rules on LXD host.
 ```
 [root@lxd-lab-1 ~]# iptables -t nat -A PREROUTING -i agge -p tcp --dport 80 -j DNAT --to-destination 192.168.1.100:80
 ```
-
-
 
 Enjoy your lab!!!
