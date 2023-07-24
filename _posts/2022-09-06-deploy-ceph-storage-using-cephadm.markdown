@@ -288,5 +288,21 @@ osd.3                ceph2               running (13d)   110s ago   2w    1506M 
 prometheus.ceph1     ceph1  *:9095       running (28m)     5m ago   2w     122M        -           514e6a882f6e  93972e9bdfa9
 ```
 
+### Ceph Maintenance Options
+
+To perform any kind of maintenance on OSD nodes you can use following flags
+```
+ceph osd set noout
+ceph osd set norebalance
+ceph osd set norecover
+```
+
+To remove maintenance mode
+```
+ceph osd unset noout
+ceph osd unset norebalance
+ceph osd unset norecover
+```
+
 In next post I will cover how to integrate ceph with kolla-ansible deployment. Enjoy! 
 
