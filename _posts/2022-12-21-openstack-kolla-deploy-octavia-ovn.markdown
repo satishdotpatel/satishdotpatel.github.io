@@ -147,4 +147,4 @@ $ curl http://10.73.1.171
 
 There is no need for flavors (no VM is created), failovers (no need to recover a VM), or HA (no need to create extra VMs as in the ovn-octavia case the flows are injected in all the nodes, i.e., it is HA by default).
 
-Enjoy!!!
+Enjoy!! 
