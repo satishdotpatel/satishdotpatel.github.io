@@ -34,7 +34,7 @@ description: "BGP EVPN-VxLAN in Datacenter"
 
 ### Cisco CML LAB
 
-I'm using Cisco Modeling lab to build EVPN-VxLAN fabric. I am using Cisco Nexus 9K Switches to build fabric.
+I'm using Cisco Modeling lab to build EVPN-VxLAN fabric. I am using Cisco Nexus 9K Switches to build fabric. [Enlarge image](https://user-images.githubusercontent.com/10041875/256011691-5bbe697f-217f-4759-b0cc-6818016906ac.png)
 
 ![<img>](/assets/images/2023-07-24-bgp-evpn-vxlan-in-datacenter/bgp-evpn-vxlan-lab.png){: width="1000" }
 
