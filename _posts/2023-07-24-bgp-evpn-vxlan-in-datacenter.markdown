@@ -134,7 +134,7 @@ interface Ethernet1/1
   no shutdown
 ```
 
-Configure BGP 
+BGP configuration snippet. Both Spines are OSPF route reflactor. 
 
 ```
 router bgp 65001
