@@ -32,7 +32,7 @@ description: "BGP EVPN-VxLAN in Datacenter"
 * In a VXLAN overlay network, each Layer 2 subnet or segment is uniquely identified by a virtual network identifier (VNI). A VNI segments traffic the same way that a VLAN ID segments traffic - endpoints within the same virtual network can communicate directly with each other, while endpoints in different virtual networks require a device that supports inter-VNI (inter-VXLAN) routing.
 
 
-### Cisco CML LAB
+### Cisco Modeling Lab 
 
 I'm using Cisco Modeling lab to build EVPN-VxLAN fabric. I am using Cisco Nexus 9K Switches to build fabric. [Enlarge image](https://user-images.githubusercontent.com/10041875/256011691-5bbe697f-217f-4759-b0cc-6818016906ac.png)
 
