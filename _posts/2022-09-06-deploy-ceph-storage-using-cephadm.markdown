@@ -180,10 +180,10 @@ We have two 199GB LVM disk per nodes so total 4 OSDs we can add in ceph.
 
 ```
 root@ceph1:~# ceph orch daemon add osd ceph1:/dev/ceph-ssd-vg/ceph-ssd-lv-0
-root@ceph1:~# ceph orch daemon add osd ceph1:/dev/ceph-ssd-vg/ceph-ssd-lv-0
+root@ceph1:~# ceph orch daemon add osd ceph1:/dev/ceph-ssd-vg/ceph-ssd-lv-1
 
 root@ceph1:~# ceph orch daemon add osd ceph2:/dev/ceph-ssd-vg/ceph-ssd-lv-0
-root@ceph1:~# ceph orch daemon add osd ceph2:/dev/ceph-ssd-vg/ceph-ssd-lv-0
+root@ceph1:~# ceph orch daemon add osd ceph2:/dev/ceph-ssd-vg/ceph-ssd-lv-1
 ```
 
 Wait for sometime and then you can check status
