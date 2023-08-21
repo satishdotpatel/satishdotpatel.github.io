@@ -239,20 +239,20 @@ nova_compute_virt_type: "kvm"
 libvirt_tls: "no"
 libvirt_enable_sasl: "false"
 
-# Use local registry for docker
+## Use local registry for docker
 docker_registry: "docker-registry:4000"
 docker_registry_insecure: "false"
 docker_custom_config:
   insecure-registries:
     - docker-registry:4000
 
-# Pin Docker package
+## Pin Docker package
 docker_apt_package: "docker.io"
 
-# RabbitMQ HA
+## RabbitMQ HA
 om_enable_rabbitmq_high_availability: True
 
-# Enable mariadb backup
+## Enable mariadb backup
 enable_mariabackup: "yes"
 ```
 NOTES: 192.168.1.100 is free IP from LXD pool for handover to keepalived floating ip. 
