@@ -17,7 +17,7 @@ description: "Mitigate DDoS using FastNetMon and goBGP"
 
 ---
 
-In previous [BGP RTBH Setup](https://satishdotpatel.github.io/bgp-remote-trigger-blackhole-for-ddos/) post, We have setup LAB for null route DDoS traffic using BGP blackhole method. We test null route injecting static route in BGP which is manual method but that is not practical in production environments. In this post we are going to expand same lab to do auto null route traffic using FastNetMon and goBGP tools.  
+In previous [BGP RTBH Setup](https://satishdotpatel.github.io/bgp-remote-trigger-blackhole-for-ddos/) post, We have setup LAB for null route DDoS traffic using BGP blackhole method. We test null route injecting static route in BGP which is manual method but that is not practical in production environments. In this post we are going to expand same lab to do auto null route traffic using [FastNetMon](https://fastnetmon.com) and goBGP tools.  
 
 ### Scope of LAB
 
