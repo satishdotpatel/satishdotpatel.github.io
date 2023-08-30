@@ -138,7 +138,7 @@ $ gobgp global rib add -a ipv4 200.200.200.202/32 community 65000:666
 $ gobgp global rib del -a ipv4 200.200.200.202/32 community 65000:666
 ```
 
-# Configure FastNetMon to trigger goBGP 
+## Configure FastNetMon to trigger goBGP 
 
 ### First configure CE1 router to send NetFlow
 
