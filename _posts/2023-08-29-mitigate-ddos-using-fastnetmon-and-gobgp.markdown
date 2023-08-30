@@ -116,8 +116,7 @@ Verify BGP peer on CE1
 
 ```
 CE1#show ip bgp summary
-...
-...
+
 Neighbor        V           AS MsgRcvd MsgSent   TblVer  InQ OutQ Up/Down  State/PfxRcd
 10.0.0.1        4        65000   24292   24329       31    0    0 2w1d            1
 192.168.255.10  4        65001    2886    3150       31    0    0 1d00h           0
