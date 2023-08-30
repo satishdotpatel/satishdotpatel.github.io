@@ -30,9 +30,9 @@ We are going to configure NetFlow on the edge router to feed flow to fastnetmon 
 
 ### Install FastNetmon 
 
-FastNetMon is awesome tool to detect DDoS in 2 second and take action according your need. In our case I am sending bgp null route to drop target IP to protect our infrastucture. 
+FastNetMon is awesome tool to detect DDoS in 2 second and take action according your need. In our case I am sending bgp null route to drop target IP to protect our infrastructure. 
 
-FastNetMon comes with goBGP program which is written in GO language which support all BGP functinality. I will create iBGP peer with my router to send bgp route and community string to upstream ISP to drop targeted IP. 
+FastNetMon comes with goBGP program which is written in GO language which support all BGP functionality. I will create iBGP peer with my router to send bgp route and community string to upstream ISP to drop targeted IP. 
 
 You need to install wget tool before starting this tool. Just follow official website for help: https://fastnetmon.com/install/ 
 
@@ -128,7 +128,7 @@ Peer             AS     Up/Down State       |#Received  Accepted
 192.168.255.1 65001 1d 00:03:40 Establ      |        2         2
 ```
 
-You can inject /32 route manually using following command to test your null route functinality. 
+You can inject /32 route manually using following command to test your null route functionality. 
 
 ```
 $ gobgp global rib add -a ipv4 200.200.200.202/32 community 65000:666
