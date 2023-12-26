@@ -2,7 +2,7 @@
 title: "Openstack Magnum Cluster API"
 layout: post
 date: 2023-12-26
-image: /assets/images/2023-12-26-openstack-magnum-capi.markdown/magnum-logo.png
+image: /assets/images/2023-12-26-openstack-magnum-capi/magnum-logo.png
 headerImage: true
 tag:
 - Openstack
@@ -17,11 +17,17 @@ description: "Openstack Magnum Cluster API"
 
 ---
 
-The Cluster API driver for Magnum allows you to deploy fully conformant Kubernetes cluster using the Cluster API. In short CAPI requires a dedicated “k8s management plane”. This means you need a Kubernetes cluster to manage/deploy your Kubernetes clusters. 
+The Cluster API driver for Magnum allows you to deploy a fully conformant Kubernetes cluster using the Cluster API. In short CAPI requires a dedicated “k8s management plane”. This means you need a Kubernetes cluster to manage/deploy your Kubernetes clusters. 
 
-[Magnum Cluster Api](https://github.com/vexxhost/magnum-cluster-api)
-[Magnum CAPI Operations](https://vexxhost.github.io/magnum-cluster-api/user/getting-started/)
-[CAPI official Doc](https://cluster-api.sigs.k8s.io/user/quick-start.html)
+* [Magnum Cluster Api](https://github.com/vexxhost/magnum-cluster-api)
+* [Magnum CAPI Operations](https://vexxhost.github.io/magnum-cluster-api/user/getting-started/)
+* [CAPI official Doc](https://cluster-api.sigs.k8s.io/user/quick-start.html)
+
+### Backgroud 
+
+By default openstack magnum uses the k8s workload cluster using a bunch of heat templates which takes a very long time and the entire process is cumbersome when It come downtime versioning and upgrading etc. 
+
+New Magnum-cluster-api driver developed by vexxhost takes a new approach to deploy k8s clusters using CAPI without any heat templates etc. It can create k8s cluster less than 5 minutes.
 
 ### Components 
 
@@ -33,13 +39,13 @@ The Cluster API driver for Magnum allows you to deploy fully conformant Kubernet
 ![<img>](/assets/images/2023-12-26-openstack-magnum-capi/magnum-capi.png){: width="1000" }
 
 
-### Rrerequisite 
+### Prerequisite
 
-Working openstack environment with Magnum. I am running kolla-ansible so all my configuration will reflect related kolla-ansible. If you have different deployment tool then change according. 
+Working openstack environment with Magnum. I am running kolla-ansible so all my configuration will reflect related kolla-ansible. If you have different deployment tools then change accordingly. 
 
 ### Installation of kind k8s cluster
 
-Deploy kind cluster for Managment cluster (This can be outside your openstack infra). Kind cluster required docker engin so make sure you have already installed docker. For testing kind k8s cluster is good tool but in production please use kubesprey or any other production grade cluster tool. 
+Deploy kind cluster for Management cluster (This can be outside your openstack infra). Kind cluster requires a docker engine so make sure you have already installed docker. For testing, the kind k8s cluster is a good tool but in production please use kubespray or any other production grade cluster tool. 
 
 ```
 $ curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.20.0/kind-linux-amd64
@@ -47,7 +53,7 @@ $ chmod +x ./kind
 $ sudo mv ./kind /usr/local/bin/kind
 ```
 
-Create kind k8s cluster config file. apiServerAddress is your interface IP. 
+Create a kind k8s cluster config file. apiServerAddress is your interface IP. 
 
 ```
 $ cat kind-config.yaml
@@ -121,9 +127,9 @@ $ kubectl -n capo-system logs deploy/capi-controller-manager -f
 
 ### Install magnum and capi driver
 
-Install magnum-capi driver on your magnum container. (I have already deployed kolla-ansible with magnum). In following steps I will install magnum-capi driver inside magnum containers. This step can be different according your deployment tools.
+Install magnum-capi driver on your magnum container. (I have already deployed kolla-ansible with magnum). In following steps I will install a magnum-capi driver inside magnum containers. This step can be different according to your deployment tools.
 
-In kolla-ansible you need to add following config to allow calico cni. 
+In kolla-ansible you need to add the following config to allow calico cni. 
 
 ```
 $ cat /etc/kolla/config/magnum.conf
@@ -132,7 +138,7 @@ kubernetes_allowed_network_drivers = calico
 kubernetes_default_network_driver = calico
 ```
 
-Install magnum-cluster-api driver on both containers magnum_api and magnum_conductor. 
+Install magnum-cluster-api driver on both containers magnum_api and magnum_conductor. If you create your own kolla image for docker then you can pre-install required components in docker image. 
 
 ```
 $ docker exec -it -u0 magnum_api bash
@@ -150,7 +156,7 @@ $ docker exec -it -u0 magnum_conductor bash
 (magnum-conductor)[root@os2-ctrl-01 /]# mv linux-amd64/helm /usr/local/bin/
 ```
 
-Copy ~/.kube/config file from kind k8s cluster to magnum_api and magnum_conductor containers so it can access kind k8s clusters. In have copied my ~/.kube/config file on all openstack controller nodes in /root directory and then running following docker command to copy inside container and changing ownership. 
+Copy ~/.kube/config file from kind k8s cluster to magnum_api and magnum_conductor containers so it can access kind k8s clusters. I have copied my ~/.kube/config file on all openstack controller nodes in /root directory and then run following docker command to copy inside the container and change ownership. 
 
 ```
 $ docker exec -it -u0 magnum_api mkdir /var/lib/magnum/.kube
@@ -175,7 +181,7 @@ Verify logs of any errors
 $ tail -f /var/log/kolla/magnum/magnum-*.log
 ```
 
-If all good then you will notice in logs that magnum makes calls to kind k8s cluster running ourside openstack. If it failed with any reason then you have to make sure its reachable/routable or no firewall in between. (you can use curl etc tools to verify)
+If all is good then you will notice in logs that magnum makes calls to kind k8s cluster running outside openstack. If it fails with any reason then you have to make sure it's reachable/routable or no firewall in between. (you can use curl etc tools to verify)
 
 ### Import Kubernetes images and create templates
 
@@ -218,11 +224,4 @@ $ # openstack coe cluster list
 +--------------------------------------+--------------+------------+------------+--------------+-----------------+---------------+
 ```
 
-
-
-
-
- 
-
-
-
+Enjoy!! 
