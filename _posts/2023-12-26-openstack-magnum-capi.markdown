@@ -22,6 +22,7 @@ The Cluster API driver for Magnum allows you to deploy a fully conformant Kubern
 * [Magnum Cluster Api](https://github.com/vexxhost/magnum-cluster-api)
 * [Magnum CAPI Operations](https://vexxhost.github.io/magnum-cluster-api/user/getting-started/)
 * [CAPI official Doc](https://cluster-api.sigs.k8s.io/user/quick-start.html)
+* [Ref. Architecture](https://user-images.githubusercontent.com/62775347/215805774-844c1902-6ea9-463e-99ca-35e59f48f6a7.png)
 
 ### Background 
 
