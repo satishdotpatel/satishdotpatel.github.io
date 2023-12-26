@@ -23,7 +23,7 @@ The Cluster API driver for Magnum allows you to deploy a fully conformant Kubern
 * [Magnum CAPI Operations](https://vexxhost.github.io/magnum-cluster-api/user/getting-started/)
 * [CAPI official Doc](https://cluster-api.sigs.k8s.io/user/quick-start.html)
 
-### Backgroud 
+### Background 
 
 By default openstack magnum uses the k8s workload cluster using a bunch of heat templates which takes a very long time and the entire process is cumbersome when It comes down to versioning and upgrading etc. 
 
