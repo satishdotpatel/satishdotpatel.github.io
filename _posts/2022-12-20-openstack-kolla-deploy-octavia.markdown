@@ -185,4 +185,10 @@ $ openstack loadbalancer stats show lb1
 +--------------------+-------+
 ```
 
+*NOTE:* By default normal users doesn't have permission to create loadbalancer. You can assign role of load-balancer_member to users/projects. 
+
+```
+openstack role add --project myproject1 --user-domain Default --user spatel  load-balancer_member
+```
+
 Enjoy! 
