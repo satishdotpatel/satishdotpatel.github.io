@@ -172,7 +172,7 @@ kube-893ps-m7x4x-5spmc                  Ready    control-plane,master   3h38m   
 
 ### Check logs of CAPI driver
 
-Go to clusterapi managment cluster to check status of cluster and logs of autoscaler
+Go to clusterapi managment cluster to check status of cluster and logs of autoscaler. 
 
 ```
 $ kubectl get cluster -n magnum-system
@@ -183,7 +183,7 @@ kube-893ps   magnum-v0.13.3   Provisioned   3h43m   v1.27.4
 Find autoscaler deployment and pod for your workload cluster running inside openstack. 
 
 ```
-kubectl get pods -A | grep kube-893ps
+$ kubectl get pods -A | grep kube-893ps
 magnum-system                       kube-893ps-autoscaler-77db46897b-kp7t6                           1/1     Running   2 (3h42m ago)   3h44m
 ```
 
