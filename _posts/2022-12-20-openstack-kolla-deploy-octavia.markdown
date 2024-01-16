@@ -191,4 +191,10 @@ $ openstack loadbalancer stats show lb1
 openstack role add --project myproject1 --user-domain Default --user spatel  load-balancer_member
 ```
 
+*NOTE:* If you're running barbican service then you may need to add user in "creator" role.
+
+```
+openstack role add --project myproject1 --user-domain Default --user spatel  creator
+```
+
 Enjoy! 
