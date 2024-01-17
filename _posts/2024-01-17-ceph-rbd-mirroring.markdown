@@ -201,7 +201,7 @@ Create Ceph user accounts, and register the storage cluster peer to the pool, Th
 [site-a]$ rbd mirror pool peer bootstrap create --site-name site-a vms > /root/bootstrap_token_site-a
 ```
 
-Copy the bootstrap token file (bootstrap_token_site-a) to the site-b storage cluster.
+Copy the bootstrap token file (bootstrap_token_site-a) to the site-b storage cluster and import token. 
 
 ```
 [site-b]$ rbd mirror pool peer bootstrap import --site-name site-b --direction rx-only vms /root/bootstrap_token_site-a
