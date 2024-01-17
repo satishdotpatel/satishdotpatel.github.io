@@ -2,7 +2,7 @@
 title: "Ceph RBD Mirroring"
 layout: post
 date: 2024-01-17
-image: /assets/images/2024-01-17-ceph-rbd-mirroring/ceph-logo.png
+image: /assets/images/2024-01-17-ceph-rbd-mirroring/ceph-logo-1.png
 headerImage: true
 tag:
 - Ceph
