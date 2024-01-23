@@ -17,7 +17,7 @@ description: "Openstack Disaster Recovery with Ceph RBD Mirror"
 
 ---
 
-In a previous blog, I have explained how to set up [Ceph RDB Mirror](https://satishdotpatel.github.io/ceph-rbd-mirroring/) for Storage on-way replication. In this blog I will set up an openstack cluster and do a real scenario of failover from primary ceph storage to secondary ceph storage. Just mimic disaster recovery where the primary ceph cluster goes down and how to point your all opentack vms to the secondary cluster and bring them up.
+In a previous blog, I have explained how to set up [Ceph RDB Mirror](https://satishdotpatel.github.io/ceph-rbd-mirroring/) for Storage on-way replication. In this blog I will set up an openstack cluster and do a real scenario of failover from primary ceph storage to the secondary ceph storage. Just mimic disaster recovery where the primary ceph cluster goes down and how to point your all opentack vms to the secondary cluster and bring them up.
 
 ### Scope 
 
@@ -25,7 +25,7 @@ In a previous blog, I have explained how to set up [Ceph RDB Mirror](https://sat
 * Two working ceph1 and ceph2 cluster (with RBD mirror setup)
 * For normal failover from ceph1 to ceph2 storage
   * Shutdown all the VMs 
-  * Point openstack to seconday ceph
+  * Point openstack to the secondary ceph
   * Demote Primary ceph Pools/Images
   * Promote Seconday ceph Pools/Images
   * Start all the VMs
