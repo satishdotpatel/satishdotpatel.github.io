@@ -154,7 +154,7 @@ Locker        ID                   Address
 client.22536  auto 94461980277376  10.30.50.22:0/4140521941
 ```
 
-In following command also you can see primary disk.
+Another command to verify primary onwership of disk images.
 
 ```
 [site-a]$ for qw in `rbd -p vms ls`; do  rbd info vms/$qw | grep "mirroring primary"; done
