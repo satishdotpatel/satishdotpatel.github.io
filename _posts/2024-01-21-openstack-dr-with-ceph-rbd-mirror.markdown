@@ -185,7 +185,7 @@ Check ceph lock status. You noticed no lock found on primary ceph because all VM
 ```
 [site-a]$ for qw in `rbd -p vms ls`; do  rbd lock list --image vms/$qw; done
 [site-a]$
-``
+```
 
 #### Point Openstack to Ceph2 cluster
 
