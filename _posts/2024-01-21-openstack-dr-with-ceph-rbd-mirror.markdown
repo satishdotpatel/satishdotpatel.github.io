@@ -32,7 +32,7 @@ In a previous blog, I have explained how to set up [Ceph RDB Mirror](https://sat
 
 ### Setup Ceph Auth on Seconday Cluster
 
-This is personal choice but in my case to reduce typing I've export/import auth creds from primary cluster to Secondary cluster. Both clusters has similar auth/keys so I don't need to maintain keyring files on openstack. Just need to switch ceph.conf file during failover. 
+This is personal choice but in my case to reduce typing I've export/import auth creds from primary cluster to Secondary cluster. Both clusters have similar auth/keys so I don't need to maintain keyring files on openstack. Just need to switch ceph.conf file during failover. 
 
 On Primary ceph1 
 
@@ -271,6 +271,6 @@ d4743fb5-c314-46ee-8f84-323896936d77_disk:
   last_update: 2024-01-22 15:35:17
 ```
 
-Now site-b is your primary ceph cluster and site-a is secondary cluster. Now you can setup/install rbd-mirror daemon on site-a and do replication in other direction or you can setup two-way replication on ceph. 
+Now site-b is your primary ceph cluster and site-a is secondary cluster. Now you can setup/install rbd-mirror daemon on site-a and do replication in another direction or you can setup two-way replication on ceph. 
 
 Enjoy! 
