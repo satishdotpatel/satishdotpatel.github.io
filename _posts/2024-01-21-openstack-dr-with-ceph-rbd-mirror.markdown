@@ -195,7 +195,7 @@ Drop Ceph2 ceph.conf in kolla-ansible /etc/kolla/config directory and run kolla-
 $ kolla-ansible -i <inventory_file> reconfigure -t nova 
 ```
 
-#### demote primary ceph cluster
+#### Demote primary ceph cluster
 
 Let's demote site-a primary cluster. You can do per image or entire pool. 
 
@@ -220,7 +220,7 @@ Check status of demoted images. You noticed they are no more primary.
 	mirroring primary: false
 ```
 
-#### promote secondary ceph cluster
+#### Promote secondary ceph cluster
 
 ![<img>](/assets/images/2024-01-21-openstack-dr-with-ceph-rbd-mirror/ceph2.png){: width="800" }
 
