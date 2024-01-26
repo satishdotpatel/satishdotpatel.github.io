@@ -22,7 +22,7 @@ On this post I'll focus on the integration of Ceph as Object storage with Openst
 ### Scope 
 
 * Deploy RGW using cephadm
-* Create User account on Openstack keyston
+* Create User account on Openstack keystone
 * Create openstack API endpoint for ceph
 * Add Keystone user in ceph 
 * Test integration
@@ -67,7 +67,7 @@ $ openstack user create --domain default --password-prompt swift
 $ openstack role add --project service --user swift admin
 ```
 
-### Create keyston endpoint for ceph 
+### Create keystone endpoint for ceph 
 
 Create endpoint for ceph so openstack services can talk to ceph. 
 
@@ -77,7 +77,7 @@ $ openstack endpoint create --region RegionOne object-store internal "http://cep
 $ openstack endpoint create --region RegionOne object-store admin "http://ceph.example.com:80/swift/v1/AUTH_%(project_id)s"
 ```
 
-### Add keyston setting on ceph
+### Add keystone setting on ceph
 
 I have two rgw service running on ceph1 and ceph2 so I have to set it for two rgw instances. You can find their NAME in following output. 
 
