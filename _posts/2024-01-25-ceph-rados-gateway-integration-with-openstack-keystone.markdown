@@ -1,5 +1,5 @@
 ---
-title: "Ceph Rados Gateway Integration Openstack Keystone"
+title: "Ceph Rados Gateway Integration with Openstack Keystone"
 layout: post
 date: 2024-01-25
 image: /assets/images/2024-01-25-ceph-rados-gateway-integration-with-openstack-keystone/ceph-keystone.png
@@ -13,7 +13,7 @@ tag:
 category: blog
 blog: true
 author: Satish Patel
-description: "Ceph Rados Gateway Integration Openstack Keyston"
+description: "Ceph Rados Gateway Integration with Openstack Keyston"
 
 ---
 
