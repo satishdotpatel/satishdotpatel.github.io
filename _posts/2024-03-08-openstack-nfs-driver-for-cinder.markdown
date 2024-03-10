@@ -130,7 +130,7 @@ openstack volume service list --service cinder-volume
 +---------------+-----------------------+------+---------+-------+----------------------------+
 ```
 
-### Test volume create & attach
+### Test create & attach volume
 
 Create 1G nfs volume using following command.
 
