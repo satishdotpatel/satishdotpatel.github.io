@@ -161,9 +161,7 @@ $ (cinder-volume)[root@os-ctrl1 /]# ls -ltr /var/lib/cinder/mnt/5639dfcb71d252f8
 -rw-rw-rw- 1 root   cinder  1073741824 Mar 10 04:10 /var/lib/cinder/mnt/5639dfcb71d252f8a2e7ab65acee56dc/volume-70d9ae7c-83eb-4b95-98ee-49fad1a6a1bc
 ```
 
-### Attach nfs volume to vm instance
-
-List vm instance 
+Attach nfs volume to vm instance.
 
 ```
 $ openstack server list
