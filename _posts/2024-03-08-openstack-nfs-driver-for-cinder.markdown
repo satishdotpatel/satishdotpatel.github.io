@@ -1,5 +1,5 @@
 ---
-title: "Openstack NFS Driver for Cinder"
+title: "Openstack NFS Storage Driver for Cinder"
 layout: post
 date: 2024-03-08
 image: /assets/images/2024-03-08-openstack-nfs-driver-for-cinder/storage-nfs.png
@@ -13,7 +13,7 @@ tag:
 category: blog
 blog: true
 author: Satish Patel
-description: "Openstack NFS Driver for Cinder"
+description: "Openstack NFS Storage Driver for Cinder"
 
 ---
 
