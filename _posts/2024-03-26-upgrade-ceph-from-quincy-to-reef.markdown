@@ -191,7 +191,7 @@ ceph log last cephadm
 2024-03-21T02:37:00.799319+0000 mgr.os-ctrl2.bmqlnf (mgr.36605239) 404 : cephadm [INF] Upgrade: unsafe to stop osd(s) at this time (23 PGs are or would become offline)
 ```
 
-If all goes well then voila!! 
+If all goes well. voila!! 
 
 ```
 $ ceph version
