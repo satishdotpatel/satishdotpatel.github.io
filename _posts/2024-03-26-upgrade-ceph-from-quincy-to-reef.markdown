@@ -198,5 +198,9 @@ $ ceph version
 ceph version 18.2.2 (531c0d11a1c5d39fbfe6aa8a521f023abf3bf3e2) reef (stable)
 ```
 
+Ceph reef has new dashborad with improved layout. 
+
+![<img>](/assets/images/2024-03-26-upgrade-ceph-from-quincy-to-reef/ceph-reef-dash.png){: width="800" }
+
 Enjoy!!! 
 
