@@ -2,7 +2,7 @@
 title: "Upgrade Ceph from Quincy to Reef"
 layout: post
 date: 2024-03-26
-image: /assets/images/2024-03-26-upgrade-ceph-from-quincy-to-reef/ceph-reef.png
+image: /assets/images/2024-03-26-upgrade-ceph-from-quincy-to-reef/ceph-reef-logo.png
 headerImage: true
 tag:
 - Openstack
