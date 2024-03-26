@@ -109,7 +109,7 @@ HEALTH_OK
 
 ### Start ceph upgrade to Reef
 
-Check latest and stable released version [here](https://docs.ceph.com/en/latest/releases/)
+Check latest and stable released version [here](https://docs.ceph.com/en/latest/releases/). To upgrade run following command with proper release tag version. In my case its 18.2.2. 
 
 ```
 $ ceph orch upgrade start --ceph-version 18.2.2
