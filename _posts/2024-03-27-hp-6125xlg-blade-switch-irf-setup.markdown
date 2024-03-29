@@ -2,7 +2,7 @@
 title: "HP 6125XLG Blade Switch IRF Setup"
 layout: post
 date: 2024-03-27
-image: /assets/images/2024-03-27-hp-6125xlg-blade-switch-irf-setup/hp-switch-logo.pngspatel
+image: /assets/images/2024-03-27-hp-6125xlg-blade-switch-irf-setup/hp-switch-logo.png
 headerImage: true
 tag:
 - HP
