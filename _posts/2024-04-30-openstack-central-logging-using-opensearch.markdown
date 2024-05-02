@@ -2,7 +2,7 @@
 title: "Openstack Central Logging using Opensearch"
 layout: post
 date: 2024-04-30
-image: /assets/images/2024-04-30-openstack-central-logging-using-opensearch/opensearch-logo.svg
+image: /assets/images/2024-04-30-openstack-central-logging-using-opensearch/opensearch-logo.png
 headerImage: true
 tag:
 - Kolla-Ansible
