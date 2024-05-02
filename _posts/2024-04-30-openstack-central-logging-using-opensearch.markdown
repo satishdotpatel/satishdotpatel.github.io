@@ -124,7 +124,7 @@ In Visualize tab you can create nice charts/graphs based on logs patterns just l
 
 #### Dashboard 
 
-Create regular dashboard instead of obervability dashboard which use PPL query language. 
+Create regular dashboard instead of observability dashboard which use PPL query language. 
 
 ![<img>](/assets/images/2024-04-30-openstack-central-logging-using-opensearch/dash-1.png){: width="800" }
 
