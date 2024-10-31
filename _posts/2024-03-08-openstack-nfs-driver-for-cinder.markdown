@@ -87,6 +87,7 @@ nas_secure_file_operations = False
 ### Run kolla-ansible playbook to push changes
 
 ```
+$ cd /etc/kolla
 $ kolla-ansible -i multinode reconfigure -t cinder
 ```
 
@@ -194,6 +195,18 @@ After attachment you will notice NFS share will auto mount on compute nodes and 
 root@os-comp5:~# docker exec -it nova_compute bash
 (nova-compute)[nova@os-comp5 /]$ mount | grep nfs
 192.168.24.120:/volume1/pool1 on /var/lib/nova/mnt/5639dfcb71d252f8a2e7ab65acee56dc type nfs4 (rw,relatime,vers=4.1,rsize=131072,wsize=131072,namlen=255,hard,proto=tcp,timeo=600,retrans=2,sec=sys,clientaddr=192.168.24.108,local_lock=none,addr=192.168.24.120)
+```
+
+### Remove NFS volume
+
+If you want to remove nfs service then just undo all the above changes and re-run reconfigure kolla playbook and in end remove service. 
+
+Go to controller node and perform following action.
+```
+$ docker exec -it cinder_api bash
+$ cinder-manage service remove cinder-volume os-ctrl1@volume-nfs
+$ cinder-manage service remove cinder-volume os-ctrl2@volume-nfs
+$ cinder-manage service remove cinder-volume os-ctrl3@volume-nfs
 ```
 
 Enjoy!!! 
