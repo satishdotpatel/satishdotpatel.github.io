@@ -21,6 +21,8 @@ Deploying Ceph with BGP in an L3 network replaces traditional L2 spanning-tree/V
 
 By implementing a routing daemon like FRR on Ceph nodes, OSDs and Monitors advertise their IP addresses via BGP to ToR switches, enabling equal-cost multi-path (ECMP) routing for enhanced scalability and faster network convergence.
 
+![<img>](/assets/images/2026-02-21-deploying-ceph-storage-with-bgp-in-an-l3-network/ceph-bgp.jpeg){: width="600" }
+
 ## Ceph Lab Setup
 
 This lab environment runs on Cisco Modeling Lab in a virtual setup. Four ceph nodes execute FRR daemon to establish BGP connectivity with leaf switches as previously documented.
