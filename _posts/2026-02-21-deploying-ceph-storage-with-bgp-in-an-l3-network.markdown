@@ -2,6 +2,8 @@
 title: "Deploying Ceph Storage with BGP in an L3 Network"
 layout: post
 date: 2026-02-21
+image: /assets/images/2026-02-21-deploying-ceph-storage-with-bgp-in-an-l3-network/ceph-bgp.jpeg
+headerImage: true
 tag:
 - Ceph
 - BGP

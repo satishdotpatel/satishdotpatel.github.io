@@ -2,6 +2,8 @@
 title: "Build Layer 3 Datacenter using BGP"
 layout: post
 date: 2025-11-20
+image: /assets/images/2025-11-20-build-layer-3-datacenter-using-bgp/l3-datacenter-bgp.jpeg
+headerImage: true
 tag:
 - BGP
 - Networking

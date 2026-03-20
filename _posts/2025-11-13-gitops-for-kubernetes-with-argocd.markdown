@@ -2,6 +2,8 @@
 title: "GitOps for Kubernetes with ArgoCD"
 layout: post
 date: 2025-11-13
+image: /assets/images/2025-11-13-gitops-for-kubernetes-with-argocd/argocd.jpeg
+headerImage: true
 tag:
 - ArgoCD
 - Kubernetes

@@ -2,6 +2,8 @@
 title: "Lightweight Containers with Enroot"
 layout: post
 date: 2026-03-01
+image: /assets/images/2026-03-01-lightweight-containers-with-enroot/enroot.png
+headerImage: true
 tag:
 - HPC
 - Nvidia

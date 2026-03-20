@@ -2,6 +2,8 @@
 title: "Ceph Storage Integration with Kubernetes using Ceph CSI"
 layout: post
 date: 2025-08-30
+image: /assets/images/2025-08-30-ceph-integration-with-kubernetes-using-ceph-csi/ceph-csi.jpeg
+headerImage: true
 tag:
 - Ceph
 - Kubernetes

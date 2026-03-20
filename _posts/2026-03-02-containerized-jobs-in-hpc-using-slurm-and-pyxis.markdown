@@ -2,6 +2,8 @@
 title: "Containerized Jobs in HPC using Slurm and Pyxis"
 layout: post
 date: 2026-03-02
+image: /assets/images/2026-03-02-containerized-jobs-in-hpc-using-slurm-and-pyxis/slurm-pyxis.jpeg
+headerImage: true
 tag:
 - Containers
 - Pyxis

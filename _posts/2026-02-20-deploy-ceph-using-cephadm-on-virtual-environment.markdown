@@ -2,6 +2,8 @@
 title: "Deploy Ceph Using Cephadm on Virtual Environment"
 layout: post
 date: 2026-02-20
+image: /assets/images/2026-02-20-deploy-ceph-using-cephadm-on-virtual-environment/cephadm.png
+headerImage: true
 tag:
 - Ceph
 - Cephadm

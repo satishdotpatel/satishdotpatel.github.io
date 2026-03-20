@@ -2,6 +2,8 @@
 title: "Kubernetes Cilium with BGP to expose LoadBalancer Services"
 layout: post
 date: 2026-03-18
+image: /assets/images/2026-03-18-kubernetes-cilium-with-bgp-to-expose-loadbalancer-services/cilium-bgp.jpeg
+headerImage: true
 tag:
 - Cilium
 - Kubernetes

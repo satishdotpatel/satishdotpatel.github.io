@@ -2,6 +2,8 @@
 title: "Kubespray Private Kubernetes Cluster Expose to Public Network using Nginx"
 layout: post
 date: 2025-12-04
+image: /assets/images/2025-12-04-kubespray-private-kubernetes-cluster-expose-to-public-network-using-nginx/kubespray-nginx.jpeg
+headerImage: true
 tag:
 - Nginx
 - Keepalived

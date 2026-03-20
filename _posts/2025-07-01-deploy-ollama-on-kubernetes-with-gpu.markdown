@@ -2,6 +2,8 @@
 title: "Deploy Ollama on Kubernetes with GPU"
 layout: post
 date: 2025-07-01
+image: /assets/images/2025-07-01-deploy-ollama-on-kubernetes-with-gpu/ollama-gpu.png
+headerImage: true
 tag:
 - Ollama
 - Kubernetes
