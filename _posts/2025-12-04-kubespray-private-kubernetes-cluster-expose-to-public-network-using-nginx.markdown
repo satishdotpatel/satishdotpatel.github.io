@@ -75,7 +75,7 @@ vrrp_instance VI_1 {
 
 **/etc/keepalived/check_apiserver.sh**
 
-```bash
+```
 #!/bin/sh
 
 errorExit() {
