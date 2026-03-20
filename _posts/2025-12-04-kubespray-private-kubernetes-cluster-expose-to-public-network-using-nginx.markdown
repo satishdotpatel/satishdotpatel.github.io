@@ -19,6 +19,8 @@ description: "Kubespray Private Kubernetes Cluster Expose to Public Network usin
 
 The objective involves exposing a private Kubernetes cluster deployed within a datacenter to the public internet, enabling external access to internal Kubernetes resources.
 
+![<img>](/assets/images/2025-12-04-kubespray-private-kubernetes-cluster-expose-to-public-network-using-nginx/kubespray-nginx.jpeg){: width="800" }
+
 ## Prerequisite
 
 - Functional Kubernetes cluster (deployed via Kubespray)
