@@ -19,6 +19,8 @@ description: "Kubernetes Cilium with BGP to expose LoadBalancer Services"
 
 With BGP integration, Kubernetes nodes establish peering relationships with network routers (edge routers). The cluster advertises service IPs (VIPs) via BGP, and routers learn these routes to send traffic directly to Kubernetes nodes.
 
+![<img>](/assets/images/2026-03-18-kubernetes-cilium-with-bgp-to-expose-loadbalancer-services/cilium-bgp.jpeg){: width="400" }
+
 ## Lab Setup
 
 **Infrastructure:**
